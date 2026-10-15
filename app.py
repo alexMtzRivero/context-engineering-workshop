@@ -55,6 +55,7 @@ def start(body: Start):
     folder.mkdir(parents=True, exist_ok=True)
     sessions[session_id] = Session(Chat(folder=folder, step=body.step))
     messages = []
+    # La conversación larga se convierte a mensajes de Pydantic AI sin llamar al modelo.
     if body.dataset:
         messages = json.loads((ROOT / "datasets/conversacion-larga.json").read_text())["messages"]
         sessions[session_id].chat.history = [
@@ -71,8 +72,13 @@ def start(body: Start):
 @app.post("/sessions/{session_id}/chat")
 async def send(session_id: str, body: Message):
     session = session_for(session_id)
+    # El lock evita dos turnos al mismo tiempo sobre el mismo historial.
     async with session.lock:
-        return await respond(session.chat, body.message)
+        try:
+            return await respond(session.chat, body.message)
+        except NotImplementedError as error:
+            # Una función del taller que todavía no escribes: el mensaje dice cuál y en qué archivo.
+            raise HTTPException(501, str(error)) from error
 
 
 @app.post("/sessions/{session_id}/compact")
@@ -85,4 +91,6 @@ async def summarize(session_id: str, body: Compaction):
             report = await compact(session.chat, body.with_reference)
         except ValueError as error:
             raise HTTPException(400, str(error)) from error
+        except NotImplementedError as error:
+            raise HTTPException(501, str(error)) from error
         return {"compaction": report, "context": history_json(session.chat), "context_usage": context_usage(session.chat)}

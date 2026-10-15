@@ -1,6 +1,15 @@
 # Context workshop
 
-Un chat local para explicar compactación, recuperación de archivos y descubrimiento de tools. El agente está en `chat_agent.py`; `app.py` conecta el navegador; `customer_tools.py` contiene el catálogo simulado de atención al cliente. El frontend es una página HTML con JavaScript vanilla.
+Un chat local para practicar compactación, recuperación de archivos y descubrimiento de tools. Cada paso del taller tiene su archivo, y ahí escribes tu código:
+
+| Archivo | Qué escribes |
+|---|---|
+| `paso2_disco.py` | `list_files`, `read_file` y `write_file` |
+| `paso3_compactacion.py` | `compact`, con el mecanismo de compactación que elijas |
+| `paso4_descubrimiento.py` | `discover_tools` |
+| `paso5_subagente.py` | `delegate_research` y `ask_researcher` (extra) |
+
+El resto ya funciona: `chat_agent.py` arma el agente y decide qué tools ve en cada paso; `base.py` tiene el estado del chat, el catálogo y las rutas seguras; `app.py` conecta el navegador; `customer_tools.py` contiene el catálogo simulado de atención al cliente. El frontend es una página HTML con JavaScript vanilla.
 
 El frontend usa CSS propio inspirado en shadcn: tonos neutros, tarjetas, bordes suaves y botones simples. En pantallas amplias muestra conversación y contexto lado a lado; en pantallas pequeñas se apilan. No requiere React, Tailwind, fuentes externas ni instalación de componentes.
 
@@ -54,6 +63,18 @@ Abre http://127.0.0.1:8000. `MODEL` permite cambiar el modelo sin modificar el c
 
 Para usar Anthropic directamente: configura `MODEL=anthropic:claude-sonnet-4-6` y `ANTHROPIC_API_KEY` en `.env`. Reinicia el servidor si cambias la configuración. `.env` está excluido de Git; no lo compartas con el proyecto.
 
+## Dónde escribir tu código
+
+En `main`, las funciones de los pasos 2 a 5 están vacías y marcadas con `# Escribe aquí tu código.` Mientras no las escribas, la página te dice qué función falta y en qué archivo. El paso 1 funciona desde el inicio.
+
+La rama `solucion` tiene todo resuelto. Para ver la respuesta de un paso:
+
+```sh
+git diff main solucion -- paso2_disco.py
+```
+
+Las pruebas sirven de checklist: en `main` fallan las de los pasos que todavía no escribes. Las del paso 3 validan la compactación con y sin referencia; si eliges otro mecanismo, ajústalas.
+
 ## Leer y explicar en este orden
 
 ### 1. Chat básico
@@ -75,7 +96,7 @@ Selecciona **2. Leer y escribir en disco**. El selector abre un chat nuevo. Prue
 
 > Lista los archivos relacionados con viaje y lee el que corresponda.
 
-Las tres funciones son `write_file`, `list_files` y `read_file`. Listar devuelve rutas; leer carga el contenido de un archivo en el contexto. Esa es la recuperación dinámica: el disco puede tener más información de la que enviamos en una llamada. No usamos embeddings ni una base vectorial.
+Las tres funciones son `write_file`, `list_files` y `read_file`, en `paso2_disco.py`. Listar devuelve rutas; leer carga el contenido de un archivo en el contexto. Esa es la recuperación dinámica: el disco puede tener más información de la que enviamos en una llamada. No usamos embeddings ni una base vectorial.
 
 Cada chat tiene su carpeta bajo `workspace/<id>/`. Se muestra la ruta en la página para que puedas agregar o inspeccionar archivos manualmente. Las tools solo acceden a esa carpeta. `write_file` reemplaza un archivo existente.
 
@@ -89,7 +110,7 @@ Selecciona **3. Todas las tools + compactación**. Conversa varios turnos y usa 
 
 `compact_context` es la tool del agente. Solicita la operación; `respond` la aplica cuando termina el turno. Los botones llaman directamente a la misma función `compact` entre turnos. Así el historial nunca se corta a mitad de una llamada a tool.
 
-`compact` hace una llamada a un agente sin tools que genera el resumen. Luego **reemplaza** el historial por ese resumen.
+`compact`, en `paso3_compactacion.py`, hace una llamada a un agente sin tools que genera el resumen. Luego **reemplaza** el historial por ese resumen.
 
 | Opción | Qué queda en el contexto | Qué queda en disco |
 |---|---|---|
@@ -116,7 +137,7 @@ Dentro de la barra hay una vista única, siempre visible: **Contexto que se envi
 
 Selecciona **4. Tools bajo demanda** y pide consultar un pedido o guardar un archivo.
 
-Al principio el modelo solo ve `discover_tools`. Busca una palabra en el catálogo de nombres y descripciones. `available_tools`, con `PrepareTools`, incluye las definiciones descubiertas en la siguiente llamada del modelo. Abre **Tools enviadas al modelo** para ver el cambio. Una búsqueda amplia puede descubrir muchas herramientas; buscar un nombre exacto, como `get_order_status`, habilita solo esa operación.
+Al principio el modelo solo ve `discover_tools`, en `paso4_descubrimiento.py`. Busca una palabra en el catálogo de nombres y descripciones. `available_tools`, con `PrepareTools`, incluye las definiciones descubiertas en la siguiente llamada del modelo. Abre **Tools enviadas al modelo** para ver el cambio. Una búsqueda amplia puede descubrir muchas herramientas; buscar un nombre exacto, como `get_order_status`, habilita solo esa operación.
 
 Las tools descubiertas permanecen disponibles en ese chat hasta compactar. Compactar también limpia ese conjunto: el agente vuelve a descubrir lo que necesite. Es una búsqueda literal para explicar el mecanismo, no un buscador semántico ni MCP.
 
@@ -124,7 +145,7 @@ Las tools descubiertas permanecen disponibles en ese chat hasta compactar. Compa
 
 Para quien termine antes. Selecciona **5. Extra: sub-agente investigador** y pide: **"Investiga el caso completo de CUS-001: pedido, envío, pago, devolución y ticket. ¿Hay algo pendiente?"**.
 
-El agente principal no tiene las tools de servicio. Con `delegate_research` delega la tarea a `researcher`, otro agente Pydantic AI con contexto propio y 53 tools de solo lectura (51 de servicio más `list_files` y `read_file`). Los schemas y los resultados de esas consultas viven en el contexto del sub-agente. Al principal solo le llegan el informe, el `run_id` y la ruta del archivo. La conversación completa del sub-agente se guarda en `subagents/<run_id>.json`.
+El código está en `paso5_subagente.py`. El agente principal no tiene las tools de servicio. Con `delegate_research` delega la tarea a `researcher`, otro agente Pydantic AI con contexto propio y 53 tools de solo lectura (51 de servicio más `list_files` y `read_file`). Los schemas y los resultados de esas consultas viven en el contexto del sub-agente. Al principal solo le llegan el informe, el `run_id` y la ruta del archivo. La conversación completa del sub-agente se guarda en `subagents/<run_id>.json`.
 
 Después pregunta: **"¿Qué consultó el investigador para concluir lo de la devolución? Pregúntale a él, no adivines."**. Con `ask_researcher`, el principal **revive** al sub-agente: carga su historial desde disco, lo pasa como `message_history` y le hace la pregunta. El sub-agente responde con la memoria completa de su proceso y el archivo se actualiza con el nuevo intercambio.
 
@@ -147,7 +168,7 @@ python -m unittest discover -s tests -v
 
 Las pruebas usan `FunctionModel` de Pydantic AI para producir respuestas y llamadas a tools controladas. Verifican el loop real del agente, escritura y lectura, límites de rutas, ambos modos de compactación, recuperación del original, descubrimiento de tools y endpoints. No prueban la calidad de Claude al resumir ni su elección de tools: esas dos cosas se revisan con la API key en la demo.
 
-Las pruebas del paso 5 simulan al principal y al sub-agente con `FunctionModel`: verifican que el resultado crudo de las tools no llega al principal, que investigar es solo lectura, que el archivo guarda la conversación completa y que el sub-agente revivido recibe su historial. Pasan 23 pruebas.
+Las pruebas del paso 5 simulan al principal y al sub-agente con `FunctionModel`: verifican que el resultado crudo de las tools no llega al principal, que investigar es solo lectura, que el archivo guarda la conversación completa y que el sub-agente revivido recibe su historial. En la rama `solucion` pasan las 23 pruebas; en `main` fallan las de los pasos que todavía no escribes.
 
 **Prueba real, 2026-10-12:** Claude Sonnet 4.6 vía OpenRouter respondió, descubrió `write_file`, escribió un archivo, compactó con referencia, leyó el archivo después de compactar y compactó sin referencia. También pasaron las 11 pruebas controladas. Se usaron datos sintéticos y carpetas temporales; esto confirma el flujo, no mide todavía calidad de resumen en conversaciones largas.
 

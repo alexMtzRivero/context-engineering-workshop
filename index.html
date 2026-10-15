@@ -134,6 +134,7 @@
     $('token-bar').replaceChildren();
     $('token-legend').replaceChildren();
     const description = [];
+    // Cada segmento es su parte del total estimado, no una fracción de la ventana máxima.
     for (const [key, label, color] of categories) {
       const tokens = usage.tokens[key];
       const segment = document.createElement('span');
@@ -162,8 +163,11 @@
     });
     if (!response.ok) {
       const text = await response.text();
+      // FastAPI responde los errores como {"detail": "..."}: se muestra solo el mensaje.
+      let detail = text;
+      try { detail = JSON.parse(text).detail ?? text; } catch {}
       throw new Error(text === 'Internal Server Error'
-        ? 'No se pudo completar la llamada. Revisa la API key y la terminal del servidor.' : text);
+        ? 'No se pudo completar la llamada. Revisa la API key y la terminal del servidor.' : detail);
     }
     return response.json();
   }
@@ -182,6 +186,7 @@
     $('messages').scrollTop = $('messages').scrollHeight;
   }
 
+  // Bloquea los controles mientras hay una llamada en curso y muestra el error si falla.
   async function action(fn) {
     document.querySelectorAll('button, select, textarea').forEach(el => el.disabled = true);
     $('status').textContent = 'Procesando…';

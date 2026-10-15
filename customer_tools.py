@@ -152,6 +152,7 @@ DATA = {
     "productos": [{"sku": "SKU-001", "name": "Audífonos Demo", "stock": 42, "price": 1499, "currency": "MXN", "warranty": "12 meses", "manual": "Cargar antes del primer uso", "compatibility": ["Bluetooth", "USB-C"], "alternatives": ["SKU-002"], "reviews": ["4.7/5 en opiniones simuladas"]}],
 }
 
+# Las lecturas se reconocen por el prefijo del nombre; el resto registra solicitudes simuladas.
 READ_TOOL_NAMES = {
     name for rows in OPERATIONS.values() for name, _, _ in rows
     if name.startswith(("get_", "list_", "find_", "search_", "check_"))
@@ -177,16 +178,19 @@ def make_tool(area: str, name: str, fields: str) -> Tool:
             request = arguments.model_validate(kwargs).model_dump()
         except ValidationError as error:
             raise ModelRetry(str(error)) from error
+        # Lectura: filtra los datos ficticios por los identificadores recibidos.
         if name in READ_TOOL_NAMES:
             filters = {key: request[key] for key in fields.split() if key != "query"}
             records = [row for row in DATA[area] if all(row.get(key) == value for key, value in filters.items())]
             if query := request.get("query"):
                 records = [row for row in records if query.casefold() in str(row).casefold()]
             return {"simulated": True, "operation": name, "found": bool(records), "records": records}
+        # Escritura: no cambia datos, solo registra la solicitud con un folio.
         entry = {"simulated": True, "operation": name, "request_id": f"REQ-{len(ctx.deps.service_requests) + 1:03}", "status": "solicitud registrada", "arguments": request}
         ctx.deps.service_requests.append(entry)
         return entry
 
+    # El mismo handler sirve a las 80 tools; lo que cambia entre ellas es el schema que ve el modelo.
     return Tool.from_schema(run, name=name, description=CUSTOMER_CATALOG[name], json_schema=arguments.model_json_schema(), takes_ctx=True, sequential=True)
 
 

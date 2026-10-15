@@ -29,28 +29,15 @@ def compact_context(ctx: RunContext[Chat], with_reference: bool = True) -> str:
 
 
 async def compact(chat: Chat, with_reference: bool) -> dict:
-    """Reemplaza chat.history por un resumen. La usan los botones de la página y la tool compact_context."""
+    """Reemplaza chat.history por algo más corto. La usan los botones de la página y la tool compact_context.
+
+    Elige tu mecanismo: resumir, truncar, limpiar resultados de tools... with_reference indica qué botón se pulsó.
+    La página espera {"before_bytes": int, "after_bytes": int, "reference": str | None, "summary": str}.
+    """
     if not chat.history:
         raise ValueError("Primero escribe algo en el chat.")
     original = history_json(chat)
-    result = await summarizer.run(original)
-    summary = "Resumen de la conversación anterior:\n" + result.output
-    reference = None
-    if with_reference:
-        reference = f"archives/{uuid4().hex}.json"
-        path = file_path(chat, reference)
-        path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_text(original, encoding="utf-8")
-        # La ruta va dentro del resumen para que el agente sepa qué leer con read_file.
-        summary += f"\n\nHistorial completo: {reference}. Usa read_file si faltan detalles."
-    # Reemplazar, no añadir: el historial completo deja de enviarse al modelo.
-    # La metadata marca el mensaje como resumen para que la barra lo cuente aparte.
-    chat.history = [ModelRequest(parts=[UserPromptPart(content=summary)], metadata={"context_kind": "summary"})]
-    # Las tools descubiertas en el paso 4 también son contexto: el agente vuelve a buscarlas.
-    chat.loaded_tools.clear()
-    return {
-        "before_bytes": len(original.encode()),
-        "after_bytes": len(history_json(chat).encode()),
-        "reference": reference,
-        "summary": summary,
-    }
+    # Escribe aquí tu código.
+    # Tienes summarizer para resumir y file_path para guardar el original en disco.
+    # Si el nuevo historial es un resumen, márcalo con metadata={"context_kind": "summary"} para que la barra lo cuente aparte.
+    raise NotImplementedError("Paso 3: escribe compact en paso3_compactacion.py")

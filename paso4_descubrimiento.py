@@ -7,10 +7,7 @@ from base import CATALOG, Chat
 
 def discover_tools(ctx: RunContext[Chat], keyword: str) -> dict[str, str]:
     """Busca herramientas por nombre o descripción y las habilita en la siguiente llamada."""
-    matches = {
-        name: description for name, description in CATALOG.items()
-        if keyword.casefold() in f"{name} {description}".casefold()
-    }
-    # available_tools (chat_agent.py) envía estas tools al modelo desde la siguiente llamada.
-    ctx.deps.loaded_tools.update(matches)
-    return matches
+    # Escribe aquí tu código.
+    # Busca keyword en CATALOG ({nombre: descripción}), agrega los nombres que encuentres a ctx.deps.loaded_tools
+    # y devuelve esas coincidencias. available_tools (chat_agent.py) las enviará al modelo en la siguiente llamada.
+    raise NotImplementedError("Paso 4: escribe discover_tools en paso4_descubrimiento.py")

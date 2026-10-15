@@ -52,18 +52,16 @@ async def delegate_research(ctx: RunContext[Chat], task: str) -> dict:
     """Delega una investigación a un sub-agente que consulta las tools de lectura de servicio
     (clientes, pedidos, envíos, pagos, devoluciones, suscripciones, soporte y productos).
     Devuelve su informe y su run_id."""
-    # Sin message_history: el sub-agente arranca con un contexto vacío y comparte solo la carpeta.
-    result = await researcher.run(task, deps=ctx.deps)
-    return save_run(ctx.deps, uuid4().hex[:8], task, result, revived=False)
+    # Escribe aquí tu código.
+    # Corre researcher con la tarea, sin historial previo, y guarda su conversación con save_run.
+    # Usa un run_id corto y alfanumérico, por ejemplo uuid4().hex[:8].
+    raise NotImplementedError("Extra: escribe delegate_research en paso5_subagente.py")
 
 
 async def ask_researcher(ctx: RunContext[Chat], run_id: str, question: str) -> dict:
     """Revive a un sub-agente anterior con toda su conversación para preguntarle por su proceso."""
-    path = file_path(ctx.deps, f"subagents/{run_id}.json")
-    # isalnum impide que el run_id se use para leer fuera de subagents/.
-    if not run_id.isalnum() or not path.is_file():
-        raise ModelRetry(f"No existe el sub-agente {run_id}. Usa el run_id que devolvió delegate_research.")
-    # Revivir es volver a pasarle su historial completo como message_history.
-    history = ModelMessagesTypeAdapter.validate_json(path.read_bytes())
-    result = await researcher.run(question, message_history=history, deps=ctx.deps)
-    return save_run(ctx.deps, run_id, question, result, revived=True)
+    # Escribe aquí tu código.
+    # Lee subagents/<run_id>.json con ModelMessagesTypeAdapter.validate_json, pásalo como message_history
+    # a researcher junto con la pregunta y guarda la conversación actualizada con save_run.
+    # Si el run_id no existe, lanza ModelRetry para que el modelo use uno válido.
+    raise NotImplementedError("Extra: escribe ask_researcher en paso5_subagente.py")

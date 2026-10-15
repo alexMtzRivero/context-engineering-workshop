@@ -4,34 +4,26 @@ from pydantic_ai import ModelRetry, RunContext
 
 from base import Chat, file_path
 
+# file_path(ctx.deps, nombre) convierte una ruta relativa en una ruta segura dentro de la carpeta del chat.
+# Si algo falla, lanza ModelRetry("...") para que el modelo reciba el error y lo intente de nuevo.
+
 
 def list_files(ctx: RunContext[Chat], keyword: str = "") -> list[str]:
     """Lista rutas de archivos que contienen keyword; no carga sus contenidos."""
-    folder = ctx.deps.folder
-    return sorted(
-        str(path.relative_to(folder))
-        for path in folder.rglob("*")
-        # Solo archivos que siguen dentro de la carpeta: un enlace simbólico podría apuntar afuera.
-        if path.is_file() and path.resolve().is_relative_to(folder.resolve())
-        and keyword.casefold() in str(path.relative_to(folder)).casefold()
-    )
+    # Escribe aquí tu código.
+    # Devuelve las rutas relativas dentro de ctx.deps.folder que contienen keyword.
+    raise NotImplementedError("Paso 2: escribe list_files en paso2_disco.py")
 
 
 def read_file(ctx: RunContext[Chat], name: str) -> str:
     """Lee el contenido de un archivo de texto por su ruta relativa."""
-    try:
-        return file_path(ctx.deps, name).read_text(encoding="utf-8")
-    except (OSError, UnicodeError) as error:
-        # ModelRetry le devuelve el error al modelo para que corrija la ruta.
-        raise ModelRetry(f"No se pudo leer {name}: {error}") from error
+    # Escribe aquí tu código.
+    # Devuelve el texto del archivo; lo que regreses entra completo al contexto.
+    raise NotImplementedError("Paso 2: escribe read_file en paso2_disco.py")
 
 
 def write_file(ctx: RunContext[Chat], name: str, content: str) -> str:
     """Guarda texto en una ruta relativa; reemplaza el contenido si el archivo existe."""
-    try:
-        path = file_path(ctx.deps, name)
-        path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_text(content, encoding="utf-8")
-        return f"Guardado: {name}"
-    except OSError as error:
-        raise ModelRetry(f"No se pudo guardar {name}: {error}") from error
+    # Escribe aquí tu código.
+    # Crea las carpetas que falten, guarda content y confirma con un texto corto.
+    raise NotImplementedError("Paso 2: escribe write_file en paso2_disco.py")

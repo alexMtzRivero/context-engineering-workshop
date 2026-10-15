@@ -1,0 +1,102 @@
+{
+  "dataset_id": "aula-norte-conversacion-larga-v1",
+  "instructions": "Estas respuestas son para revisión del estudiante o instructor. No las cargues como historial del agente. Puntúa cada pregunta con 1 si conserva todos los elementos pedidos, 0.5 si conserva una parte sin contradecir y 0 si contradice o inventa. Registra también si el dato estaba en el resumen o se recuperó del archivo.",
+  "questions": [
+    {
+      "id": 1,
+      "type": "acuerdo",
+      "question": "¿Cuántos audífonos hacen falta y por qué?",
+      "expected": "Seis: cuatro faltantes y dos reemplazos. De 36 recibidos, solo 34 funcionan."
+    },
+    {
+      "id": 2,
+      "type": "correccion",
+      "question": "¿Cuál es la fecha y ventana de entrega vigente?",
+      "expected": "18 de octubre de 2026, de 09:00 a 11:30. El día 17 y las 12:30 fueron descartados."
+    },
+    {
+      "id": 3,
+      "type": "correccion",
+      "question": "¿Cuál es la dirección y el acceso de entrega vigentes?",
+      "expected": "Avenida del Laboratorio 240, edificio B, puerta 3 para proveedores."
+    },
+    {
+      "id": 4,
+      "type": "correccion",
+      "question": "¿Quién recibe el paquete y cuál es el correo operativo vigente?",
+      "expected": "Paula Ramos; logistica@aula.example. Mario León y coordinacion@aula.example quedaron como antecedentes."
+    },
+    {
+      "id": 5,
+      "type": "restriccion",
+      "question": "¿Qué pago se devuelve, cuánto y por qué medio?",
+      "expected": "Solicitar devolución de PAY-8843 por 31,644.80 MXN al medio original. PAY-8842 es válido; no aceptar crédito, cupón ni compensación con suscripción."
+    },
+    {
+      "id": 6,
+      "type": "pendiente",
+      "question": "¿Ya llegó el reembolso y puede cerrarse el caso?",
+      "expected": "No hay confirmación de abono ni de entrega. SUP-3190 sigue abierto; un folio y una guía no prueban resolución."
+    },
+    {
+      "id": 7,
+      "type": "pendiente",
+      "question": "¿Quién debe confirmar logística y cuál es el plazo?",
+      "expected": "Diego Salas debe confirmar antes del 15 de octubre de 2026 a las 17:00. Sin confirmación se solicita escalamiento."
+    },
+    {
+      "id": 8,
+      "type": "detalle",
+      "question": "¿Cuál fue la frase de acceso de recepción?",
+      "expected": "LUNA-58."
+    },
+    {
+      "id": 9,
+      "type": "detalle",
+      "question": "¿Cuáles fueron los seriales de los dos audífonos dañados?",
+      "expected": "AO-2048-009 y AO-2048-027."
+    },
+    {
+      "id": 10,
+      "type": "correccion",
+      "question": "¿Cuánto cuesta recoger los dañados y quién autorizó la excepción?",
+      "expected": "Cero MXN; Sonia Méndez autorizó EXC-4402. La cotización de 75 MXN quedó descartada."
+    },
+    {
+      "id": 11,
+      "type": "detalle",
+      "question": "¿Qué pedido y guía corresponden a la reposición?",
+      "expected": "ORD-2053 y SHP-9917."
+    },
+    {
+      "id": 12,
+      "type": "detalle",
+      "question": "¿Qué etiqueta, fecha y condición se acordaron para recoger los dañados?",
+      "expected": "RET-0726; propuesta para 20 de octubre, de 10:00 a 13:00, después de recibir la reposición. Solo dos dañados; recogida aún por confirmar."
+    },
+    {
+      "id": 13,
+      "type": "detalle",
+      "question": "¿Cuál era la referencia interna de la cola de logística?",
+      "expected": "MESA-27, no es una mesa física ni la dirección."
+    },
+    {
+      "id": 14,
+      "type": "pendiente",
+      "question": "¿Cuál es el folio financiero y quién debe aportar evidencia?",
+      "expected": "FIN-6631; Laura Peña debe adjuntar evidencia del resultado. La solicitud sigue sin confirmación de abono."
+    },
+    {
+      "id": 15,
+      "type": "detalle",
+      "question": "Según esta conversación, ¿qué potencia entrega el dock al portátil, con qué fuente y qué prueba se propuso?",
+      "expected": "Hasta 65 W al portátil con fuente de 90 W; los periféricos comparten potencia. Probar con portátil y periféricos habituales y observar avisos de carga lenta. Tarjeta DOCK-PD-65, prueba pendiente."
+    },
+    {
+      "id": 16,
+      "type": "detalle",
+      "question": "¿Qué formato y duración de prueba se acordaron en la tarjeta MIC-48K-16?",
+      "expected": "48 kHz y 16 bits para voz; grabar treinta segundos y verificar el archivo en el reproductor. Procedimiento definido, prueba pendiente."
+    }
+  ]
+}

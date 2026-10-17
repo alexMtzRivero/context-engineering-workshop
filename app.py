@@ -9,6 +9,7 @@ from uuid import uuid4
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import FileResponse
 from pydantic import BaseModel, ConfigDict, Field
+from pydantic_ai.exceptions import ContentFilterError
 from pydantic_ai.messages import ModelRequest, ModelResponse, TextPart, UserPromptPart
 
 from chat_agent import ROOT, Chat, compact, context_usage, history_json, respond
@@ -27,7 +28,7 @@ sessions: dict[str, Session] = {}
 
 DATASETS = {
     "larga": "datasets/conversacion-larga.json",  # 256 mensajes, unos 41 mil tokens
-    "muy-larga": "datasets/conversacion-muy-larga.json",  # 8 casos casi iguales, unos 326 mil tokens
+    "muy-larga": "datasets/conversacion-muy-larga.json",  # 5 clientes casi iguales, unos 205 mil tokens
 }
 
 
@@ -93,6 +94,9 @@ async def send(session_id: str, body: Message):
         except NotImplementedError as error:
             # Una función del taller que todavía no escribes: el mensaje dice cuál y en qué archivo.
             raise HTTPException(501, str(error)) from error
+        except ContentFilterError as error:
+            # Con contextos enormes el proveedor a veces rechaza la respuesta; reintentar suele bastar.
+            raise HTTPException(502, "El proveedor rechazó la respuesta con su filtro de contenido. Vuelve a enviar la pregunta.") from error
 
 
 @app.post("/sessions/{session_id}/compact")
@@ -107,4 +111,6 @@ async def summarize(session_id: str, body: Compaction):
             raise HTTPException(400, str(error)) from error
         except NotImplementedError as error:
             raise HTTPException(501, str(error)) from error
+        except ContentFilterError as error:
+            raise HTTPException(502, "El proveedor rechazó el resumen con su filtro de contenido. Vuelve a intentarlo.") from error
         return {"compaction": report, "context": history_json(session.chat), "context_usage": context_usage(session.chat)}

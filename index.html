@@ -229,8 +229,8 @@
     $('messages').replaceChildren();
     $('tools').textContent = '';
     for (const message of data.messages) bubble(message.role === 'user' ? 'Cliente' : 'Agente', message.content);
-    $('chat-hint').textContent = dataset === 'muy-larga' ? `8 aulas · ${data.messages.length} mensajes · pregunta por Aula Norte`
-      : dataset ? `Aula Norte · ${data.messages.length} mensajes`
+    $('chat-hint').textContent = dataset === 'muy-larga' ? `5 clientes · ${data.messages.length} mensajes · pregunta por Nébula Software`
+      : dataset ? `Nébula Software · ${data.messages.length} mensajes`
       : $('subagent').checked ? 'Prueba: investiga el caso completo de CUS-001' : 'Prueba con el pedido ORD-1001';
     showUsage(data.context_usage);
     $('status').textContent = dataset
@@ -282,7 +282,7 @@
   }
   // Carga la conversación con los toggles tal como estén: con todo apagado se ve cómo responde sin compactar.
   $('dataset').onclick = () => action(() => newChat('larga'));
-  // Ocho casos casi idénticos: el contexto donde el modelo empieza a equivocarse.
+  // Cinco clientes casi idénticos: el contexto donde el modelo empieza a equivocarse.
   $('dataset-xl').onclick = () => action(() => newChat('muy-larga'));
   for (const [id, with_reference] of [['with', true], ['without', false]]) {
     $(id).onclick = () => action(async () => {

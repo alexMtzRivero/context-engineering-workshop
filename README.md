@@ -21,20 +21,18 @@ En el chat, pulsa **Cargar conversación larga**. Se carga sin consumir API, con
 
 ## Conversación muy larga: context rot en vivo
 
-`datasets/conversacion-muy-larga.json` repite el caso ocho veces con otras aulas, nombres, identificadores, fechas y montos; Aula Norte queda en el bloque 5, a la mitad. Son 2,048 mensajes y unos 326 mil tokens según el proveedor. Se regenera con `python datasets/generar_muy_larga.py`.
+`datasets/conversacion-muy-larga.json` simula un análisis de procesos: una persona del equipo le pide al agente revisar cinco casos de soporte casi iguales para encontrar la falla que los produce, y le pasa las cinco conversaciones completas, una tras otra. Nébula Software, el caso de la conversación larga, queda a la mitad. Son 1,282 mensajes y unos 205 mil tokens según el proveedor. Se regenera con `python datasets/generar_muy_larga.py`.
 
-Con todo apagado, pulsa **Cargar conversación muy larga** y pregunta: **"En el caso de Aula Norte, ¿cuántas tarjetas tienen una referencia que termina en un número mayor a 20?"** La respuesta correcta es 10.
+Con todo apagado, pulsa **Cargar conversación muy larga** y pregunta: **"En el caso de Nébula Software, ¿cuántas tarjetas tienen una referencia que termina en un número mayor a 20?"** La respuesta correcta es 10.
 
-| Modelo | Conversación larga (~41 mil tokens) | Conversación muy larga (~326 mil tokens) |
+| Modelo | Conversación larga (~41 mil tokens) | Conversación muy larga (~205 mil tokens) |
 |---|---|---|
-| Haiku 5.5 | 10, correcto (3 de 3) | "No puedo responder" (4 de 4) |
-| Sonnet 5.5 | 10, correcto | 10, correcto |
+| Haiku 5.5 | 10, correcto (3 de 3) | "No puedo responder" (3 de 3): dice que las tarjetas no son de ningún cliente |
+| Sonnet 5.5 | 10, correcto | Dice 10, pero mezcla tarjetas de otros clientes |
 
-Otra que falla con Haiku: **"En toda la conversación, ¿cuál fue la sexta tarjeta que se registró para el puesto 16 y de qué aula era?"** La correcta es DOCK-CAB-49, de Aula Poniente; respondió DOCK-CAB-56 en 3 de 4 intentos y una vez se saltó la tarjeta de Aula Norte. Pruebas del 17 de octubre de 2026 vía OpenRouter; los resultados varían entre intentos.
+De qué trata cada conversación y cinco preguntas trampa con sus resultados: [datasets/README.md](datasets/README.md). Pruebas del 17 de octubre de 2026 vía OpenRouter; los resultados varían entre intentos.
 
-Cada pregunta manda los 326 mil tokens completos: con Haiku 5.5 cuesta menos de 20 centavos de dólar y con Sonnet 5.5, unos 65.
-
-De qué trata cada conversación y cinco preguntas trampa con sus resultados: [datasets/README.md](datasets/README.md).
+Cada pregunta manda los 205 mil tokens completos. Arriba de 100 mil tokens, Haiku 5.5 cobra su precio de contexto largo: unos 10 centavos de dólar por pregunta. Con Sonnet 5.5, unos 41.
 
 ## Agente de servicio al cliente
 

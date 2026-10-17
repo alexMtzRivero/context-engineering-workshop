@@ -1,14 +1,14 @@
-# Conversación larga: Aula Norte
+# Conversación larga: Nébula Software
 
 Datos ficticios. No hubo acciones reales. Los acuerdos cambian durante la conversación.
 
 ## 001. Cliente
 
-Hola, soy Valeria Ortiz, coordinadora de Aula Norte. Esta es una práctica con datos ficticios. Mi cuenta histórica es CUS-L042 y necesito revisar ORD-2048: compramos 40 audífonos para un taller del 19 de octubre de 2026. Hay varios problemas y quiero resolverlos sin cancelar el pedido completo.
+Hola, soy Valeria Ortiz, coordinadora de operaciones de Nébula Software. Esta es una práctica con datos ficticios. Mi cuenta histórica es CUS-L042 y necesito revisar ORD-2048: compramos 40 audífonos para un taller del 19 de octubre de 2026. Hay varios problemas y quiero resolverlos sin cancelar el pedido completo.
 
 ## 002. Agente
 
-Hola, Valeria. Mantendremos abierto el caso histórico de Aula Norte. Registraré por separado entrega, unidades dañadas y cobros para que una solución no afecte otra. La cuenta es CUS-L042 y el pedido original ORD-2048. Las gestiones de esta conversación son simuladas; distinguiré las solicitudes registradas de cualquier confirmación pendiente.
+Hola, Valeria. Mantendremos abierto el caso histórico de Nébula Software. Registraré por separado entrega, unidades dañadas y cobros para que una solución no afecte otra. La cuenta es CUS-L042 y el pedido original ORD-2048. Las gestiones de esta conversación son simuladas; distinguiré las solicitudes registradas de cualquier confirmación pendiente.
 
 ## 003. Cliente
 
@@ -28,11 +28,11 @@ Tarjeta propuesta: puesto 01; equipo audífonos; revisión de conexión Bluetoot
 
 ## 007. Cliente
 
-El identificador de esta tarjeta será LAB-BT-04. Lo eligió el equipo del aula; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de conexión Bluetooth, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada.
+El identificador de esta tarjeta será LAB-BT-04. Lo eligió el equipo de la sala; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de conexión Bluetooth, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada.
 
 ## 008. Agente
 
-Registro la tarjeta LAB-BT-04 para conexión Bluetooth de audífonos en el puesto 01. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación del aula y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa.
+Registro la tarjeta LAB-BT-04 para conexión Bluetooth de audífonos en el puesto 01. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación de la sala y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa.
 
 ## 009. Cliente
 
@@ -60,11 +60,11 @@ Tarjeta propuesta: puesto 02; equipo audífonos; revisión de autonomía de bate
 
 ## 015. Cliente
 
-El identificador de esta tarjeta será LAB-BAT-28. Lo eligió el equipo del aula; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de autonomía de batería, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada.
+El identificador de esta tarjeta será LAB-BAT-28. Lo eligió el equipo de la sala; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de autonomía de batería, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada.
 
 ## 016. Agente
 
-Registro la tarjeta LAB-BAT-28 para autonomía de batería de audífonos en el puesto 02. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación del aula y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa.
+Registro la tarjeta LAB-BAT-28 para autonomía de batería de audífonos en el puesto 02. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación de la sala y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa.
 
 ## 017. Cliente
 
@@ -92,11 +92,11 @@ Tarjeta propuesta: puesto 03; equipo audífonos; revisión de micrófono y ruido
 
 ## 023. Cliente
 
-El identificador de esta tarjeta será LAB-MIC-12. Lo eligió el equipo del aula; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de micrófono y ruido, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada.
+El identificador de esta tarjeta será LAB-MIC-12. Lo eligió el equipo de la sala; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de micrófono y ruido, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada.
 
 ## 024. Agente
 
-Registro la tarjeta LAB-MIC-12 para micrófono y ruido de audífonos en el puesto 03. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación del aula y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa.
+Registro la tarjeta LAB-MIC-12 para micrófono y ruido de audífonos en el puesto 03. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación de la sala y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa.
 
 ## 025. Cliente
 
@@ -124,11 +124,11 @@ Tarjeta propuesta: puesto 04; equipo audífonos; revisión de limpieza de almoha
 
 ## 031. Cliente
 
-El identificador de esta tarjeta será LAB-LIM-07. Lo eligió el equipo del aula; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de limpieza de almohadillas, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada.
+El identificador de esta tarjeta será LAB-LIM-07. Lo eligió el equipo de la sala; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de limpieza de almohadillas, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada.
 
 ## 032. Agente
 
-Registro la tarjeta LAB-LIM-07 para limpieza de almohadillas de audífonos en el puesto 04. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación del aula y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa.
+Registro la tarjeta LAB-LIM-07 para limpieza de almohadillas de audífonos en el puesto 04. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación de la sala y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa.
 
 ## 033. Cliente
 
@@ -156,19 +156,19 @@ Tarjeta propuesta: puesto 05; equipo cámara; revisión de resolución en videol
 
 ## 039. Cliente
 
-El identificador de esta tarjeta será CAM-1080-30. Lo eligió el equipo del aula; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de resolución en videollamadas, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada.
+El identificador de esta tarjeta será CAM-1080-30. Lo eligió el equipo de la sala; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de resolución en videollamadas, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada.
 
 ## 040. Agente
 
-Registro la tarjeta CAM-1080-30 para resolución en videollamadas de cámara en el puesto 05. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación del aula y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa.
+Registro la tarjeta CAM-1080-30 para resolución en videollamadas de cámara en el puesto 05. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación de la sala y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa.
 
 ## 041. Cliente
 
-Usa por ahora coordinacion@aula.example para las novedades. También tenemos un chat de WhatsApp, pero no autorizo avisos por ese medio durante esta gestión. Quiero que el registro deje clara esa preferencia.
+Usa por ahora coordinacion@nebula.example para las novedades. También tenemos un chat de WhatsApp, pero no autorizo avisos por ese medio durante esta gestión. Quiero que el registro deje clara esa preferencia.
 
 ## 042. Agente
 
-Preferencia inicial: correo a coordinacion@aula.example. WhatsApp no está autorizado y no se enviarán mensajes externos desde esta práctica. Registraré los cambios de destinatario si los confirmas después, y usaré la preferencia más reciente al redactar los siguientes pasos.
+Preferencia inicial: correo a coordinacion@nebula.example. WhatsApp no está autorizado y no se enviarán mensajes externos desde esta práctica. Registraré los cambios de destinatario si los confirmas después, y usaré la preferencia más reciente al redactar los siguientes pasos.
 
 ## 043. Cliente
 
@@ -188,11 +188,11 @@ Tarjeta propuesta: puesto 06; equipo cámara; revisión de ángulo de visión. P
 
 ## 047. Cliente
 
-El identificador de esta tarjeta será CAM-ANG-78. Lo eligió el equipo del aula; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de ángulo de visión, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada.
+El identificador de esta tarjeta será CAM-ANG-78. Lo eligió el equipo de la sala; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de ángulo de visión, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada.
 
 ## 048. Agente
 
-Registro la tarjeta CAM-ANG-78 para ángulo de visión de cámara en el puesto 06. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación del aula y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa.
+Registro la tarjeta CAM-ANG-78 para ángulo de visión de cámara en el puesto 06. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación de la sala y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa.
 
 ## 049. Cliente
 
@@ -220,11 +220,11 @@ Tarjeta propuesta: puesto 07; equipo cámara; revisión de privacidad y tapa. Pr
 
 ## 055. Cliente
 
-El identificador de esta tarjeta será CAM-PRIV-03. Lo eligió el equipo del aula; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de privacidad y tapa, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada.
+El identificador de esta tarjeta será CAM-PRIV-03. Lo eligió el equipo de la sala; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de privacidad y tapa, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada.
 
 ## 056. Agente
 
-Registro la tarjeta CAM-PRIV-03 para privacidad y tapa de cámara en el puesto 07. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación del aula y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa.
+Registro la tarjeta CAM-PRIV-03 para privacidad y tapa de cámara en el puesto 07. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación de la sala y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa.
 
 ## 057. Cliente
 
@@ -240,7 +240,7 @@ Consulta adicional para el puesto 08: quiero revisar compatibilidad de conexión
 
 ## 060. Agente
 
-Para el puesto 08, la ficha ficticia de cámara indica lo siguiente: La cámara demo usa UVC por USB y se prueba en los sistemas del aula antes del evento. Un adaptador que solo carga no sirve para datos; hay que identificar el cable y el puerto. La comprobación propuesta es: Probar conexión directa antes de usar un hub y registrar el puerto utilizado. Registra el equipo, las conexiones y el resultado para que otra persona pueda repetir la prueba. Si el resultado difiere, conserva el dato observado y revisa una variable por vez. Esta consulta no modifica el pedido, el reembolso ni las fechas acordadas del caso abierto.
+Para el puesto 08, la ficha ficticia de cámara indica lo siguiente: La cámara demo usa UVC por USB y se prueba en los sistemas de la sala antes del evento. Un adaptador que solo carga no sirve para datos; hay que identificar el cable y el puerto. La comprobación propuesta es: Probar conexión directa antes de usar un hub y registrar el puerto utilizado. Registra el equipo, las conexiones y el resultado para que otra persona pueda repetir la prueba. Si el resultado difiere, conserva el dato observado y revisa una variable por vez. Esta consulta no modifica el pedido, el reembolso ni las fechas acordadas del caso abierto.
 
 ## 061. Cliente
 
@@ -252,11 +252,11 @@ Tarjeta propuesta: puesto 08; equipo cámara; revisión de compatibilidad de con
 
 ## 063. Cliente
 
-El identificador de esta tarjeta será CAM-UVC-02. Lo eligió el equipo del aula; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de compatibilidad de conexión, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada.
+El identificador de esta tarjeta será CAM-UVC-02. Lo eligió el equipo de la sala; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de compatibilidad de conexión, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada.
 
 ## 064. Agente
 
-Registro la tarjeta CAM-UVC-02 para compatibilidad de conexión de cámara en el puesto 08. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación del aula y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa.
+Registro la tarjeta CAM-UVC-02 para compatibilidad de conexión de cámara en el puesto 08. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación de la sala y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa.
 
 ## 065. Cliente
 
@@ -284,11 +284,11 @@ Tarjeta propuesta: puesto 09; equipo router; revisión de red de invitados. Prep
 
 ## 071. Cliente
 
-El identificador de esta tarjeta será NET-INV-06. Lo eligió el equipo del aula; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de red de invitados, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada.
+El identificador de esta tarjeta será NET-INV-06. Lo eligió el equipo de la sala; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de red de invitados, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada.
 
 ## 072. Agente
 
-Registro la tarjeta NET-INV-06 para red de invitados de router en el puesto 09. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación del aula y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa.
+Registro la tarjeta NET-INV-06 para red de invitados de router en el puesto 09. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación de la sala y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa.
 
 ## 073. Cliente
 
@@ -316,11 +316,11 @@ Tarjeta propuesta: puesto 10; equipo router; revisión de prioridad de videollam
 
 ## 079. Cliente
 
-El identificador de esta tarjeta será NET-QOS-15. Lo eligió el equipo del aula; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de prioridad de videollamadas, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada.
+El identificador de esta tarjeta será NET-QOS-15. Lo eligió el equipo de la sala; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de prioridad de videollamadas, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada.
 
 ## 080. Agente
 
-Registro la tarjeta NET-QOS-15 para prioridad de videollamadas de router en el puesto 10. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación del aula y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa.
+Registro la tarjeta NET-QOS-15 para prioridad de videollamadas de router en el puesto 10. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación de la sala y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa.
 
 ## 081. Cliente
 
@@ -336,7 +336,7 @@ Consulta adicional para el puesto 11: quiero revisar canales inalámbricos del r
 
 ## 084. Agente
 
-Para el puesto 11, la ficha ficticia de router indica lo siguiente: En el plano ficticio hay varias redes vecinas. Se revisan interferencias y cobertura por zonas; elegir un canal sin medir puede trasladar el problema a otra parte del edificio. La comprobación propuesta es: Registrar intensidad de señal en puerta, centro del aula y última fila. Registra el equipo, las conexiones y el resultado para que otra persona pueda repetir la prueba. Si el resultado difiere, conserva el dato observado y revisa una variable por vez. Esta consulta no modifica el pedido, el reembolso ni las fechas acordadas del caso abierto.
+Para el puesto 11, la ficha ficticia de router indica lo siguiente: En el plano ficticio hay varias redes vecinas. Se revisan interferencias y cobertura por zonas; elegir un canal sin medir puede trasladar el problema a otra parte del edificio. La comprobación propuesta es: Registrar intensidad de señal en puerta, centro de la sala y última fila. Registra el equipo, las conexiones y el resultado para que otra persona pueda repetir la prueba. Si el resultado difiere, conserva el dato observado y revisa una variable por vez. Esta consulta no modifica el pedido, el reembolso ni las fechas acordadas del caso abierto.
 
 ## 085. Cliente
 
@@ -344,23 +344,23 @@ Voy a convertir esa explicación de canales inalámbricos en una tarjeta de prep
 
 ## 086. Agente
 
-Tarjeta propuesta: puesto 11; equipo router; revisión de canales inalámbricos. Preparación: anotar conexiones, aplicación y condiciones del ambiente. Prueba: Registrar intensidad de señal en puerta, centro del aula y última fila. Evidencia: registrar el resultado y cualquier diferencia respecto a la ficha ficticia. Criterio de cierre: la prueba requerida para este puesto se reproduce con el equipo que se usará en la sesión. Si cambia equipo o conexión, se repite. No es una garantía universal ni una confirmación de que la incidencia logística o financiera ya esté resuelta.
+Tarjeta propuesta: puesto 11; equipo router; revisión de canales inalámbricos. Preparación: anotar conexiones, aplicación y condiciones del ambiente. Prueba: Registrar intensidad de señal en puerta, centro de la sala y última fila. Evidencia: registrar el resultado y cualquier diferencia respecto a la ficha ficticia. Criterio de cierre: la prueba requerida para este puesto se reproduce con el equipo que se usará en la sesión. Si cambia equipo o conexión, se repite. No es una garantía universal ni una confirmación de que la incidencia logística o financiera ya esté resuelta.
 
 ## 087. Cliente
 
-El identificador de esta tarjeta será NET-CAN-11. Lo eligió el equipo del aula; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de canales inalámbricos, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada.
+El identificador de esta tarjeta será NET-CAN-11. Lo eligió el equipo de la sala; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de canales inalámbricos, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada.
 
 ## 088. Agente
 
-Registro la tarjeta NET-CAN-11 para canales inalámbricos de router en el puesto 11. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación del aula y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa.
+Registro la tarjeta NET-CAN-11 para canales inalámbricos de router en el puesto 11. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación de la sala y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa.
 
 ## 089. Cliente
 
-Cambia el correo operativo a logistica@aula.example. El de coordinación puede quedarse como antecedente, pero el seguimiento de este caso debe ir a logística. Seguimos sin autorizar llamadas ni WhatsApp.
+Cambia el correo operativo a logistica@nebula.example. El de coordinación puede quedarse como antecedente, pero el seguimiento de este caso debe ir a logística. Seguimos sin autorizar llamadas ni WhatsApp.
 
 ## 090. Agente
 
-Destinatario operativo vigente: logistica@aula.example. El correo coordinacion@aula.example ya no es el principal para este seguimiento. No hay autorización para llamadas o WhatsApp. En esta simulación registraré el canal acordado sin enviar comunicaciones externas.
+Destinatario operativo vigente: logistica@nebula.example. El correo coordinacion@nebula.example ya no es el principal para este seguimiento. No hay autorización para llamadas o WhatsApp. En esta simulación registraré el canal acordado sin enviar comunicaciones externas.
 
 ## 091. Cliente
 
@@ -380,11 +380,11 @@ Tarjeta propuesta: puesto 12; equipo router; revisión de actualización de firm
 
 ## 095. Cliente
 
-El identificador de esta tarjeta será NET-FW-09. Lo eligió el equipo del aula; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de actualización de firmware, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada.
+El identificador de esta tarjeta será NET-FW-09. Lo eligió el equipo de la sala; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de actualización de firmware, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada.
 
 ## 096. Agente
 
-Registro la tarjeta NET-FW-09 para actualización de firmware de router en el puesto 12. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación del aula y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa.
+Registro la tarjeta NET-FW-09 para actualización de firmware de router en el puesto 12. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación de la sala y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa.
 
 ## 097. Cliente
 
@@ -412,11 +412,11 @@ Tarjeta propuesta: puesto 13; equipo dock USB; revisión de potencia de carga. P
 
 ## 103. Cliente
 
-El identificador de esta tarjeta será DOCK-PD-65. Lo eligió el equipo del aula; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de potencia de carga, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada.
+El identificador de esta tarjeta será DOCK-PD-65. Lo eligió el equipo de la sala; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de potencia de carga, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada.
 
 ## 104. Agente
 
-Registro la tarjeta DOCK-PD-65 para potencia de carga de dock USB en el puesto 13. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación del aula y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa.
+Registro la tarjeta DOCK-PD-65 para potencia de carga de dock USB en el puesto 13. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación de la sala y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa.
 
 ## 105. Cliente
 
@@ -424,7 +424,7 @@ Tenemos el pedido de reposición ORD-2053 y la guía SHP-9917. Son seis audífon
 
 ## 106. Agente
 
-Relaciono ORD-2053 con seis audífonos y la guía SHP-9917. La etiqueta de devolución de los dos dañados es RET-0726. La condición es recogerlos después de recibir la reposición y con costo cero para Aula Norte. El pedido original ORD-2048 sigue vigente.
+Relaciono ORD-2053 con seis audífonos y la guía SHP-9917. La etiqueta de devolución de los dos dañados es RET-0726. La condición es recogerlos después de recibir la reposición y con costo cero para Nébula Software. El pedido original ORD-2048 sigue vigente.
 
 ## 107. Cliente
 
@@ -444,11 +444,11 @@ Tarjeta propuesta: puesto 14; equipo dock USB; revisión de monitor externo. Pre
 
 ## 111. Cliente
 
-El identificador de esta tarjeta será DOCK-VID-08. Lo eligió el equipo del aula; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de monitor externo, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada.
+El identificador de esta tarjeta será DOCK-VID-08. Lo eligió el equipo de la sala; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de monitor externo, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada.
 
 ## 112. Agente
 
-Registro la tarjeta DOCK-VID-08 para monitor externo de dock USB en el puesto 14. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación del aula y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa.
+Registro la tarjeta DOCK-VID-08 para monitor externo de dock USB en el puesto 14. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación de la sala y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa.
 
 ## 113. Cliente
 
@@ -476,11 +476,11 @@ Tarjeta propuesta: puesto 15; equipo dock USB; revisión de desconexiones interm
 
 ## 119. Cliente
 
-El identificador de esta tarjeta será DOCK-DROP-05. Lo eligió el equipo del aula; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de desconexiones intermitentes, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada.
+El identificador de esta tarjeta será DOCK-DROP-05. Lo eligió el equipo de la sala; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de desconexiones intermitentes, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada.
 
 ## 120. Agente
 
-Registro la tarjeta DOCK-DROP-05 para desconexiones intermitentes de dock USB en el puesto 15. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación del aula y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa.
+Registro la tarjeta DOCK-DROP-05 para desconexiones intermitentes de dock USB en el puesto 15. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación de la sala y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa.
 
 ## 121. Cliente
 
@@ -496,7 +496,7 @@ Consulta adicional para el puesto 16: quiero revisar etiquetado de cables del do
 
 ## 124. Agente
 
-Para el puesto 16, la ficha ficticia de dock USB indica lo siguiente: El aula usará etiquetas para distinguir cable de carga, datos y video. La etiqueta describe la prueba realizada, no una capacidad que alguien haya supuesto por la forma del conector. La comprobación propuesta es: Marcar cada cable después de comprobar transferencia y, si aplica, salida de video. Registra el equipo, las conexiones y el resultado para que otra persona pueda repetir la prueba. Si el resultado difiere, conserva el dato observado y revisa una variable por vez. Esta consulta no modifica el pedido, el reembolso ni las fechas acordadas del caso abierto.
+Para el puesto 16, la ficha ficticia de dock USB indica lo siguiente: La sala usará etiquetas para distinguir cable de carga, datos y video. La etiqueta describe la prueba realizada, no una capacidad que alguien haya supuesto por la forma del conector. La comprobación propuesta es: Marcar cada cable después de comprobar transferencia y, si aplica, salida de video. Registra el equipo, las conexiones y el resultado para que otra persona pueda repetir la prueba. Si el resultado difiere, conserva el dato observado y revisa una variable por vez. Esta consulta no modifica el pedido, el reembolso ni las fechas acordadas del caso abierto.
 
 ## 125. Cliente
 
@@ -508,11 +508,11 @@ Tarjeta propuesta: puesto 16; equipo dock USB; revisión de etiquetado de cables
 
 ## 127. Cliente
 
-El identificador de esta tarjeta será DOCK-CAB-14. Lo eligió el equipo del aula; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de etiquetado de cables, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada.
+El identificador de esta tarjeta será DOCK-CAB-14. Lo eligió el equipo de la sala; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de etiquetado de cables, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada.
 
 ## 128. Agente
 
-Registro la tarjeta DOCK-CAB-14 para etiquetado de cables de dock USB en el puesto 16. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación del aula y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa.
+Registro la tarjeta DOCK-CAB-14 para etiquetado de cables de dock USB en el puesto 16. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación de la sala y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa.
 
 ## 129. Cliente
 
@@ -540,11 +540,11 @@ Tarjeta propuesta: puesto 17; equipo teclado; revisión de distribución de idio
 
 ## 135. Cliente
 
-El identificador de esta tarjeta será KEY-ES-01. Lo eligió el equipo del aula; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de distribución de idioma, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada.
+El identificador de esta tarjeta será KEY-ES-01. Lo eligió el equipo de la sala; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de distribución de idioma, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada.
 
 ## 136. Agente
 
-Registro la tarjeta KEY-ES-01 para distribución de idioma de teclado en el puesto 17. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación del aula y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa.
+Registro la tarjeta KEY-ES-01 para distribución de idioma de teclado en el puesto 17. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación de la sala y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa.
 
 ## 137. Cliente
 
@@ -572,11 +572,11 @@ Tarjeta propuesta: puesto 18; equipo teclado; revisión de atajos de videollamad
 
 ## 143. Cliente
 
-El identificador de esta tarjeta será KEY-MUTE-04. Lo eligió el equipo del aula; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de atajos de videollamada, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada.
+El identificador de esta tarjeta será KEY-MUTE-04. Lo eligió el equipo de la sala; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de atajos de videollamada, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada.
 
 ## 144. Agente
 
-Registro la tarjeta KEY-MUTE-04 para atajos de videollamada de teclado en el puesto 18. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación del aula y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa.
+Registro la tarjeta KEY-MUTE-04 para atajos de videollamada de teclado en el puesto 18. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación de la sala y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa.
 
 ## 145. Cliente
 
@@ -604,11 +604,11 @@ Tarjeta propuesta: puesto 19; equipo teclado; revisión de uso compartido. Prepa
 
 ## 151. Cliente
 
-El identificador de esta tarjeta será KEY-PUESTO-22. Lo eligió el equipo del aula; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de uso compartido, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada.
+El identificador de esta tarjeta será KEY-PUESTO-22. Lo eligió el equipo de la sala; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de uso compartido, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada.
 
 ## 152. Agente
 
-Registro la tarjeta KEY-PUESTO-22 para uso compartido de teclado en el puesto 19. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación del aula y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa.
+Registro la tarjeta KEY-PUESTO-22 para uso compartido de teclado en el puesto 19. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación de la sala y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa.
 
 ## 153. Cliente
 
@@ -636,11 +636,11 @@ Tarjeta propuesta: puesto 20; equipo teclado; revisión de limpieza y líquidos.
 
 ## 159. Cliente
 
-El identificador de esta tarjeta será KEY-RES-02. Lo eligió el equipo del aula; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de limpieza y líquidos, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada.
+El identificador de esta tarjeta será KEY-RES-02. Lo eligió el equipo de la sala; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de limpieza y líquidos, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada.
 
 ## 160. Agente
 
-Registro la tarjeta KEY-RES-02 para limpieza y líquidos de teclado en el puesto 20. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación del aula y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa.
+Registro la tarjeta KEY-RES-02 para limpieza y líquidos de teclado en el puesto 20. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación de la sala y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa.
 
 ## 161. Cliente
 
@@ -668,11 +668,11 @@ Tarjeta propuesta: puesto 21; equipo monitor; revisión de escala del sistema. P
 
 ## 167. Cliente
 
-El identificador de esta tarjeta será MON-ESC-24. Lo eligió el equipo del aula; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de escala del sistema, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada.
+El identificador de esta tarjeta será MON-ESC-24. Lo eligió el equipo de la sala; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de escala del sistema, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada.
 
 ## 168. Agente
 
-Registro la tarjeta MON-ESC-24 para escala del sistema de monitor en el puesto 21. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación del aula y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa.
+Registro la tarjeta MON-ESC-24 para escala del sistema de monitor en el puesto 21. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación de la sala y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa.
 
 ## 169. Cliente
 
@@ -700,11 +700,11 @@ Tarjeta propuesta: puesto 22; equipo monitor; revisión de perfil de color. Prep
 
 ## 175. Cliente
 
-El identificador de esta tarjeta será MON-SRGB-10. Lo eligió el equipo del aula; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de perfil de color, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada.
+El identificador de esta tarjeta será MON-SRGB-10. Lo eligió el equipo de la sala; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de perfil de color, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada.
 
 ## 176. Agente
 
-Registro la tarjeta MON-SRGB-10 para perfil de color de monitor en el puesto 22. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación del aula y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa.
+Registro la tarjeta MON-SRGB-10 para perfil de color de monitor en el puesto 22. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación de la sala y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa.
 
 ## 177. Cliente
 
@@ -732,11 +732,11 @@ Tarjeta propuesta: puesto 23; equipo monitor; revisión de ergonomía del puesto
 
 ## 183. Cliente
 
-El identificador de esta tarjeta será MON-ERG-16. Lo eligió el equipo del aula; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de ergonomía del puesto, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada.
+El identificador de esta tarjeta será MON-ERG-16. Lo eligió el equipo de la sala; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de ergonomía del puesto, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada.
 
 ## 184. Agente
 
-Registro la tarjeta MON-ERG-16 para ergonomía del puesto de monitor en el puesto 23. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación del aula y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa.
+Registro la tarjeta MON-ERG-16 para ergonomía del puesto de monitor en el puesto 23. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación de la sala y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa.
 
 ## 185. Cliente
 
@@ -744,7 +744,7 @@ La recogida de los dañados será el 20 de octubre entre 10:00 y 13:00, después
 
 ## 186. Agente
 
-Propuesta condicionada de recogida: 20 de octubre de 2026, de 10:00 a 13:00, con RET-0726 y costo cero por EXC-4402. Solo se recogen los dos dañados después de recibir la reposición. Los 34 equipos funcionales permanecen en Aula Norte. Falta confirmación de la recogida; no está ejecutada.
+Propuesta condicionada de recogida: 20 de octubre de 2026, de 10:00 a 13:00, con RET-0726 y costo cero por EXC-4402. Solo se recogen los dos dañados después de recibir la reposición. Los 34 equipos funcionales permanecen en Nébula Software. Falta confirmación de la recogida; no está ejecutada.
 
 ## 187. Cliente
 
@@ -764,11 +764,11 @@ Tarjeta propuesta: puesto 24; equipo monitor; revisión de modo de presentación
 
 ## 191. Cliente
 
-El identificador de esta tarjeta será MON-PRES-03. Lo eligió el equipo del aula; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de modo de presentación, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada.
+El identificador de esta tarjeta será MON-PRES-03. Lo eligió el equipo de la sala; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de modo de presentación, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada.
 
 ## 192. Agente
 
-Registro la tarjeta MON-PRES-03 para modo de presentación de monitor en el puesto 24. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación del aula y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa.
+Registro la tarjeta MON-PRES-03 para modo de presentación de monitor en el puesto 24. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación de la sala y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa.
 
 ## 193. Cliente
 
@@ -796,11 +796,11 @@ Tarjeta propuesta: puesto 25; equipo micrófono USB; revisión de ganancia de en
 
 ## 199. Cliente
 
-El identificador de esta tarjeta será MIC-GAIN-18. Lo eligió el equipo del aula; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de ganancia de entrada, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada.
+El identificador de esta tarjeta será MIC-GAIN-18. Lo eligió el equipo de la sala; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de ganancia de entrada, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada.
 
 ## 200. Agente
 
-Registro la tarjeta MIC-GAIN-18 para ganancia de entrada de micrófono USB en el puesto 25. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación del aula y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa.
+Registro la tarjeta MIC-GAIN-18 para ganancia de entrada de micrófono USB en el puesto 25. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación de la sala y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa.
 
 ## 201. Cliente
 
@@ -828,11 +828,11 @@ Tarjeta propuesta: puesto 26; equipo micrófono USB; revisión de monitoreo con 
 
 ## 207. Cliente
 
-El identificador de esta tarjeta será MIC-MON-21. Lo eligió el equipo del aula; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de monitoreo con audífonos, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada.
+El identificador de esta tarjeta será MIC-MON-21. Lo eligió el equipo de la sala; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de monitoreo con audífonos, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada.
 
 ## 208. Agente
 
-Registro la tarjeta MIC-MON-21 para monitoreo con audífonos de micrófono USB en el puesto 26. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación del aula y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa.
+Registro la tarjeta MIC-MON-21 para monitoreo con audífonos de micrófono USB en el puesto 26. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación de la sala y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa.
 
 ## 209. Cliente
 
@@ -860,19 +860,19 @@ Tarjeta propuesta: puesto 27; equipo micrófono USB; revisión de formato de gra
 
 ## 215. Cliente
 
-El identificador de esta tarjeta será MIC-48K-16. Lo eligió el equipo del aula; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de formato de grabación, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada.
+El identificador de esta tarjeta será MIC-48K-16. Lo eligió el equipo de la sala; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de formato de grabación, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada.
 
 ## 216. Agente
 
-Registro la tarjeta MIC-48K-16 para formato de grabación de micrófono USB en el puesto 27. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación del aula y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa.
+Registro la tarjeta MIC-48K-16 para formato de grabación de micrófono USB en el puesto 27. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación de la sala y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa.
 
 ## 217. Cliente
 
-Valida que mi correo operativo vigente termina en aula.example y empieza por logistica. En la primera parte de la conversación quedó otro, pero lo cambié después. Esto es una corrección, no un segundo destinatario obligatorio.
+Valida que mi correo operativo vigente termina en nebula.example y empieza por logistica. En la primera parte de la conversación quedó otro, pero lo cambié después. Esto es una corrección, no un segundo destinatario obligatorio.
 
 ## 218. Agente
 
-El correo operativo vigente es logistica@aula.example. coordinacion@aula.example se conserva solo como antecedente, no como destinatario adicional obligatorio. El canal permitido para redactar el seguimiento es correo; llamadas y WhatsApp siguen sin autorización.
+El correo operativo vigente es logistica@nebula.example. coordinacion@nebula.example se conserva solo como antecedente, no como destinatario adicional obligatorio. El canal permitido para redactar el seguimiento es correo; llamadas y WhatsApp siguen sin autorización.
 
 ## 219. Cliente
 
@@ -892,11 +892,11 @@ Tarjeta propuesta: puesto 28; equipo micrófono USB; revisión de prueba previa.
 
 ## 223. Cliente
 
-El identificador de esta tarjeta será MIC-TEST-08. Lo eligió el equipo del aula; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de prueba previa, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada.
+El identificador de esta tarjeta será MIC-TEST-08. Lo eligió el equipo de la sala; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de prueba previa, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada.
 
 ## 224. Agente
 
-Registro la tarjeta MIC-TEST-08 para prueba previa de micrófono USB en el puesto 28. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación del aula y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa.
+Registro la tarjeta MIC-TEST-08 para prueba previa de micrófono USB en el puesto 28. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación de la sala y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa.
 
 ## 225. Cliente
 
@@ -924,11 +924,11 @@ Tarjeta propuesta: puesto 29; equipo almacenamiento USB; revisión de espacio pa
 
 ## 231. Cliente
 
-El identificador de esta tarjeta será USB-CAP-512. Lo eligió el equipo del aula; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de espacio para materiales, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada.
+El identificador de esta tarjeta será USB-CAP-512. Lo eligió el equipo de la sala; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de espacio para materiales, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada.
 
 ## 232. Agente
 
-Registro la tarjeta USB-CAP-512 para espacio para materiales de almacenamiento USB en el puesto 29. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación del aula y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa.
+Registro la tarjeta USB-CAP-512 para espacio para materiales de almacenamiento USB en el puesto 29. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación de la sala y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa.
 
 ## 233. Cliente
 
@@ -956,11 +956,11 @@ Tarjeta propuesta: puesto 30; equipo almacenamiento USB; revisión de compatibil
 
 ## 239. Cliente
 
-El identificador de esta tarjeta será USB-FMT-17. Lo eligió el equipo del aula; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de compatibilidad de archivos, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada.
+El identificador de esta tarjeta será USB-FMT-17. Lo eligió el equipo de la sala; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de compatibilidad de archivos, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada.
 
 ## 240. Agente
 
-Registro la tarjeta USB-FMT-17 para compatibilidad de archivos de almacenamiento USB en el puesto 30. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación del aula y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa.
+Registro la tarjeta USB-FMT-17 para compatibilidad de archivos de almacenamiento USB en el puesto 30. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación de la sala y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa.
 
 ## 241. Cliente
 
@@ -988,11 +988,11 @@ Tarjeta propuesta: puesto 31; equipo almacenamiento USB; revisión de respaldo d
 
 ## 247. Cliente
 
-El identificador de esta tarjeta será USB-RESP-23. Lo eligió el equipo del aula; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de respaldo de la presentación, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada.
+El identificador de esta tarjeta será USB-RESP-23. Lo eligió el equipo de la sala; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de respaldo de la presentación, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada.
 
 ## 248. Agente
 
-Registro la tarjeta USB-RESP-23 para respaldo de la presentación de almacenamiento USB en el puesto 31. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación del aula y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa.
+Registro la tarjeta USB-RESP-23 para respaldo de la presentación de almacenamiento USB en el puesto 31. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación de la sala y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa.
 
 ## 249. Cliente
 
@@ -1020,8 +1020,8 @@ Tarjeta propuesta: puesto 32; equipo almacenamiento USB; revisión de retiro y e
 
 ## 255. Cliente
 
-El identificador de esta tarjeta será USB-DEV-31. Lo eligió el equipo del aula; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de retiro y etiquetado, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada.
+El identificador de esta tarjeta será USB-DEV-31. Lo eligió el equipo de la sala; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de retiro y etiquetado, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada.
 
 ## 256. Agente
 
-Registro la tarjeta USB-DEV-31 para retiro y etiquetado de almacenamiento USB en el puesto 32. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación del aula y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa.
+Registro la tarjeta USB-DEV-31 para retiro y etiquetado de almacenamiento USB en el puesto 32. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación de la sala y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa.

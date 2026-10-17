@@ -1,5 +1,5 @@
 {
-  "dataset_id": "aula-norte-conversacion-larga-v1",
+  "dataset_id": "nebula-conversacion-larga-v2",
   "instructions": "Estas respuestas son para revisión del estudiante o instructor. No las cargues como historial del agente. Puntúa cada pregunta con 1 si conserva todos los elementos pedidos, 0.5 si conserva una parte sin contradecir y 0 si contradice o inventa. Registra también si el dato estaba en el resumen o se recuperó del archivo.",
   "questions": [
     {
@@ -24,7 +24,7 @@
       "id": 4,
       "type": "correccion",
       "question": "¿Quién recibe el paquete y cuál es el correo operativo vigente?",
-      "expected": "Paula Ramos; logistica@aula.example. Mario León y coordinacion@aula.example quedaron como antecedentes."
+      "expected": "Paula Ramos; logistica@nebula.example. Mario León y coordinacion@nebula.example quedaron como antecedentes."
     },
     {
       "id": 5,

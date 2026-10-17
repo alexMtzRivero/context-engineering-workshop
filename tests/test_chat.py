@@ -408,16 +408,17 @@ class DatasetTests(unittest.TestCase):
         self.assertEqual(len(questions["questions"]), 16)
         self.assertEqual(questions["dataset_id"], dataset["id"])
 
-    def test_very_long_dataset_hides_aula_norte_among_distractors(self):
+    def test_very_long_dataset_hides_nebula_among_similar_clients(self):
         messages = json.loads((server.ROOT / "datasets/conversacion-muy-larga.json").read_text())["messages"]
-        self.assertEqual(len(messages), 256 * 8)
-        starts = [message["content"] for message in messages[::256]]
-        self.assertEqual(sum("Aula Norte" in start for start in starts), 1)
-        self.assertIn("Aula Norte", starts[4])
+        self.assertEqual(len(messages), 2 + 256 * 5)
+        self.assertIn("análisis de procesos", messages[0]["content"])
+        starts = [message["content"] for message in messages if message["content"].startswith("Hola, soy")]
+        self.assertEqual(len(starts), 5)
+        self.assertIn("Nébula Software", starts[2])
         cards = [message["content"].split()[3] for message in messages
                  if message["content"].startswith("Registro la tarjeta") and "en el puesto 16." in message["content"]]
-        self.assertEqual(len(set(cards)), 8)  # cada caso registra su propia tarjeta para el puesto 16
-        self.assertEqual(cards[4], "DOCK-CAB-14")
+        self.assertEqual(len(set(cards)), 5)  # cada cliente registra su propia tarjeta para el puesto 16
+        self.assertEqual(cards[2], "DOCK-CAB-14")
 
     def test_loading_is_free_and_both_compaction_modes_use_the_original(self):
         fixture = (server.ROOT / "datasets/conversacion-larga.json").read_text()

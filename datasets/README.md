@@ -1,60 +1,70 @@
 # Datasets del taller
 
-Dos conversaciones artificiales entre una clienta y un agente de servicio al cliente. Todo es ficticio: no hay personas reales, no se registraron acciones comerciales y los correos usan dominios de ejemplo.
+Dos conversaciones artificiales de soporte entre clientes y un agente de servicio al cliente. Todo es ficticio: las empresas y personas no existen, no se registraron acciones comerciales y los correos usan dominios de ejemplo.
 
 | Archivo | Qué es |
 |---|---|
-| `conversacion-larga.json` | El caso de Aula Norte: 256 mensajes, listo para cargar |
+| `conversacion-larga.json` | El caso de Nébula Software: 256 mensajes, listo para cargar |
 | `conversacion-larga.md` | El mismo historial en formato de lectura |
 | `preguntas-y-respuestas.json` | 16 preguntas con su respuesta esperada para calificar resúmenes; nunca se carga al agente |
-| `conversacion-muy-larga.json` | El mismo caso escondido entre siete casos casi idénticos: 2,048 mensajes |
+| `conversacion-muy-larga.json` | Un análisis de cinco casos casi iguales, Nébula Software entre ellos: 1,282 mensajes |
 | `generar_muy_larga.py` | Genera la conversación muy larga a partir de la larga |
 
-## Conversación larga: el caso de Aula Norte
+## Conversación larga: el caso de Nébula Software
 
-Valeria Ortiz coordina Aula Norte (cuenta CUS-L042) y compró 40 audífonos (pedido ORD-2048) para un taller del 19 de octubre de 2026. A lo largo de la conversación resuelve tres frentes con el agente:
+Valeria Ortiz es coordinadora de operaciones de Nébula Software (cuenta CUS-L042) y compró 40 audífonos (pedido ORD-2048) para un taller interno del 19 de octubre de 2026. A lo largo de la conversación resuelve tres frentes con el agente:
 
 - **Equipo incompleto.** Llegaron 36 audífonos: 34 funcionan, 2 están dañados (seriales AO-2048-009 y AO-2048-027) y faltan 4. Se acuerda reponer 6 unidades con el pedido ORD-2053 y la guía SHP-9917. Los dañados se recogen con la etiqueta RET-0726, propuesta para el 20 de octubre de 10:00 a 13:00, a costo cero por la excepción EXC-4402 que autorizó Sonia Méndez. Una cotización de 75 MXN quedó descartada.
-- **Entrega.** La ventana vigente es el 18 de octubre de 09:00 a 11:30, en Avenida del Laboratorio 240, edificio B, puerta 3 para proveedores. El día 17 y las 12:30 quedaron descartados. Recibe Paula Ramos; el correo operativo es logistica@aula.example. Mario León y coordinacion@aula.example quedaron como antecedentes. La frase de acceso de recepción es LUNA-58. Diego Salas, de logística, debe confirmar antes del 15 de octubre a las 17:00; el caso es SUP-3190 (SUP-3106 queda como antecedente) y la referencia interna de su cola es MESA-27.
+- **Entrega.** La ventana vigente es el 18 de octubre de 09:00 a 11:30, en Avenida del Laboratorio 240, edificio B, puerta 3 para proveedores. El día 17 y las 12:30 quedaron descartados. Recibe Paula Ramos; el correo operativo es logistica@nebula.example. Mario León y coordinacion@nebula.example quedaron como antecedentes. La frase de acceso de recepción es LUNA-58. Diego Salas, de logística, debe confirmar antes del 15 de octubre a las 17:00; el caso es SUP-3190 (SUP-3106 queda como antecedente) y la referencia interna de su cola es MESA-27.
 - **Cobro duplicado.** PAY-8842 es el pago válido y PAY-8843, por 31,644.80 MXN, el duplicado. La devolución va al medio de pago original, sin crédito ni cupón, con el folio FIN-6631; Laura Peña debe aportar la evidencia. No hay confirmación de abono.
 
-Entre esos acuerdos se intercalan **32 consultas para preparar un laboratorio**, una por puesto (01 a 32). Son cuatro puestos por equipo: audífonos, cámara, router, dock USB, teclado, monitor, micrófono USB y almacenamiento USB. Cada consulta termina en una tarjeta con referencia propia, por ejemplo LAB-BT-04 en el puesto 01. El número de la referencia casi nunca coincide con el del puesto: MIC-48K-16 está en el puesto 27 y la tarjeta del puesto 16 es DOCK-CAB-14. Solo coincide NET-CAN-11. Es una trampa intencional.
+Entre esos acuerdos se intercalan **32 consultas para preparar la sala del taller**, una por puesto (01 a 32). Son cuatro puestos por equipo: audífonos, cámara, router, dock USB, teclado, monitor, micrófono USB y almacenamiento USB. Cada consulta termina en una tarjeta con referencia propia, por ejemplo LAB-BT-04 en el puesto 01. El número de la referencia casi nunca coincide con el del puesto: MIC-48K-16 está en el puesto 27 y la tarjeta del puesto 16 es DOCK-CAB-14. Solo coincide NET-CAN-11. Es una trampa intencional.
 
 Los acuerdos cambian durante la conversación: hay una dirección anterior, otra ventana de entrega, un contacto sustituido y una cotización descartada. Sirve para ver si un resumen conserva el estado vigente y no un dato viejo.
 
-Tamaño: 256 mensajes (128 intercambios) y 103,705 caracteres. La página estima unos 26 mil tokens; el proveedor reporta unos 41 mil con Claude 5.5.
+Tamaño: 256 mensajes (128 intercambios) y unos 104 mil caracteres. La página estima unos 26 mil tokens; el proveedor reporta unos 41 mil con Claude 5.5.
 
-## Conversación muy larga: ocho aulas casi iguales
+## Conversación muy larga: análisis de cinco casos
 
-Repite el caso ocho veces, una por aula, en este orden: Sur, Este, Oeste, Centro, **Norte**, Poniente, Oriente y Bajío. Aula Norte, el caso original, queda en el bloque 5, a la mitad.
+Una persona de nuestro equipo le pide al agente un análisis de procesos: en las últimas semanas hubo cinco casos casi iguales (pedidos de 40 audífonos con faltantes, dañados, entregas reprogramadas y cobros duplicados) y se sospecha una falla en el proceso. Le pasa las cinco conversaciones completas de soporte, una tras otra, y le pide al final un reporte de qué tienen en común.
 
-Cada copia cambia el aula, las seis personas, los números de todos los identificadores (ORD-2048 pasa a ORD-2055, ORD-2062...), las fechas, las horas, el monto del cobro duplicado y el número de la dirección. Se conservan las cantidades de equipo y los puestos 01 a 32, así que cada puesto tiene ocho tarjetas casi iguales, una por aula. Por ejemplo, el puesto 16 tiene DOCK-CAB-21, DOCK-CAB-28, DOCK-CAB-35, DOCK-CAB-42, DOCK-CAB-14, DOCK-CAB-49, DOCK-CAB-56 y DOCK-CAB-63.
+Los cinco clientes, en orden:
 
-Esos casi duplicados son los distractores que deterioran las respuestas. Tamaño: 2,048 mensajes, unos 830 mil caracteres; la página estima unos 208 mil tokens y el proveedor reporta unos 326 mil. Se regenera con `python datasets/generar_muy_larga.py`.
+| # | Cliente | Coordinadora |
+|---|---|---|
+| 1 | Despacho Ruiz Contadores | Lucía Vega |
+| 2 | Clínica Dental Sonrisa | Marta Gil |
+| 3 | **Nébula Software** (el caso original) | Valeria Ortiz |
+| 4 | Agencia Pixel | Sara Molina |
+| 5 | Hotel Mirador | Rosa Medina |
+
+Cada copia cambia el cliente, las seis personas, el dominio del correo, los números de todos los identificadores (ORD-2048 pasa a ORD-2055, ORD-2062...), las fechas, las horas, el monto del cobro duplicado y el número de la dirección. Se conservan las cantidades de equipo y los puestos 01 a 32, así que cada puesto tiene cinco tarjetas casi iguales, una por cliente. Por ejemplo, el puesto 16 tiene DOCK-CAB-21, DOCK-CAB-28, DOCK-CAB-14, DOCK-CAB-35 y DOCK-CAB-42.
+
+Las conversaciones van una tras otra **sin encabezado**: cada una empieza cuando el cliente se presenta. Esos casi duplicados sin separación clara son los que deterioran las respuestas. Tamaño: 1,282 mensajes y unos 520 mil caracteres; la página estima unos 130 mil tokens y el proveedor reporta unos 205 mil.
+
+Se regenera con `python datasets/generar_muy_larga.py`. Acepta el número de clientes (hasta 8) y `--encabezados`, que antepone "Siguiente caso: <cliente>" a cada conversación.
 
 ## Preguntas trampa
 
-Con todos los toggles apagados, carga la conversación y haz la pregunta. Estas cinco fallaron con **Claude Haiku 5.5** en la conversación muy larga:
+Con todos los toggles apagados, carga la conversación y haz la pregunta. Estas cinco fallaron con **Claude Haiku 5.5** en la conversación muy larga y salieron bien en la larga:
 
 | # | Pregunta | Respuesta correcta | Conversación larga | Conversación muy larga |
 |---|---|---|---|---|
-| 1 | En el caso de Aula Norte, ¿cuántas tarjetas tienen una referencia que termina en un número mayor a 20? | 10 | Bien, 3 de 3 | Mal, 4 de 4: "no puedo responder", dice que las tarjetas no son de ningún aula |
-| 2 | En el caso de Aula Norte, ¿en qué tarjetas coincide el número final de la referencia con el número del puesto? | Solo NET-CAN-11, puesto 11 | Bien | Mal, 2 de 2: no separa las tarjetas de Aula Norte de las demás |
-| 3 | En el caso de Aula Norte, lista las tarjetas del micrófono USB con su puesto. | MIC-GAIN-18 (25), MIC-MON-21 (26), MIC-48K-16 (27), MIC-TEST-08 (28) | Bien | Mal, 2 de 2: dice que esas tarjetas no son de Aula Norte |
-| 4 | En toda la conversación, ¿cuál fue la sexta tarjeta que se registró para el puesto 16 y de qué aula era? | DOCK-CAB-49, de Aula Poniente | No aplica | Mal en 3 de 4: respondió DOCK-CAB-56 y una vez se saltó justo la de Aula Norte |
-| 5 | En toda la conversación, ¿cuál fue la cuarta aula en presentarse y quién la coordina? | Aula Centro, Rosa Medina | No aplica | Mal en 1 de 2: respondió Aula Norte y Valeria Ortiz |
+| 1 | En el caso de Nébula Software, ¿cuántas tarjetas tienen una referencia que termina en un número mayor a 20? | 10 | Bien, 3 de 3 | Mal, 3 de 3: "no puedo responder", dice que las tarjetas no son de ningún cliente |
+| 2 | En el caso de Nébula Software, lista las tarjetas del micrófono USB con su puesto. | MIC-GAIN-18 (25), MIC-MON-21 (26), MIC-48K-16 (27), MIC-TEST-08 (28) | Bien | Mal, 3 de 3: dice que no están asignadas a Nébula Software o mezcla las de varios clientes |
+| 3 | En el caso de Nébula Software, ¿qué tarjetas de la cámara se registraron y en qué puestos? | CAM-1080-30 (05), CAM-ANG-78 (06), CAM-PRIV-03 (07), CAM-UVC-02 (08) | Bien | Mal, 2 de 2: una vez dio solo dos; otra puso CAM-1094-44, de Clínica Dental Sonrisa |
+| 4 | En el caso de Nébula Software, ¿cuál fue la última tarjeta que se registró y para qué puesto? | USB-DEV-31, puesto 32 | Bien | Mal, 2 de 2: respondió USB-DEV-59, de Hotel Mirador |
+| 5 | En el caso de Nébula Software, ¿qué tarjetas del almacenamiento USB se registraron y en qué puestos? | USB-CAP-512 (29), USB-FMT-17 (30), USB-RESP-23 (31), USB-DEV-31 (32) | Bien | Mal en 1 de 2: dijo que no podía atribuirlas |
 
-Por qué son trampa:
+Por qué son trampa: las cinco piden todo lo que pertenece a un cliente, y las tarjetas de los cinco clientes tienen los mismos puestos y nombres casi iguales. El modelo deja de saber en qué conversación está cada tarjeta: o se niega, o mezcla las de otro cliente, o toma la última de toda la conversación.
 
-1. Contar exige revisar todo el bloque de Aula Norte sin mezclarlo con los otros siete.
-2. Las otras aulas sí tienen coincidencias, como MON-ERG-23 en Aula Sur, KEY-MUTE-18 en Aula Este o CAM-ANG-06 en Aula Centro.
-3. Cada aula tiene sus propias cuatro tarjetas de micrófono con los mismos nombres.
-4. Hay que elegir una instancia por su orden entre ocho casi idénticas, como en el benchmark MRCR.
-5. Pide un orden entre bloques, y Aula Norte es el caso con más peso.
+**Control, preguntas que salieron bien en la conversación muy larga:** las tarjetas del router (puestos 09 a 12), la tarjeta del puesto 16, la cuarta tarjeta del puesto 16 en toda la conversación y cuál fue el cuarto caso revisado. Buscar un dato puntual o un cliente por su orden funciona; agrupar todo lo de un cliente, no.
 
-**Control, preguntas que no fallan:** la frase de acceso (LUNA-58), el pago duplicado (PAY-8843 por 31,644.80 MXN) y la excepción de costo cero (EXC-4402, de Sonia Méndez) salieron bien también en la conversación muy larga. El deterioro aparece al contar, comparar o elegir entre casi duplicados, no al buscar un dato único.
+**Los encabezados cambian el resultado.** Con `--encabezados`, Haiku contestó bien el conteo de la pregunta 1, el cruce de números de tarjeta y las preguntas de orden, con cinco clientes y también con ocho (unos 328 mil tokens). Marcar dónde empieza cada caso también es ingeniería de contexto.
 
-Pruebas del 17 de octubre de 2026 vía OpenRouter; los resultados varían entre intentos. Con la conversación muy larga, **Claude Sonnet 5.5** acertó las preguntas 1 y 4 y la tarjeta del puesto 16 de Aula Norte: un modelo más grande aleja el deterioro, no lo quita. Cada pregunta manda los 326 mil tokens completos: con Haiku 5.5 cuesta menos de 20 centavos de dólar y con Sonnet 5.5, unos 65.
+**Sonnet 5.5 tampoco sale limpio:** en la pregunta 1 dijo 10, pero su lista incluía tarjetas de otros clientes, como CAM-1094-44.
+
+Pruebas del 17 de octubre de 2026 vía OpenRouter; los resultados varían entre intentos. Cada pregunta manda los 205 mil tokens completos: con Haiku 5.5, que arriba de 100 mil tokens cobra su precio de contexto largo, cuesta unos 10 centavos de dólar; con Sonnet 5.5, unos 41. En unas 40 llamadas con este tamaño, Anthropic rechazó una respuesta con su filtro de contenido; la página lo avisa y basta con volver a preguntar.
 
 ## Práctica: compactar la conversación larga
 

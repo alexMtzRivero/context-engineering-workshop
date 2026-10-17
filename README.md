@@ -34,6 +34,8 @@ Otra que falla con Haiku: **"En toda la conversación, ¿cuál fue la sexta tarj
 
 Cada pregunta manda los 326 mil tokens completos: con Haiku 5.5 cuesta menos de 20 centavos de dólar y con Sonnet 5.5, unos 65.
 
+De qué trata cada conversación y cinco preguntas trampa con sus resultados: [datasets/README.md](datasets/README.md).
+
 ## Agente de servicio al cliente
 
 El catálogo tiene **80 tools**: diez por área de clientes, pedidos, envíos, pagos, devoluciones, suscripciones, soporte y productos. Cada una tiene nombre, descripción y parámetros propios; Pydantic genera los schemas y valida los argumentos. El catálogo ocupa alrededor de **30 mil tokens estimados** aunque aún no haya mensajes.

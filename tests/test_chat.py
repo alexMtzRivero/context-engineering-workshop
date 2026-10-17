@@ -408,6 +408,17 @@ class DatasetTests(unittest.TestCase):
         self.assertEqual(len(questions["questions"]), 16)
         self.assertEqual(questions["dataset_id"], dataset["id"])
 
+    def test_very_long_dataset_hides_aula_norte_among_distractors(self):
+        messages = json.loads((server.ROOT / "datasets/conversacion-muy-larga.json").read_text())["messages"]
+        self.assertEqual(len(messages), 256 * 8)
+        starts = [message["content"] for message in messages[::256]]
+        self.assertEqual(sum("Aula Norte" in start for start in starts), 1)
+        self.assertIn("Aula Norte", starts[4])
+        cards = [message["content"].split()[3] for message in messages
+                 if message["content"].startswith("Registro la tarjeta") and "en el puesto 16." in message["content"]]
+        self.assertEqual(len(set(cards)), 8)  # cada caso registra su propia tarjeta para el puesto 16
+        self.assertEqual(cards[4], "DOCK-CAB-14")
+
     def test_loading_is_free_and_both_compaction_modes_use_the_original(self):
         fixture = (server.ROOT / "datasets/conversacion-larga.json").read_text()
         calls = []
@@ -424,7 +435,7 @@ class DatasetTests(unittest.TestCase):
             (dataset_folder / "conversacion-larga.json").write_text(fixture)
             with TestClient(server.app) as client, summarizer.override(model=FunctionModel(summary_model)):
                 for index, with_reference in enumerate([False, True]):
-                    started = client.post("/sessions", json={"on_demand": True, "compaction": True, "dataset": True}).json()
+                    started = client.post("/sessions", json={"on_demand": True, "compaction": True, "dataset": "larga"}).json()
                     self.assertEqual(len(calls), index)  # cargar no llama al modelo
                     self.assertEqual(len(started["messages"]), 256)
                     self.assertGreater(started["context_usage"]["tokens"]["chat"], 25000)

@@ -93,6 +93,7 @@
   <div class="actions">
     <button id="new">Nuevo chat</button>
     <button id="dataset">Cargar conversación larga</button>
+    <button id="dataset-xl">Cargar conversación muy larga</button>
     <button id="without" disabled>Compactar sin referencia</button>
     <button id="with" disabled>Compactar con referencia</button>
   </div>
@@ -222,13 +223,14 @@
     }
   }
 
-  async function newChat(dataset = false) {
+  async function newChat(dataset = null) {
     const data = await api('/sessions', { ...toggles(), dataset });
     session = data.session_id;
     $('messages').replaceChildren();
     $('tools').textContent = '';
     for (const message of data.messages) bubble(message.role === 'user' ? 'Cliente' : 'Agente', message.content);
-    $('chat-hint').textContent = dataset ? `Aula Norte · ${data.messages.length} mensajes`
+    $('chat-hint').textContent = dataset === 'muy-larga' ? `8 aulas · ${data.messages.length} mensajes · pregunta por Aula Norte`
+      : dataset ? `Aula Norte · ${data.messages.length} mensajes`
       : $('subagent').checked ? 'Prueba: investiga el caso completo de CUS-001' : 'Prueba con el pedido ORD-1001';
     showUsage(data.context_usage);
     $('status').textContent = dataset
@@ -279,7 +281,9 @@
     };
   }
   // Carga la conversación con los toggles tal como estén: con todo apagado se ve cómo responde sin compactar.
-  $('dataset').onclick = () => action(() => newChat(true));
+  $('dataset').onclick = () => action(() => newChat('larga'));
+  // Ocho casos casi idénticos: el contexto donde el modelo empieza a equivocarse.
+  $('dataset-xl').onclick = () => action(() => newChat('muy-larga'));
   for (const [id, with_reference] of [['with', true], ['without', false]]) {
     $(id).onclick = () => action(async () => {
       const data = await api(`/sessions/${session}/compact`, { with_reference });

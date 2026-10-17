@@ -19,6 +19,21 @@ El frontend usa CSS propio inspirado en shadcn: tonos neutros, tarjetas, bordes 
 
 En el chat, pulsa **Cargar conversación larga**. Se carga sin consumir API, con los toggles que tengas encendidos: con todo apagado sirve para ver cómo responde el agente con los 256 mensajes en contexto. Para compactarla, enciende **Compactación**, y **Leer y escribir en disco** si quieres recuperar el original, y vuelve a cargarla: cada toggle abre un chat nuevo. El mismo botón permite abrir otra copia original y comparar con y sin referencia. Los archivos fuente y las respuestas esperadas están fuera del workspace accesible al agente.
 
+## Conversación muy larga: context rot en vivo
+
+`datasets/conversacion-muy-larga.json` repite el caso ocho veces con otras aulas, nombres, identificadores, fechas y montos; Aula Norte queda en el bloque 5, a la mitad. Son 2,048 mensajes y unos 326 mil tokens según el proveedor. Se regenera con `python datasets/generar_muy_larga.py`.
+
+Con todo apagado, pulsa **Cargar conversación muy larga** y pregunta: **"En el caso de Aula Norte, ¿cuántas tarjetas tienen una referencia que termina en un número mayor a 20?"** La respuesta correcta es 10.
+
+| Modelo | Conversación larga (~41 mil tokens) | Conversación muy larga (~326 mil tokens) |
+|---|---|---|
+| Haiku 5.5 | 10, correcto (3 de 3) | "No puedo responder" (4 de 4) |
+| Sonnet 5.5 | 10, correcto | 10, correcto |
+
+Otra que falla con Haiku: **"En toda la conversación, ¿cuál fue la sexta tarjeta que se registró para el puesto 16 y de qué aula era?"** La correcta es DOCK-CAB-49, de Aula Poniente; respondió DOCK-CAB-56 en 3 de 4 intentos y una vez se saltó la tarjeta de Aula Norte. Pruebas del 17 de octubre de 2026 vía OpenRouter; los resultados varían entre intentos.
+
+Cada pregunta manda los 326 mil tokens completos: con Haiku 5.5 cuesta menos de 20 centavos de dólar y con Sonnet 5.5, unos 65.
+
 ## Agente de servicio al cliente
 
 El catálogo tiene **80 tools**: diez por área de clientes, pedidos, envíos, pagos, devoluciones, suscripciones, soporte y productos. Cada una tiene nombre, descripción y parámetros propios; Pydantic genera los schemas y valida los argumentos. El catálogo ocupa alrededor de **30 mil tokens estimados** aunque aún no haya mensajes.
@@ -48,7 +63,7 @@ En carga completa, compactar el historial no elimina los schemas de las 84 tools
 
 ## Correr
 
-Python 3.11+ y una API key con crédito disponible. La configuración de ejemplo usa Claude Sonnet 5.5 a través de OpenRouter. Las pruebas reales que cita este README se hicieron con Sonnet 4.6. Claude Code puede ayudar durante el taller; el servidor hace sus propias llamadas a la API.
+Python 3.11+ y una API key con crédito disponible. La configuración de ejemplo usa Claude Haiku 5.5 a través de OpenRouter: es barato y con la conversación muy larga se equivoca en vivo. Para comparar, cambia a `openrouter:anthropic/claude-sonnet-5.5`. Salvo la sección de context rot, las pruebas reales que cita este README se hicieron con Sonnet 4.6. Claude Code puede ayudar durante el taller; el servidor hace sus propias llamadas a la API.
 
 ```sh
 python3 -m venv .venv
@@ -61,7 +76,7 @@ python -m uvicorn app:app --host 127.0.0.1 --port 8000
 
 Abre http://127.0.0.1:8000. `MODEL` permite cambiar el modelo sin modificar el código. La API key permanece en el servidor.
 
-Para usar Anthropic directamente: configura `MODEL=anthropic:claude-sonnet-5-5` y `ANTHROPIC_API_KEY` en `.env`. Reinicia el servidor si cambias la configuración. `.env` está excluido de Git; no lo compartas con el proyecto.
+Para usar Anthropic directamente: configura `MODEL=anthropic:claude-haiku-5-5` y `ANTHROPIC_API_KEY` en `.env`. Reinicia el servidor si cambias la configuración. `.env` está excluido de Git; no lo compartas con el proyecto.
 
 ## Toggles
 
@@ -195,4 +210,4 @@ Demo local con un único proceso. Conversaciones en memoria: reiniciar el servid
 - [Historial de mensajes](https://pydantic.dev/docs/ai/core-concepts/message-history/): `message_history` y `all_messages`.
 - [PrepareTools](https://pydantic.dev/docs/ai/capabilities/prepare-tools/): seleccionar las definiciones que se envían al modelo.
 - [Modelo de función para pruebas](https://pydantic.dev/docs/ai/api/pydantic-ai/models/function/).
-- [OpenRouter](https://pydantic.dev/docs/ai/models/openrouter/): `OPENROUTER_API_KEY` y modelo `openrouter:anthropic/claude-sonnet-5.5`.
+- [OpenRouter](https://pydantic.dev/docs/ai/models/openrouter/): `OPENROUTER_API_KEY` y modelo `openrouter:anthropic/claude-haiku-5.5`.

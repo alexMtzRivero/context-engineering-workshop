@@ -2,6 +2,7 @@
 
 import asyncio
 import json
+from typing import Literal
 from dataclasses import dataclass, field
 from uuid import uuid4
 
@@ -24,6 +25,12 @@ class Session:
 sessions: dict[str, Session] = {}
 
 
+DATASETS = {
+    "larga": "datasets/conversacion-larga.json",  # 256 mensajes, unos 41 mil tokens
+    "muy-larga": "datasets/conversacion-muy-larga.json",  # 8 casos casi iguales, unos 326 mil tokens
+}
+
+
 class Start(BaseModel):
     """Los toggles de la página al abrir un chat."""
 
@@ -33,7 +40,7 @@ class Start(BaseModel):
     compaction: bool = False
     on_demand: bool = False
     subagent: bool = False
-    dataset: bool = False
+    dataset: Literal["larga", "muy-larga"] | None = None
 
 
 class Message(BaseModel):
@@ -64,7 +71,7 @@ def start(body: Start):
     messages = []
     # La conversación larga se convierte a mensajes de Pydantic AI sin llamar al modelo.
     if body.dataset:
-        messages = json.loads((ROOT / "datasets/conversacion-larga.json").read_text())["messages"]
+        messages = json.loads((ROOT / DATASETS[body.dataset]).read_text())["messages"]
         sessions[session_id].chat.history = [
             ModelRequest(parts=[UserPromptPart(content=message["content"])])
             if message["role"] == "user" else ModelResponse(parts=[TextPart(content=message["content"])])

@@ -40,6 +40,10 @@ La compactación es variable: no se garantiza qué detalle omitirá el modelo. L
 
 **Prueba real del 12 de octubre de 2026:** con Claude Sonnet 4.6 vía OpenRouter, el contexto activo, con las tools bajo demanda, pasó de 26,250 a 852 tokens estimados después de compactar con referencia. El archivo original conservó los 256 mensajes. El resumen mantuvo los acuerdos principales y varios identificadores; omitió detalles de las pruebas técnicas. Estos resultados corresponden a una ejecución, no a una reducción garantizada. Los dos modos también se verificaron con pruebas controladas, dentro de una suite de 20 pruebas.
 
+## Conversación muy larga
+
+`conversacion-muy-larga.json` mete este mismo caso entre siete casos casi idénticos (unos 326 mil tokens) para ver el deterioro en vivo. Lo genera `generar_muy_larga.py`; las preguntas y resultados están en el README principal, sección "Conversación muy larga".
+
 ## Cargarlo desde Python
 
 El endpoint de `app.py` usa esta conversión mínima:

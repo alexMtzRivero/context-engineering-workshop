@@ -12,7 +12,7 @@ from customer_tools import CUSTOMER_CATALOG
 
 ROOT = Path(__file__).parent
 load_dotenv(ROOT / ".env")
-MODEL = os.getenv("MODEL", "anthropic:claude-sonnet-4-6")
+MODEL = os.getenv("MODEL", "anthropic:claude-sonnet-5-5")
 
 
 @dataclass

@@ -9,7 +9,7 @@ from uuid import uuid4
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import FileResponse
 from pydantic import BaseModel, ConfigDict, Field
-from pydantic_ai.exceptions import ContentFilterError
+from pydantic_ai.exceptions import ContentFilterError, UnexpectedModelBehavior
 from pydantic_ai.messages import ModelRequest, ModelResponse, TextPart, UserPromptPart
 
 from chat_agent import ROOT, Chat, compact, context_usage, history_json, respond
@@ -97,6 +97,9 @@ async def send(session_id: str, body: Message):
         except ContentFilterError as error:
             # Con contextos enormes el proveedor a veces rechaza la respuesta; reintentar suele bastar.
             raise HTTPException(502, "El proveedor rechazó la respuesta con su filtro de contenido. Vuelve a enviar la pregunta.") from error
+        except UnexpectedModelBehavior as error:
+            # Por ejemplo, el modelo se quedó sin tokens de salida antes de responder.
+            raise HTTPException(502, f"El modelo no terminó la respuesta: {error}") from error
 
 
 @app.post("/sessions/{session_id}/compact")
@@ -113,4 +116,6 @@ async def summarize(session_id: str, body: Compaction):
             raise HTTPException(501, str(error)) from error
         except ContentFilterError as error:
             raise HTTPException(502, "El proveedor rechazó el resumen con su filtro de contenido. Vuelve a intentarlo.") from error
+        except UnexpectedModelBehavior as error:
+            raise HTTPException(502, f"El modelo no terminó el resumen: {error}") from error
         return {"compaction": report, "context": history_json(session.chat), "context_usage": context_usage(session.chat)}

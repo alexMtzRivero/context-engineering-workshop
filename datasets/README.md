@@ -16,7 +16,7 @@ Es un **caso histórico independiente** de los registros simulados de las tools 
 
 ## En el chat
 
-1. Deja **Todas las tools** apagado para observar el tamaño de la conversación con un catálogo pequeño. También puedes encenderlo para comparar. El botón del paso 2 enciende **Compactación** y **Leer y escribir en disco**; el disco hace falta para leer el original archivado.
+1. Primero, con todos los toggles apagados, carga la conversación y haz una de las preguntas: así ves cómo responde el agente con todo el contexto. Después enciende **Compactación** y **Leer y escribir en disco** (el disco hace falta para leer el original archivado) y deja **Todas las tools** apagado para que los schemas no tapen el tamaño de la conversación. Cada toggle abre un chat nuevo.
 2. Pulsa **Cargar conversación larga**. Abre un chat nuevo con los 256 mensajes en el historial. Cargarlo no llama a ningún modelo. El botón se puede volver a usar para empezar desde el mismo original.
 3. Anota el tamaño del chat en la barra. Inspecciona las instrucciones, tools e historial en la vista de contexto.
 4. Pulsa **Compactar sin referencia**. Esta acción hace una llamada a la API. Inspecciona el resumen y el nuevo tamaño del contexto.

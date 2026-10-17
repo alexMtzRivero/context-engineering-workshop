@@ -232,7 +232,9 @@
       : $('subagent').checked ? 'Prueba: investiga el caso completo de CUS-001' : 'Prueba con el pedido ORD-1001';
     showUsage(data.context_usage);
     $('status').textContent = dataset
-      ? `Conversación cargada: ${data.messages.length} mensajes. Lista para compactar. Cargar el ejemplo no consume API.`
+      ? `Conversación cargada: ${data.messages.length} mensajes, sin consumir API. `
+        + ($('compaction').checked ? 'Lista para compactar.'
+          : 'Pregúntale algo con todo ese contexto. Para compactarla, enciende Compactación y vuelve a cargarla.')
       : `Archivos de este chat: ${data.folder}`;
   }
 
@@ -276,11 +278,8 @@
       action(newChat);
     };
   }
-  $('dataset').onclick = () => action(async () => {
-    // La conversación larga es para practicar compactación; el disco permite leer el original archivado.
-    $('compaction').checked = $('disk').checked = true;
-    await newChat(true);
-  });
+  // Carga la conversación con los toggles tal como estén: con todo apagado se ve cómo responde sin compactar.
+  $('dataset').onclick = () => action(() => newChat(true));
   for (const [id, with_reference] of [['with', true], ['without', false]]) {
     $(id).onclick = () => action(async () => {
       const data = await api(`/sessions/${session}/compact`, { with_reference });

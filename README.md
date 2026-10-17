@@ -17,7 +17,7 @@ El frontend usa CSS propio inspirado en shadcn: tonos neutros, tarjetas, bordes 
 
 [Dataset y guía de práctica](datasets/README.md): conversación ficticia de **256 mensajes**, unos **26 mil tokens estimados**, y 16 preguntas con respuestas esperadas separadas del historial. Incluye correcciones, acuerdos vigentes, pendientes y detalles antiguos para comprobar qué conserva la compactación.
 
-En el chat, pulsa **Cargar conversación larga**; enciende sola la compactación y el disco. Se carga sin consumir API y queda lista para los botones de compactación. El mismo botón permite abrir otra copia original y comparar con y sin referencia. Los archivos fuente y las respuestas esperadas están fuera del workspace accesible al agente.
+En el chat, pulsa **Cargar conversación larga**. Se carga sin consumir API, con los toggles que tengas encendidos: con todo apagado sirve para ver cómo responde el agente con los 256 mensajes en contexto. Para compactarla, enciende **Compactación**, y **Leer y escribir en disco** si quieres recuperar el original, y vuelve a cargarla: cada toggle abre un chat nuevo. El mismo botón permite abrir otra copia original y comparar con y sin referencia. Los archivos fuente y las respuestas esperadas están fuera del workspace accesible al agente.
 
 ## Agente de servicio al cliente
 

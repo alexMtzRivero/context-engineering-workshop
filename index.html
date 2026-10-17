@@ -20,8 +20,18 @@
   button:hover { background: #f4f4f5; border-color: #d4d4d8; }
   button:disabled, select:disabled, textarea:disabled { opacity: .5; cursor: not-allowed; }
   button:focus-visible, select:focus-visible, textarea:focus-visible, summary:focus-visible { outline: 2px solid #a1a1aa; outline-offset: 3px; }
-  nav { display: flex; flex-wrap: wrap; gap: 8px; padding: 12px; margin-bottom: 20px; background: white; border: 1px solid var(--border); border-radius: 10px; }
-  #step { flex: 1; min-width: 240px; }
+  nav { display: flex; flex-direction: column; gap: 10px; padding: 12px; margin-bottom: 20px; background: white; border: 1px solid var(--border); border-radius: 10px; }
+  .toggles, .actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; border: 0; }
+  .toggles legend { margin-bottom: 8px; padding: 0; color: var(--muted); font-size: 11px; font-weight: 600; }
+  .toggle { display: inline-flex; align-items: center; gap: 8px; min-height: 38px; padding: 8px 12px; border: 1px solid var(--border); border-radius: 7px; font-size: 12px; font-weight: 550; cursor: pointer; user-select: none; transition: border-color .15s; }
+  .toggle:has(input:checked) { border-color: #a1a1aa; }
+  .toggle:has(input:disabled) { opacity: .5; cursor: not-allowed; }
+  /* El checkbox se dibuja como switch: pista gris y círculo que se mueve al encender. */
+  .toggle input { appearance: none; position: relative; flex-shrink: 0; width: 28px; height: 16px; margin: 0; border-radius: 999px; background: #e4e4e7; cursor: inherit; transition: background .15s; }
+  .toggle input::after { content: ""; position: absolute; top: 2px; left: 2px; width: 12px; height: 12px; border-radius: 50%; background: white; box-shadow: 0 1px 2px #0000001a; transition: transform .15s; }
+  .toggle input:checked { background: var(--ink); }
+  .toggle input:checked::after { transform: translateX(12px); }
+  .toggle input:focus-visible { outline: 2px solid #a1a1aa; outline-offset: 3px; }
   #new { background: #f4f4f5; }
   .workspace { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; }
   .chat-panel, .meter { min-width: 0; border: 1px solid var(--border); border-radius: 12px; background: white; box-shadow: 0 1px 3px #00000004; }
@@ -62,8 +72,8 @@
   .diagnostics summary { cursor: pointer; }
   #tools { max-height: 180px; overflow: auto; border: 1px solid var(--border); border-radius: 7px; padding: 12px; background: white; }
   @media (max-width: 850px) { .workspace { grid-template-columns: 1fr; } .chat-panel { order: 2; } .meter { order: 1; } main { padding: 24px 16px; } h1 { font-size: 26px; } #messages { min-height: 240px; } }
-  @media (max-width: 520px) { .page-header { gap: 12px; } .badge { display: none; } nav button { flex-grow: 1; } #step { flex-basis: 100%; } .meter-header { align-items: start; } }
-  @media (prefers-reduced-motion: reduce) { #token-bar span, button { transition: none; } }
+  @media (max-width: 520px) { .page-header { gap: 12px; } .badge { display: none; } nav button, .toggle { flex-grow: 1; } .meter-header { align-items: start; } }
+  @media (prefers-reduced-motion: reduce) { #token-bar span, button, .toggle, .toggle input, .toggle input::after { transition: none; } }
 </style>
 </head>
 <body>
@@ -77,17 +87,20 @@
   <span class="badge">Demo · datos simulados</span>
 </header>
 <nav>
-  <select id="step" aria-label="Paso del taller">
-    <option value="1">1. Chat básico</option>
-    <option value="2">2. Leer y escribir en disco</option>
-    <option value="3" selected>3. Todas las tools + compactación</option>
-    <option value="4">4. Tools bajo demanda</option>
-    <option value="5">5. Extra: sub-agente investigador</option>
-  </select>
-  <button id="new">Nuevo chat</button>
-  <button id="dataset">Cargar conversación larga</button>
-  <button id="without" disabled>Compactar sin referencia</button>
-  <button id="with" disabled>Compactar con referencia</button>
+  <fieldset class="toggles">
+    <legend>Qué puede usar el agente. Todo apagado es el chat básico; cada cambio abre un chat nuevo.</legend>
+    <label class="toggle"><input type="checkbox" role="switch" id="disk">Leer y escribir en disco</label>
+    <label class="toggle"><input type="checkbox" role="switch" id="all_tools">Todas las tools</label>
+    <label class="toggle"><input type="checkbox" role="switch" id="compaction">Compactación</label>
+    <label class="toggle"><input type="checkbox" role="switch" id="on_demand">Tools bajo demanda</label>
+    <label class="toggle"><input type="checkbox" role="switch" id="subagent">Sub-agente investigador</label>
+  </fieldset>
+  <div class="actions">
+    <button id="new">Nuevo chat</button>
+    <button id="dataset">Cargar conversación larga</button>
+    <button id="without" disabled>Compactar sin referencia</button>
+    <button id="with" disabled>Compactar con referencia</button>
+  </div>
 </nav>
 <div class="workspace">
 <section class="meter" aria-label="Uso del contexto" aria-live="polite">
@@ -126,6 +139,9 @@
     ['instructions', 'Instrucciones', '#6b7280']
   ];
   const number = (value) => value.toLocaleString('es-MX');
+  const toggleIds = ['disk', 'all_tools', 'compaction', 'on_demand', 'subagent'];
+  // Lo que se manda al servidor al abrir un chat: {disk: true, all_tools: false, ...}.
+  const toggles = () => Object.fromEntries(toggleIds.map((id) => [id, $(id).checked]));
 
   function showUsage(usage) {
     $('context-text').textContent = usage.next_context;
@@ -188,24 +204,24 @@
 
   // Bloquea los controles mientras hay una llamada en curso y muestra el error si falla.
   async function action(fn) {
-    document.querySelectorAll('button, select, textarea').forEach(el => el.disabled = true);
+    document.querySelectorAll('button, input, textarea').forEach(el => el.disabled = true);
     $('status').textContent = 'Procesando…';
     try { await fn(); }
     catch (error) { $('status').textContent = error.message; }
     finally {
-      document.querySelectorAll('button, select, textarea').forEach(el => el.disabled = false);
-      $('with').disabled = $('without').disabled = Number($('step').value) < 3 || !session;
+      document.querySelectorAll('button, input, textarea').forEach(el => el.disabled = false);
+      $('with').disabled = $('without').disabled = !$('compaction').checked || !session;
     }
   }
 
   async function newChat(dataset = false) {
-    const data = await api('/sessions', { step: Number($('step').value), dataset });
+    const data = await api('/sessions', { ...toggles(), dataset });
     session = data.session_id;
     $('messages').replaceChildren();
     $('tools').textContent = '';
     for (const message of data.messages) bubble(message.role === 'user' ? 'Cliente' : 'Agente', message.content);
     $('chat-hint').textContent = dataset ? `Aula Norte · ${data.messages.length} mensajes`
-      : $('step').value === '5' ? 'Prueba: investiga el caso completo de CUS-001' : 'Prueba con el pedido ORD-1001';
+      : $('subagent').checked ? 'Prueba: investiga el caso completo de CUS-001' : 'Prueba con el pedido ORD-1001';
     showUsage(data.context_usage);
     $('status').textContent = dataset
       ? `Conversación cargada: ${data.messages.length} mensajes. Lista para compactar. Cargar el ejemplo no consume API.`
@@ -243,9 +259,18 @@
         + (data.subagents.length ? ` Sub-agentes: ${subagentTokens} de entrada, fuera del contexto principal.` : ' El resumen usa una llamada aparte.');
     });
   };
-  $('new').onclick = $('step').onchange = () => action(newChat);
+  $('new').onclick = () => action(newChat);
+  for (const id of toggleIds) {
+    $(id).onchange = () => {
+      // Todas las tools y bajo demanda son dos formas de entregar el mismo catálogo: solo una a la vez.
+      if (id === 'all_tools' && $(id).checked) $('on_demand').checked = false;
+      if (id === 'on_demand' && $(id).checked) $('all_tools').checked = false;
+      action(newChat);
+    };
+  }
   $('dataset').onclick = () => action(async () => {
-    if (Number($('step').value) < 3) $('step').value = '4';
+    // La conversación larga es para practicar compactación; el disco permite leer el original archivado.
+    $('compaction').checked = $('disk').checked = true;
     await newChat(true);
   });
   for (const [id, with_reference] of [['with', true], ['without', false]]) {

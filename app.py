@@ -7,7 +7,7 @@ from uuid import uuid4
 
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import FileResponse
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 from pydantic_ai.messages import ModelRequest, ModelResponse, TextPart, UserPromptPart
 
 from chat_agent import ROOT, Chat, compact, context_usage, history_json, respond
@@ -25,7 +25,14 @@ sessions: dict[str, Session] = {}
 
 
 class Start(BaseModel):
-    step: int = Field(default=1, ge=1, le=5)
+    """Los toggles de la página al abrir un chat."""
+
+    model_config = ConfigDict(extra="forbid")
+    disk: bool = False
+    all_tools: bool = False
+    compaction: bool = False
+    on_demand: bool = False
+    subagent: bool = False
     dataset: bool = False
 
 
@@ -53,7 +60,7 @@ def start(body: Start):
     session_id = uuid4().hex
     folder = ROOT / "workspace" / session_id
     folder.mkdir(parents=True, exist_ok=True)
-    sessions[session_id] = Session(Chat(folder=folder, step=body.step))
+    sessions[session_id] = Session(Chat(folder=folder, **body.model_dump(exclude={"dataset"})))
     messages = []
     # La conversación larga se convierte a mensajes de Pydantic AI sin llamar al modelo.
     if body.dataset:
@@ -84,8 +91,8 @@ async def send(session_id: str, body: Message):
 @app.post("/sessions/{session_id}/compact")
 async def summarize(session_id: str, body: Compaction):
     session = session_for(session_id)
-    if session.chat.step < 3:
-        raise HTTPException(400, "La compactación está disponible desde el paso 3.")
+    if not session.chat.compaction:
+        raise HTTPException(400, "Enciende el toggle de compactación para usar estos botones.")
     async with session.lock:
         try:
             report = await compact(session.chat, body.with_reference)

@@ -25,11 +25,17 @@ def summarize(messages, info):
     return ModelResponse(parts=[TextPart(content="Plan de un viaje. Pendiente confirmar horario.")])
 
 
+def toggles(chat, **on):
+    """Apaga los cinco toggles y enciende los indicados."""
+    for name in ("disk", "all_tools", "compaction", "on_demand", "subagent"):
+        setattr(chat, name, on.get(name, False))
+
+
 class AgentTests(unittest.IsolatedAsyncioTestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp.cleanup)
-        self.chat = Chat(folder=Path(self.temp.name), step=3)
+        self.chat = Chat(folder=Path(self.temp.name), disk=True, all_tools=True, compaction=True)
 
     def seed_history(self):
         self.chat.history = [
@@ -38,7 +44,7 @@ class AgentTests(unittest.IsolatedAsyncioTestCase):
         ]
 
     async def test_basic_chat_has_history_and_no_tools(self):
-        self.chat.step = 1
+        toggles(self.chat)
         seen = []
 
         def model(messages, info):
@@ -53,7 +59,7 @@ class AgentTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(len(self.chat.history), 4)
 
     async def test_file_tools_execute_in_agent_loop(self):
-        self.chat.step = 2
+        toggles(self.chat, disk=True)
         calls = iter([
             ToolCallPart(tool_name="write_file", args={"name": "notes/viaje.md", "content": "Reserva LIMA-4829"}),
             ToolCallPart(tool_name="list_files", args={"keyword": "viaje"}),
@@ -129,7 +135,7 @@ class AgentTests(unittest.IsolatedAsyncioTestCase):
         self.assertIsNone(self.chat.pending_compaction)
 
     async def test_discovery_exposes_schema_only_after_search(self):
-        self.chat.step = 4
+        toggles(self.chat, on_demand=True)
         seen = []
 
         def model(messages, info):
@@ -193,9 +199,9 @@ class AgentTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(counts["total_tokens"], sum(counts["tokens"].values()))
         self.assertGreater(counts["tokens"]["chat"], counts["tokens"]["summary"])
         self.chat.history.clear()
-        self.chat.step = 1
+        toggles(self.chat)
         self.assertEqual(context_usage(self.chat)["tokens"]["tools"], 0)
-        self.chat.step = 4
+        toggles(self.chat, on_demand=True)
         hidden = context_usage(self.chat)["tokens"]["tools"]
         self.chat.loaded_tools.add("read_file")
         self.assertGreater(context_usage(self.chat)["tokens"]["tools"], hidden)
@@ -227,15 +233,15 @@ class AgentTests(unittest.IsolatedAsyncioTestCase):
 
         with agent.override(model=FunctionModel(model)):
             await respond(self.chat, "Hola")
-            self.chat.step = 4
+            toggles(self.chat, on_demand=True)
             await respond(self.chat, "Hola otra vez")
         self.assertEqual(len(CUSTOMER_TOOLS), 80)
         self.assertEqual(len(seen[0]), 84)
         self.assertEqual(seen[1], {"discover_tools"})
-        self.assertGreater(context_usage(Chat(folder=self.chat.folder, step=3))["tokens"]["tools"], 20000)
+        self.assertGreater(context_usage(Chat(folder=self.chat.folder, all_tools=True))["tokens"]["tools"], 20000)
 
     async def test_customer_tool_discovery_and_order_lookup(self):
-        self.chat.step = 4
+        toggles(self.chat, on_demand=True)
         turns = 0
 
         def model(messages, info):
@@ -259,7 +265,7 @@ class AgentTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(data["context_usage"]["tool_count"], 2)
 
     def test_context_preview_contains_only_active_tools_and_current_history(self):
-        self.chat.step = 4
+        toggles(self.chat, on_demand=True)
         self.chat.history = [ModelRequest(parts=[UserPromptPart(content="Mensaje actual")]), ModelResponse(parts=[TextPart(content="Respuesta actual")])]
         before = context_usage(self.chat)
         preview = json.loads(before["next_context"])
@@ -303,7 +309,7 @@ class AgentTests(unittest.IsolatedAsyncioTestCase):
 
     async def delegate(self):
         """El principal delega; el sub-agente consulta un pedido y entrega su informe."""
-        self.chat.step = 5
+        toggles(self.chat, subagent=True)
         main_calls, research_calls = [], []
 
         def main(messages, info):
@@ -324,7 +330,7 @@ class AgentTests(unittest.IsolatedAsyncioTestCase):
 
     async def test_subagent_returns_report_and_keeps_full_transcript_on_disk(self):
         data, main_calls, research_calls = await self.delegate()
-        self.assertEqual(main_calls[0][1], {"list_files", "read_file", "compact_context", "delegate_research", "ask_researcher"})
+        self.assertEqual(main_calls[0][1], {"delegate_research", "ask_researcher"})
         self.assertIn("get_order_status", research_calls[0])
         self.assertNotIn("cancel_order", research_calls[0])  # investigar es solo lectura
         self.assertIn("ORD-1001 sigue en ruta", str(main_calls[1][0]))
@@ -362,7 +368,7 @@ class AgentTests(unittest.IsolatedAsyncioTestCase):
         self.assertIn("¿Qué consultaste?", (self.chat.folder / revived["transcript"]).read_text())
 
     async def test_unknown_subagent_is_a_tool_retry(self):
-        self.chat.step = 5
+        toggles(self.chat, subagent=True)
         ctx = SimpleNamespace(deps=self.chat)
         from chat_agent import ask_researcher
         for run_id in ["noexiste", "../x"]:
@@ -374,7 +380,7 @@ class EndpointTests(unittest.TestCase):
     def test_chat_and_compaction_routes(self):
         with tempfile.TemporaryDirectory() as folder, patch.object(server, "ROOT", Path(folder)):
             with TestClient(server.app) as client, agent.override(model=FunctionModel(answer)), summarizer.override(model=FunctionModel(summarize)):
-                started = client.post("/sessions", json={"step": 3}).json()
+                started = client.post("/sessions", json={"disk": True, "all_tools": True, "compaction": True}).json()
                 path = "/sessions/" + started["session_id"]
                 self.assertEqual(client.post(path + "/chat", json={"message": "hola"}).status_code, 200)
                 compacted = client.post(path + "/compact", json={"with_reference": True})
@@ -383,9 +389,9 @@ class EndpointTests(unittest.TestCase):
                 self.assertEqual(client.post(path + "/chat", json={"message": "seguimos"}).status_code, 200)
                 self.assertEqual(client.post(path + "/chat", json={"message": ""}).status_code, 422)
                 self.assertEqual(client.post("/sessions/missing/chat", json={"message": "hola"}).status_code, 404)
-                self.assertEqual(client.post("/sessions", json={"step": 5}).status_code, 200)
-                self.assertEqual(client.post("/sessions", json={"step": 6}).status_code, 422)
-                base = client.post("/sessions", json={"step": 1}).json()["session_id"]
+                self.assertEqual(client.post("/sessions", json={"subagent": True}).status_code, 200)
+                self.assertEqual(client.post("/sessions", json={"step": 3}).status_code, 422)
+                base = client.post("/sessions", json={}).json()["session_id"]
                 self.assertEqual(client.post(f"/sessions/{base}/compact", json={"with_reference": False}).status_code, 400)
 
 
@@ -418,7 +424,7 @@ class DatasetTests(unittest.TestCase):
             (dataset_folder / "conversacion-larga.json").write_text(fixture)
             with TestClient(server.app) as client, summarizer.override(model=FunctionModel(summary_model)):
                 for index, with_reference in enumerate([False, True]):
-                    started = client.post("/sessions", json={"step": 4, "dataset": True}).json()
+                    started = client.post("/sessions", json={"on_demand": True, "compaction": True, "dataset": True}).json()
                     self.assertEqual(len(calls), index)  # cargar no llama al modelo
                     self.assertEqual(len(started["messages"]), 256)
                     self.assertGreater(started["context_usage"]["tokens"]["chat"], 25000)

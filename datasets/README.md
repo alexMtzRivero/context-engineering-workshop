@@ -16,7 +16,7 @@ Es un **caso histórico independiente** de los registros simulados de las tools 
 
 ## En el chat
 
-1. Selecciona **4. Tools bajo demanda** para observar el tamaño de la conversación con un catálogo inicial pequeño. También puedes comparar con el paso 3, que carga todas las tools.
+1. Deja **Todas las tools** apagado para observar el tamaño de la conversación con un catálogo pequeño. También puedes encenderlo para comparar. El botón del paso 2 enciende **Compactación** y **Leer y escribir en disco**; el disco hace falta para leer el original archivado.
 2. Pulsa **Cargar conversación larga**. Abre un chat nuevo con los 256 mensajes en el historial. Cargarlo no llama a ningún modelo. El botón se puede volver a usar para empezar desde el mismo original.
 3. Anota el tamaño del chat en la barra. Inspecciona las instrucciones, tools e historial en la vista de contexto.
 4. Pulsa **Compactar sin referencia**. Esta acción hace una llamada a la API. Inspecciona el resumen y el nuevo tamaño del contexto.
@@ -38,7 +38,7 @@ Revisa especialmente las correcciones, restricciones y pendientes. Medir cuánto
 
 La compactación es variable: no se garantiza qué detalle omitirá el modelo. Las dos ejecuciones pueden producir resúmenes diferentes. Conserva los resúmenes y anota cómo obtuvo cada respuesta. Recuperar el archivo completo puede volver a aumentar mucho el contexto; compactar nuevamente permite discutir ese intercambio.
 
-**Prueba real del 12 de octubre de 2026:** con Claude Sonnet 4.6 vía OpenRouter, el contexto activo del paso 4 pasó de 26,250 a 852 tokens estimados después de compactar con referencia. El archivo original conservó los 256 mensajes. El resumen mantuvo los acuerdos principales y varios identificadores; omitió detalles de las pruebas técnicas. Estos resultados corresponden a una ejecución, no a una reducción garantizada. Los dos modos también se verificaron con pruebas controladas, dentro de una suite de 20 pruebas.
+**Prueba real del 12 de octubre de 2026:** con Claude Sonnet 4.6 vía OpenRouter, el contexto activo, con las tools bajo demanda, pasó de 26,250 a 852 tokens estimados después de compactar con referencia. El archivo original conservó los 256 mensajes. El resumen mantuvo los acuerdos principales y varios identificadores; omitió detalles de las pruebas técnicas. Estos resultados corresponden a una ejecución, no a una reducción garantizada. Los dos modos también se verificaron con pruebas controladas, dentro de una suite de 20 pruebas.
 
 ## Cargarlo desde Python
 

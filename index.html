@@ -241,6 +241,8 @@
   }
 
   function showCompaction(report) {
+    // Igual que el historial del servidor: después de compactar solo queda el resumen.
+    $('messages').replaceChildren();
     bubble('Compactación', `${report.before_bytes} → ${report.after_bytes} bytes de historial JSON.\n`
       + (report.reference ? `Original guardado en ${report.reference}\n` : 'Solo se conserva el resumen.\n')
       + report.summary);
@@ -289,7 +291,7 @@
       const data = await api(`/sessions/${session}/compact`, { with_reference });
       showCompaction(data.compaction);
       showUsage(data.context_usage);
-      $('status').textContent = 'El próximo turno usará el resumen. La conversación visible se mantiene.';
+      $('status').textContent = 'El próximo turno usará el resumen.';
     });
   }
   action(newChat);

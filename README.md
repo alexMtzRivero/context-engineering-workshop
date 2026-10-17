@@ -148,7 +148,7 @@ Enciende **Compactación**, y también **Leer y escribir en disco** para que el 
 
 Con referencia, pide un detalle que no aparezca en el resumen: el agente puede usar `read_file` para recuperarlo del original. Sin referencia, ese detalle puede perderse. Los archivos que el agente ya había escrito siguen existiendo en ambas opciones. Por eso, para comparar la pérdida causada por resumir, usa un dato que solo hayas mencionado en la conversación y que no esté guardado en otro archivo.
 
-En **Contexto que se enviará al agente** puedes ver las instrucciones, las definiciones de tools activas y el historial en orden. El chat visible mantiene los mensajes anteriores como apoyo a la demo; el modelo recibe el historial del servidor, no las burbujas del navegador. No hay compactación automática ni umbral oculto.
+En **Contexto que se enviará al agente** puedes ver las instrucciones, las definiciones de tools activas y el historial en orden. Al compactar, el chat visible también se reemplaza: solo queda el mensaje de compactación, igual que en el historial que recibe el modelo. No hay compactación automática ni umbral oculto.
 
 El contador antes/después mide bytes del historial JSON, incluyendo sus metadatos; no equivale al tamaño tokenizado del prompt. Los tokens reportados son el consumo real acumulado del agente en ese turno, incluidas las llamadas a tools; la llamada del resumidor se cobra aparte. En historiales muy cortos, el resumen puede ocupar más que el original. Resumir no garantiza conservar cada detalle.
 

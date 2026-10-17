@@ -9,7 +9,7 @@ Un chat local para practicar compactación, recuperación de archivos y descubri
 | `paso4_descubrimiento.py` | `discover_tools` |
 | `paso5_subagente.py` | `delegate_research` y `ask_researcher` (extra) |
 
-El resto ya funciona: `chat_agent.py` arma el agente y decide qué tools ve en cada paso; `base.py` tiene el estado del chat, el catálogo y las rutas seguras; `app.py` conecta el navegador; `customer_tools.py` contiene el catálogo simulado de atención al cliente. El frontend es una página HTML con JavaScript vanilla.
+El resto ya funciona: `chat_agent.py` arma el agente y decide qué tools ve según los toggles; `base.py` tiene el estado del chat, el catálogo y las rutas seguras; `app.py` conecta el navegador; `customer_tools.py` contiene el catálogo simulado de atención al cliente. El frontend es una página HTML con JavaScript vanilla.
 
 El frontend usa CSS propio inspirado en shadcn: tonos neutros, tarjetas, bordes suaves y botones simples. En pantallas amplias muestra conversación y contexto lado a lado; en pantallas pequeñas se apilan. No requiere React, Tailwind, fuentes externas ni instalación de componentes.
 
@@ -17,13 +17,13 @@ El frontend usa CSS propio inspirado en shadcn: tonos neutros, tarjetas, bordes 
 
 [Dataset y guía de práctica](datasets/README.md): conversación ficticia de **256 mensajes**, unos **26 mil tokens estimados**, y 16 preguntas con respuestas esperadas separadas del historial. Incluye correcciones, acuerdos vigentes, pendientes y detalles antiguos para comprobar qué conserva la compactación.
 
-En el chat, selecciona el paso 4 y pulsa **Cargar conversación larga**. Se carga sin consumir API y queda lista para los botones de compactación. El mismo botón permite abrir otra copia original y comparar con y sin referencia. Los archivos fuente y las respuestas esperadas están fuera del workspace accesible al agente.
+En el chat, pulsa **Cargar conversación larga**; enciende sola la compactación y el disco. Se carga sin consumir API y queda lista para los botones de compactación. El mismo botón permite abrir otra copia original y comparar con y sin referencia. Los archivos fuente y las respuestas esperadas están fuera del workspace accesible al agente.
 
 ## Agente de servicio al cliente
 
 El catálogo tiene **80 tools**: diez por área de clientes, pedidos, envíos, pagos, devoluciones, suscripciones, soporte y productos. Cada una tiene nombre, descripción y parámetros propios; Pydantic genera los schemas y valida los argumentos. El catálogo ocupa alrededor de **30 mil tokens estimados** aunque aún no haya mensajes.
 
-La página abre por defecto en **3. Todas las tools + compactación**: 80 tools de servicio y 4 de archivos/compactación. Cambia a **4. Tools bajo demanda** para empezar solo con el buscador y comparar la barra: su definición ocupa alrededor de 67 tokens estimados. Los dos modos acceden a las mismas operaciones; lo que cambia es cuáles schemas recibe el modelo.
+Enciende **Todas las tools** para mandar las 80 de servicio en cada llamada. Cambia a **Tools bajo demanda** para empezar solo con el buscador y comparar la barra: su definición ocupa alrededor de 67 tokens estimados. Los dos modos acceden a las mismas operaciones; lo que cambia es cuáles schemas recibe el modelo.
 
 Datos ficticios para probar:
 
@@ -63,6 +63,20 @@ Abre http://127.0.0.1:8000. `MODEL` permite cambiar el modelo sin modificar el c
 
 Para usar Anthropic directamente: configura `MODEL=anthropic:claude-sonnet-4-6` y `ANTHROPIC_API_KEY` en `.env`. Reinicia el servidor si cambias la configuración. `.env` está excluido de Git; no lo compartas con el proyecto.
 
+## Toggles
+
+La página no tiene pasos fijos: cada toggle agrega algo a lo que el modelo recibe. Todo apagado es el chat básico. Cada cambio abre un chat nuevo.
+
+| Toggle | Lo que el modelo recibe |
+|---|---|
+| Leer y escribir en disco | `list_files`, `read_file` y `write_file` |
+| Todas las tools | Las 80 tools de servicio en cada llamada |
+| Compactación | `compact_context` y los botones de compactar |
+| Tools bajo demanda | Solo `discover_tools`; lo que encuentra se suma desde la siguiente llamada |
+| Sub-agente investigador | `delegate_research` y `ask_researcher` |
+
+**Todas las tools** y **Tools bajo demanda** son dos formas de entregar el mismo catálogo, así que la página solo deja una encendida.
+
 ## Dónde escribir tu código
 
 En `main`, las funciones de los pasos 2 a 5 están vacías y marcadas con `# Escribe aquí tu código.` Mientras no las escribas, la página te dice qué función falta y en qué archivo. El paso 1 funciona desde el inicio.
@@ -79,7 +93,7 @@ Las pruebas sirven de checklist: en `main` fallan las de los pasos que todavía 
 
 ### 1. Chat básico
 
-Selecciona **1. Chat básico**. La llamada central está en `respond`:
+Con todos los toggles apagados. La llamada central está en `respond`:
 
 ```python
 result = await agent.run(message, message_history=chat.history, deps=chat)
@@ -90,7 +104,7 @@ El modelo recibe un mensaje, responde y el servidor conserva el historial para l
 
 ### 2. Leer y escribir en disco
 
-Selecciona **2. Leer y escribir en disco**. El selector abre un chat nuevo. Prueba:
+Enciende **Leer y escribir en disco**. Cada cambio de toggle abre un chat nuevo. Prueba:
 
 > Guarda en viaje.md: viajamos el 19 de octubre; la reunión es a las 17:10; el código de reserva es LIMA-4829.
 
@@ -102,7 +116,7 @@ Cada chat tiene su carpeta bajo `workspace/<id>/`. Se muestra la ruta en la pág
 
 ### 3. Compactar con o sin referencia
 
-Selecciona **3. Todas las tools + compactación**. Conversa varios turnos y usa uno de los botones. También puedes pedirlo en el chat:
+Enciende **Compactación**, y también **Leer y escribir en disco** para que el agente pueda leer el original archivado. Conversa varios turnos y usa uno de los botones. También puedes pedirlo en el chat:
 
 > Compacta el historial con referencia al original.
 
@@ -135,7 +149,7 @@ Dentro de la barra hay una vista única, siempre visible: **Contexto que se envi
 
 ### 4. Descubrimiento dinámico de tools
 
-Selecciona **4. Tools bajo demanda** y pide consultar un pedido o guardar un archivo.
+Enciende **Tools bajo demanda** y pide consultar un pedido o guardar un archivo.
 
 Al principio el modelo solo ve `discover_tools`, en `paso4_descubrimiento.py`. Busca una palabra en el catálogo de nombres y descripciones. `available_tools`, con `PrepareTools`, incluye las definiciones descubiertas en la siguiente llamada del modelo. Abre **Tools enviadas al modelo** para ver el cambio. Una búsqueda amplia puede descubrir muchas herramientas; buscar un nombre exacto, como `get_order_status`, habilita solo esa operación.
 
@@ -143,9 +157,9 @@ Las tools descubiertas permanecen disponibles en ese chat hasta compactar. Compa
 
 ### 5. Extra: sub-agente investigador
 
-Para quien termine antes. Selecciona **5. Extra: sub-agente investigador** y pide: **"Investiga el caso completo de CUS-001: pedido, envío, pago, devolución y ticket. ¿Hay algo pendiente?"**.
+Para quien termine antes. Enciende **Sub-agente investigador** y pide: **"Investiga el caso completo de CUS-001: pedido, envío, pago, devolución y ticket. ¿Hay algo pendiente?"**.
 
-El código está en `paso5_subagente.py`. El agente principal no tiene las tools de servicio. Con `delegate_research` delega la tarea a `researcher`, otro agente Pydantic AI con contexto propio y 53 tools de solo lectura (51 de servicio más `list_files` y `read_file`). Los schemas y los resultados de esas consultas viven en el contexto del sub-agente. Al principal solo le llegan el informe, el `run_id` y la ruta del archivo. La conversación completa del sub-agente se guarda en `subagents/<run_id>.json`.
+El código está en `paso5_subagente.py`. Con **Todas las tools** apagado, el agente principal no tiene las tools de servicio. Con `delegate_research` delega la tarea a `researcher`, otro agente Pydantic AI con contexto propio y 53 tools de solo lectura (51 de servicio más `list_files` y `read_file`). Los schemas y los resultados de esas consultas viven en el contexto del sub-agente. Al principal solo le llegan el informe, el `run_id` y la ruta del archivo. La conversación completa del sub-agente se guarda en `subagents/<run_id>.json`.
 
 Después pregunta: **"¿Qué consultó el investigador para concluir lo de la devolución? Pregúntale a él, no adivines."**. Con `ask_researcher`, el principal **revive** al sub-agente: carga su historial desde disco, lo pasa como `message_history` y le hace la pregunta. El sub-agente responde con la memoria completa de su proceso y el archivo se actualiza con el nuevo intercambio.
 
@@ -174,7 +188,7 @@ Las pruebas del paso 5 simulan al principal y al sub-agente con `FunctionModel`:
 
 ## Límites intencionales
 
-Demo local con un único proceso. Conversaciones en memoria: reiniciar el servidor las pierde. Archivos en disco: sobreviven al reinicio. Cambiar de paso o abrir un nuevo chat crea otra carpeta. No hay login, streaming, base de datos, Docker ni frontend compilado.
+Demo local con un único proceso. Conversaciones en memoria: reiniciar el servidor las pierde. Archivos en disco: sobreviven al reinicio. Cambiar un toggle o abrir un nuevo chat crea otra carpeta. No hay login, streaming, base de datos, Docker ni frontend compilado.
 
 ## Referencias del framework
 

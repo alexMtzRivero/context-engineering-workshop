@@ -20,17 +20,22 @@ class Chat:
     """Estado de una conversación. Cada tool lo recibe como ctx.deps."""
 
     folder: Path  # carpeta de trabajo de este chat: workspace/<id>/
-    step: int = 1  # paso elegido en el selector de la página
+    # Toggles de la página: qué puede usar el agente. Todos apagados = chat básico.
+    disk: bool = False  # Leer y escribir en disco
+    all_tools: bool = False  # Todas las tools: las 80 de servicio en cada llamada
+    compaction: bool = False  # Compactación
+    on_demand: bool = False  # Tools bajo demanda
+    subagent: bool = False  # Sub-agente investigador
     history: list[ModelMessage] = field(default_factory=list)  # lo que se reenvía al modelo en cada llamada
     pending_compaction: bool | None = None  # compactación pedida por el agente; se aplica al terminar el turno
-    loaded_tools: set[str] = field(default_factory=set)  # tools descubiertas en el paso 4
+    loaded_tools: set[str] = field(default_factory=set)  # tools descubiertas con Tools bajo demanda
     events: list[str] = field(default_factory=list)  # bitácora del panel "Tools enviadas al modelo"
     last_input_tokens: int | None = None
     service_requests: list[dict] = field(default_factory=list)  # solicitudes simuladas de las tools de escritura
     subagent_runs: list[dict] = field(default_factory=list)  # sub-agentes que corrieron en este turno
 
 
-# Nombre y descripción de cada tool que se puede descubrir en el paso 4.
+# Nombre y descripción de cada tool que se puede descubrir con Tools bajo demanda.
 CATALOG = {
     "list_files": "Encontrar archivos por una palabra en su ruta.",
     "read_file": "Leer un archivo de texto, incluido un historial archivado.",

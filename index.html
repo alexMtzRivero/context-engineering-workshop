@@ -243,6 +243,7 @@
   function showCompaction(report) {
     // Igual que el historial del servidor: después de compactar solo queda el resumen.
     $('messages').replaceChildren();
+    $('chat-hint').textContent = 'Solo queda el resumen';
     bubble('Compactación', `${report.before_bytes} → ${report.after_bytes} bytes de historial JSON.\n`
       + (report.reference ? `Original guardado en ${report.reference}\n` : 'Solo se conserva el resumen.\n')
       + report.summary);

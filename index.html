@@ -21,8 +21,11 @@
   button:disabled, select:disabled, textarea:disabled { opacity: .5; cursor: not-allowed; }
   button:focus-visible, select:focus-visible, textarea:focus-visible, summary:focus-visible { outline: 2px solid #a1a1aa; outline-offset: 3px; }
   nav { display: flex; flex-direction: column; gap: 10px; padding: 12px; margin-bottom: 20px; background: white; border: 1px solid var(--border); border-radius: 10px; }
-  .toggles, .actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; border: 0; }
-  .toggles legend { margin-bottom: 8px; padding: 0; color: var(--muted); font-size: 11px; font-weight: 600; }
+  .actions, .toggle-list { display: flex; flex-wrap: wrap; gap: 8px; }
+  .toggle-panel { margin-top: 18px; border-top: 1px solid var(--border); padding-top: 16px; }
+  .toggles { min-width: 0; margin: 0; padding: 0; border: 0; }
+  .toggles legend { padding: 0; font-size: 12px; font-weight: 600; }
+  .toggle-list { margin-top: 12px; }
   .toggle { display: inline-flex; align-items: center; gap: 8px; min-height: 38px; padding: 8px 12px; border: 1px solid var(--border); border-radius: 7px; font-size: 12px; font-weight: 550; cursor: pointer; user-select: none; transition: border-color .15s; }
   .toggle:has(input:checked) { border-color: #a1a1aa; }
   .toggle:has(input:disabled) { opacity: .5; cursor: not-allowed; }
@@ -87,14 +90,6 @@
   <span class="badge">Demo · datos simulados</span>
 </header>
 <nav>
-  <fieldset class="toggles">
-    <legend>Qué puede usar el agente. Todo apagado es el chat básico; cada cambio abre un chat nuevo.</legend>
-    <label class="toggle"><input type="checkbox" role="switch" id="disk">Leer y escribir en disco</label>
-    <label class="toggle"><input type="checkbox" role="switch" id="all_tools">Todas las tools</label>
-    <label class="toggle"><input type="checkbox" role="switch" id="compaction">Compactación</label>
-    <label class="toggle"><input type="checkbox" role="switch" id="on_demand">Tools bajo demanda</label>
-    <label class="toggle"><input type="checkbox" role="switch" id="subagent">Sub-agente investigador</label>
-  </fieldset>
   <div class="actions">
     <button id="new">Nuevo chat</button>
     <button id="dataset">Cargar conversación larga</button>
@@ -110,6 +105,19 @@
   <p class="meter-note" id="tool-count"></p>
   <p class="meter-note">Estimación: 4 caracteres por token. Incluye el historial y las tools disponibles; no incluye tu borrador. Los colores muestran la composición, no el porcentaje de la ventana máxima.</p>
   <p class="meter-note" id="provider-tokens">Todavía no hay una llamada al proveedor.</p>
+  <div class="toggle-panel">
+    <fieldset class="toggles">
+      <legend>Qué puede usar el agente</legend>
+      <p class="meter-note">Todo apagado es el chat básico; cada cambio abre un chat nuevo.</p>
+      <div class="toggle-list">
+        <label class="toggle"><input type="checkbox" role="switch" id="disk">Leer y escribir en disco</label>
+        <label class="toggle"><input type="checkbox" role="switch" id="all_tools">Todas las tools</label>
+        <label class="toggle"><input type="checkbox" role="switch" id="compaction">Compactación</label>
+        <label class="toggle"><input type="checkbox" role="switch" id="on_demand">Tools bajo demanda</label>
+        <label class="toggle"><input type="checkbox" role="switch" id="subagent">Sub-agente investigador</label>
+      </div>
+    </fieldset>
+  </div>
   <div class="context-reader">
     <strong>Contexto que se enviará al agente</strong>
     <p class="meter-note">Instrucciones, tools activas e historial en su orden. Tu próximo mensaje se añadirá al enviar.</p>

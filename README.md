@@ -48,7 +48,7 @@ En carga completa, compactar el historial no elimina los schemas de las 84 tools
 
 ## Correr
 
-Python 3.11+ y una API key con crédito disponible. La configuración de ejemplo usa Claude a través de OpenRouter. Claude Code puede ayudar durante el taller; el servidor hace sus propias llamadas a la API.
+Python 3.11+ y una API key con crédito disponible. La configuración de ejemplo usa Claude Sonnet 5.5 a través de OpenRouter. Las pruebas reales que cita este README se hicieron con Sonnet 4.6. Claude Code puede ayudar durante el taller; el servidor hace sus propias llamadas a la API.
 
 ```sh
 python3 -m venv .venv
@@ -61,7 +61,7 @@ python -m uvicorn app:app --host 127.0.0.1 --port 8000
 
 Abre http://127.0.0.1:8000. `MODEL` permite cambiar el modelo sin modificar el código. La API key permanece en el servidor.
 
-Para usar Anthropic directamente: configura `MODEL=anthropic:claude-sonnet-4-6` y `ANTHROPIC_API_KEY` en `.env`. Reinicia el servidor si cambias la configuración. `.env` está excluido de Git; no lo compartas con el proyecto.
+Para usar Anthropic directamente: configura `MODEL=anthropic:claude-sonnet-5-5` y `ANTHROPIC_API_KEY` en `.env`. Reinicia el servidor si cambias la configuración. `.env` está excluido de Git; no lo compartas con el proyecto.
 
 ## Toggles
 
@@ -195,4 +195,4 @@ Demo local con un único proceso. Conversaciones en memoria: reiniciar el servid
 - [Historial de mensajes](https://pydantic.dev/docs/ai/core-concepts/message-history/): `message_history` y `all_messages`.
 - [PrepareTools](https://pydantic.dev/docs/ai/capabilities/prepare-tools/): seleccionar las definiciones que se envían al modelo.
 - [Modelo de función para pruebas](https://pydantic.dev/docs/ai/api/pydantic-ai/models/function/).
-- [OpenRouter](https://pydantic.dev/docs/ai/models/openrouter/): `OPENROUTER_API_KEY` y modelo `openrouter:anthropic/claude-sonnet-4.6`.
+- [OpenRouter](https://pydantic.dev/docs/ai/models/openrouter/): `OPENROUTER_API_KEY` y modelo `openrouter:anthropic/claude-sonnet-5.5`.

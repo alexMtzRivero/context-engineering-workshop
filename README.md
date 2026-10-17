@@ -15,7 +15,7 @@ El frontend usa CSS propio inspirado en shadcn: tonos neutros, tarjetas, bordes 
 
 ## Conversación larga para los estudiantes
 
-[Dataset y guía de práctica](datasets/README.md): conversación ficticia de **256 mensajes**, unos **26 mil tokens estimados**, y 16 preguntas con respuestas esperadas separadas del historial. Incluye correcciones, acuerdos vigentes, pendientes y detalles antiguos para comprobar qué conserva la compactación.
+Conversación ficticia de **256 mensajes**, unos **26 mil tokens estimados**, y 16 preguntas con respuestas esperadas separadas del historial. Incluye correcciones, acuerdos vigentes, pendientes y detalles antiguos para comprobar qué conserva la compactación.
 
 En el chat, pulsa **Cargar conversación larga**. Se carga sin consumir API, con los toggles que tengas encendidos: con todo apagado sirve para ver cómo responde el agente con los 256 mensajes en contexto. Para compactarla, enciende **Compactación**, y **Leer y escribir en disco** si quieres recuperar el original, y vuelve a cargarla: cada toggle abre un chat nuevo. El mismo botón permite abrir otra copia original y comparar con y sin referencia. Los archivos fuente y las respuestas esperadas están fuera del workspace accesible al agente.
 
@@ -30,7 +30,7 @@ Con todo apagado, pulsa **Cargar conversación muy larga** y pregunta: **"En el 
 | Haiku 5.5 | 10, correcto (3 de 3) | "No puedo responder" (3 de 3): dice que las tarjetas no son de ningún cliente |
 | Sonnet 5.5 | 10, correcto | Dice 10, pero mezcla tarjetas de otros clientes |
 
-De qué trata cada conversación y cinco preguntas trampa con sus resultados: [datasets/README.md](datasets/README.md). Pruebas del 17 de octubre de 2026 vía OpenRouter; los resultados varían entre intentos.
+Las cinco preguntas trampa, con su respuesta correcta: [datasets/README.md](datasets/README.md). Pruebas del 17 de octubre de 2026 vía OpenRouter; los resultados varían entre intentos.
 
 Cada pregunta manda los 205 mil tokens completos. Arriba de 100 mil tokens, Haiku 5.5 cobra su precio de contexto largo: unos 10 centavos de dólar por pregunta. Con Sonnet 5.5, unos 41.
 

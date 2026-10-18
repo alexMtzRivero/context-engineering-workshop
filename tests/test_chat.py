@@ -254,13 +254,13 @@ class AgentTests(unittest.IsolatedAsyncioTestCase):
             if turns == 2:
                 self.assertIn("get_order_status", names)
                 self.assertNotIn("cancel_order", names)
-                return ModelResponse(parts=[ToolCallPart(tool_name="get_order_status", args={"order_id": "ORD-1001"})])
-            self.assertIn("en tránsito", str(messages))
-            self.assertIn("simulated", str(messages))
-            return ModelResponse(parts=[TextPart(content="Pedido en tránsito.")])
+                return ModelResponse(parts=[ToolCallPart(tool_name="get_order_status", args={"order_id": "ORD-2048"})])
+            self.assertIn("entregado incompleto", str(messages))
+            self.assertIn("Nébula Software", str(messages))
+            return ModelResponse(parts=[TextPart(content="El pedido llegó incompleto.")])
 
         with agent.override(model=FunctionModel(model)):
-            data = await respond(self.chat, "¿Dónde está mi pedido ORD-1001?")
+            data = await respond(self.chat, "¿Dónde está mi pedido ORD-2048?")
         self.assertGreater(data["context_usage"]["tokens"]["retrieved"], 0)
         self.assertEqual(data["context_usage"]["tool_count"], 2)
 
@@ -282,8 +282,8 @@ class AgentTests(unittest.IsolatedAsyncioTestCase):
 
     async def test_service_write_records_request_without_changing_demo_order(self):
         calls = iter([
-            ToolCallPart(tool_name="cancel_order", args={"order_id": "ORD-1001", "reason": "Lo pedí por error"}),
-            ToolCallPart(tool_name="get_order_status", args={"order_id": "ORD-1001"}),
+            ToolCallPart(tool_name="cancel_order", args={"order_id": "ORD-2048", "reason": "Lo pedí por error"}),
+            ToolCallPart(tool_name="get_order_status", args={"order_id": "ORD-2048"}),
         ])
 
         def model(messages, info):
@@ -295,17 +295,17 @@ class AgentTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(len(self.chat.service_requests), 1)
         self.assertTrue(self.chat.service_requests[0]["simulated"])
         self.assertEqual(self.chat.service_requests[0]["request_id"], "REQ-001")
-        self.assertIn("en tránsito", data["context"])
+        self.assertIn("Solicitud REQ-001 registrada", data["context"])
+        self.assertIn("entregado incompleto", data["context"])
         self.assertEqual(Chat(folder=self.chat.folder).service_requests, [])
 
     async def test_service_tool_validates_arguments_and_does_not_invent_customer(self):
         tool = next(tool for tool in CUSTOMER_TOOLS if tool.name == "change_order_quantity")
         with self.assertRaises(ModelRetry):
-            tool.function(SimpleNamespace(deps=self.chat), order_id="ORD-1001", sku="SKU-001", quantity=-1)
+            tool.function(SimpleNamespace(deps=self.chat), order_id="ORD-2048", sku="SKU-AUD-01", quantity=-1)
         lookup = next(tool for tool in CUSTOMER_TOOLS if tool.name == "get_customer_profile")
         data = lookup.function(SimpleNamespace(deps=self.chat), customer_id="NO-EXISTE")
-        self.assertFalse(data["found"])
-        self.assertEqual(data["records"], [])
+        self.assertIn("No encontré NO-EXISTE", data)
 
     async def delegate(self):
         """El principal delega; el sub-agente consulta un pedido y entrega su informe."""
@@ -315,14 +315,14 @@ class AgentTests(unittest.IsolatedAsyncioTestCase):
         def main(messages, info):
             main_calls.append((messages, {tool.name for tool in info.function_tools}))
             if len(main_calls) == 1:
-                return ModelResponse(parts=[ToolCallPart(tool_name="delegate_research", args={"task": "Investiga ORD-1001"})])
+                return ModelResponse(parts=[ToolCallPart(tool_name="delegate_research", args={"task": "Investiga ORD-2048"})])
             return ModelResponse(parts=[TextPart(content="Tu pedido va en camino.")])
 
         def research(messages, info):
             research_calls.append({tool.name for tool in info.function_tools})
             if len(research_calls) == 1:
-                return ModelResponse(parts=[ToolCallPart(tool_name="get_order_status", args={"order_id": "ORD-1001"})])
-            return ModelResponse(parts=[TextPart(content="Informe: ORD-1001 sigue en ruta.")])
+                return ModelResponse(parts=[ToolCallPart(tool_name="get_order_status", args={"order_id": "ORD-2048"})])
+            return ModelResponse(parts=[TextPart(content="Informe: ORD-2048 llegó incompleto.")])
 
         with agent.override(model=FunctionModel(main)), researcher.override(model=FunctionModel(research)):
             data = await respond(self.chat, "Investiga mi pedido")
@@ -333,12 +333,12 @@ class AgentTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(main_calls[0][1], {"delegate_research", "ask_researcher"})
         self.assertIn("get_order_status", research_calls[0])
         self.assertNotIn("cancel_order", research_calls[0])  # investigar es solo lectura
-        self.assertIn("ORD-1001 sigue en ruta", str(main_calls[1][0]))
-        self.assertNotIn("simulated", str(main_calls[1][0]))  # el resultado crudo no llega al principal
+        self.assertIn("ORD-2048 llegó incompleto", str(main_calls[1][0]))
+        self.assertNotIn("AO-2048-009", str(main_calls[1][0]))  # el resultado crudo no llega al principal
         run = data["subagents"][0]
         transcript = (self.chat.folder / run["transcript"]).read_text()
         self.assertIn("get_order_status", transcript)
-        self.assertIn("simulated", transcript)
+        self.assertIn("AO-2048-009", transcript)
         self.assertEqual(run["messages"], 4)
         self.assertGreater(data["context_usage"]["tokens"]["retrieved"], 0)
 
@@ -355,9 +355,9 @@ class AgentTests(unittest.IsolatedAsyncioTestCase):
             return ModelResponse(parts=[TextPart(content="Consultó el estado del pedido.")])
 
         def remember(messages, info):
-            self.assertIn("Investiga ORD-1001", str(messages))
+            self.assertIn("Investiga ORD-2048", str(messages))
             self.assertIn("get_order_status", str(messages))
-            return ModelResponse(parts=[TextPart(content="Consulté get_order_status de ORD-1001.")])
+            return ModelResponse(parts=[TextPart(content="Consulté get_order_status de ORD-2048.")])
 
         with agent.override(model=FunctionModel(main)), researcher.override(model=FunctionModel(remember)):
             data = await respond(self.chat, "¿Cómo llegó a esa conclusión?")
@@ -397,12 +397,11 @@ class EndpointTests(unittest.TestCase):
 
 class DatasetTests(unittest.TestCase):
     def test_dataset_is_long_and_answers_are_separate(self):
-        dataset = json.loads((server.ROOT / "datasets/conversacion-larga.json").read_text())
+        dataset = json.loads((server.ROOT / "datasets/conversacion-muy-larga.json").read_text())
         messages = dataset["messages"]
         self.assertTrue(dataset["synthetic"])
-        self.assertEqual(len(messages), 256)
-        self.assertGreater(sum(len(message["content"]) for message in messages), 100000)
-        self.assertEqual([message["role"] for message in messages], ["user", "assistant"] * 128)
+        self.assertGreater(sum(len(message["content"]) for message in messages), 500000)
+        self.assertEqual([message["role"] for message in messages], ["user", "assistant"] * (len(messages) // 2))
         self.assertNotIn("questions", dataset)
         questions = json.loads((server.ROOT / "datasets/preguntas-y-respuestas.json").read_text())
         self.assertEqual(len(questions["questions"]), 16)
@@ -421,7 +420,7 @@ class DatasetTests(unittest.TestCase):
         self.assertEqual(cards[2], "DOCK-CAB-14")
 
     def test_loading_is_free_and_both_compaction_modes_use_the_original(self):
-        fixture = (server.ROOT / "datasets/conversacion-larga.json").read_text()
+        fixture = (server.ROOT / "datasets/conversacion-muy-larga.json").read_text()
         calls = []
 
         def summary_model(messages, info):
@@ -433,12 +432,12 @@ class DatasetTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as folder, patch.object(server, "ROOT", Path(folder)):
             dataset_folder = Path(folder) / "datasets"
             dataset_folder.mkdir()
-            (dataset_folder / "conversacion-larga.json").write_text(fixture)
+            (dataset_folder / "conversacion-muy-larga.json").write_text(fixture)
             with TestClient(server.app) as client, summarizer.override(model=FunctionModel(summary_model)):
                 for index, with_reference in enumerate([False, True]):
-                    started = client.post("/sessions", json={"on_demand": True, "compaction": True, "dataset": "larga"}).json()
+                    started = client.post("/sessions", json={"on_demand": True, "compaction": True, "dataset": True}).json()
                     self.assertEqual(len(calls), index)  # cargar no llama al modelo
-                    self.assertEqual(len(started["messages"]), 256)
+                    self.assertEqual(len(started["messages"]), 1282)
                     self.assertGreater(started["context_usage"]["tokens"]["chat"], 25000)
                     workspace = Path(started["folder"])
                     self.assertEqual(list(workspace.iterdir()), [])
@@ -451,7 +450,7 @@ class DatasetTests(unittest.TestCase):
                     reference = compacted["compaction"]["reference"]
                     if with_reference:
                         archive = ModelMessagesTypeAdapter.validate_json((workspace / reference).read_bytes())
-                        self.assertEqual(len(archive), 256)
+                        self.assertEqual(len(archive), 1282)
                     else:
                         self.assertIsNone(reference)
                         self.assertEqual(list(workspace.iterdir()), [])

@@ -2,7 +2,7 @@
  "id": "nebula-conversacion-muy-larga-v2",
  "title": "Análisis de cinco casos casi idénticos; Nébula Software a la mitad",
  "synthetic": true,
- "description": "Pedido de análisis de procesos y cinco conversaciones de soporte completas. Generado con generar_muy_larga.py.",
+ "description": "Pedido de análisis de procesos y cinco conversaciones de soporte completas.",
  "messages": [
   {
    "role": "user",
@@ -46,11 +46,11 @@
   },
   {
    "role": "user",
-   "content": "El precio de cada audífono fue 899 MXN, compramos 40 y aplicamos AULA-19. El descuento era de 12% y el envío original no tenía costo. No quiero que nadie compare los importes sin considerar el descuento."
+   "content": "El precio de cada audífono fue 909 MXN, compramos 40 y aplicamos TALLER-19. El descuento era de 12% y el envío original no tenía costo. No quiero que nadie compare los importes sin considerar el descuento."
   },
   {
    "role": "assistant",
-   "content": "El subtotal es 35,960 MXN; el descuento AULA-19 equivale a 4,315.20 MXN. El total correcto del pedido es 32,755.80 MXN, incluido el envío original gratuito. Para referencias por unidad, el precio descontado es 791.12 MXN. Mantendré separado el precio de lista de cualquier importe ya descontado."
+   "content": "El subtotal es 36,360 MXN; el descuento TALLER-19 equivale a 4,363.20 MXN. El total correcto del pedido es 31,996.80 MXN, incluido el envío original gratuito. Para referencias por unidad, el precio descontado es 799.92 MXN. Mantendré separado el precio de lista de cualquier importe ya descontado."
   },
   {
    "role": "user",
@@ -110,11 +110,11 @@
   },
   {
    "role": "user",
-   "content": "Veo dos cargos iguales. PAY-8849 es el pago que autorizamos y PAY-8850 apareció después. Los dos muestran 32,755.80 MXN. Nuestra administración teme que una devolución termine anulando también el pago válido."
+   "content": "Veo dos cargos iguales. PAY-8849 es el pago que autorizamos y PAY-8850 apareció después. Los dos muestran 31,996.80 MXN. Nuestra administración teme que una devolución termine anulando también el pago válido."
   },
   {
    "role": "assistant",
-   "content": "Separaré la investigación de cobro duplicado de la reposición de equipos. PAY-8849 queda como pago válido; la solicitud de reembolso debe referirse exclusivamente a PAY-8850 por 32,755.80 MXN. La reposición de seis unidades no cancela el pedido ni autoriza devolver el primer pago."
+   "content": "Separaré la investigación de cobro duplicado de la reposición de equipos. PAY-8849 queda como pago válido; la solicitud de reembolso debe referirse exclusivamente a PAY-8850 por 31,996.80 MXN. La reposición de seis unidades no cancela el pedido ni autoriza devolver el primer pago."
   },
   {
    "role": "user",
@@ -498,7 +498,7 @@
   },
   {
    "role": "assistant",
-   "content": "La decisión confirmada sigue siendo reposición de los dañados, sin reembolso adicional de esas unidades. El valor descontado de dos unidades sería 1,582.24 MXN como cálculo de referencia, no una devolución aprobada. La solicitud financiera activa sigue siendo únicamente el cargo duplicado PAY-8850 por 32,755.80 MXN."
+   "content": "La decisión confirmada sigue siendo reposición de los dañados, sin reembolso adicional de esas unidades. El valor descontado de dos unidades sería 1,599.84 MXN como cálculo de referencia, no una devolución aprobada. La solicitud financiera activa sigue siendo únicamente el cargo duplicado PAY-8850 por 31,996.80 MXN."
   },
   {
    "role": "user",
@@ -562,7 +562,7 @@
   },
   {
    "role": "assistant",
-   "content": "FIN-6638 identifica la solicitud de revisión del cargo duplicado PAY-8850. El importe sigue siendo 32,755.80 MXN y el pago válido PAY-8849 no se modifica. No hay confirmación de abono. El caso financiero permanece abierto hasta recibir evidencia del resultado."
+   "content": "FIN-6638 identifica la solicitud de revisión del cargo duplicado PAY-8850. El importe sigue siendo 31,996.80 MXN y el pago válido PAY-8849 no se modifica. No hay confirmación de abono. El caso financiero permanece abierto hasta recibir evidencia del resultado."
   },
   {
    "role": "user",
@@ -1070,11 +1070,11 @@
   },
   {
    "role": "user",
-   "content": "El precio de cada audífono fue 899 MXN, compramos 40 y aplicamos AULA-26. El descuento era de 12% y el envío original no tenía costo. No quiero que nadie compare los importes sin considerar el descuento."
+   "content": "El precio de cada audífono fue 919 MXN, compramos 40 y aplicamos TALLER-26. El descuento era de 12% y el envío original no tenía costo. No quiero que nadie compare los importes sin considerar el descuento."
   },
   {
    "role": "assistant",
-   "content": "El subtotal es 35,960 MXN; el descuento AULA-26 equivale a 4,315.20 MXN. El total correcto del pedido es 33,866.80 MXN, incluido el envío original gratuito. Para referencias por unidad, el precio descontado es 791.12 MXN. Mantendré separado el precio de lista de cualquier importe ya descontado."
+   "content": "El subtotal es 36,760 MXN; el descuento TALLER-26 equivale a 4,411.20 MXN. El total correcto del pedido es 32,348.80 MXN, incluido el envío original gratuito. Para referencias por unidad, el precio descontado es 808.72 MXN. Mantendré separado el precio de lista de cualquier importe ya descontado."
   },
   {
    "role": "user",
@@ -1134,11 +1134,11 @@
   },
   {
    "role": "user",
-   "content": "Veo dos cargos iguales. PAY-8856 es el pago que autorizamos y PAY-8857 apareció después. Los dos muestran 33,866.80 MXN. Nuestra administración teme que una devolución termine anulando también el pago válido."
+   "content": "Veo dos cargos iguales. PAY-8856 es el pago que autorizamos y PAY-8857 apareció después. Los dos muestran 32,348.80 MXN. Nuestra administración teme que una devolución termine anulando también el pago válido."
   },
   {
    "role": "assistant",
-   "content": "Separaré la investigación de cobro duplicado de la reposición de equipos. PAY-8856 queda como pago válido; la solicitud de reembolso debe referirse exclusivamente a PAY-8857 por 33,866.80 MXN. La reposición de seis unidades no cancela el pedido ni autoriza devolver el primer pago."
+   "content": "Separaré la investigación de cobro duplicado de la reposición de equipos. PAY-8856 queda como pago válido; la solicitud de reembolso debe referirse exclusivamente a PAY-8857 por 32,348.80 MXN. La reposición de seis unidades no cancela el pedido ni autoriza devolver el primer pago."
   },
   {
    "role": "user",
@@ -1522,7 +1522,7 @@
   },
   {
    "role": "assistant",
-   "content": "La decisión confirmada sigue siendo reposición de los dañados, sin reembolso adicional de esas unidades. El valor descontado de dos unidades sería 1,582.24 MXN como cálculo de referencia, no una devolución aprobada. La solicitud financiera activa sigue siendo únicamente el cargo duplicado PAY-8857 por 33,866.80 MXN."
+   "content": "La decisión confirmada sigue siendo reposición de los dañados, sin reembolso adicional de esas unidades. El valor descontado de dos unidades sería 1,617.44 MXN como cálculo de referencia, no una devolución aprobada. La solicitud financiera activa sigue siendo únicamente el cargo duplicado PAY-8857 por 32,348.80 MXN."
   },
   {
    "role": "user",
@@ -1586,7 +1586,7 @@
   },
   {
    "role": "assistant",
-   "content": "FIN-6645 identifica la solicitud de revisión del cargo duplicado PAY-8857. El importe sigue siendo 33,866.80 MXN y el pago válido PAY-8856 no se modifica. No hay confirmación de abono. El caso financiero permanece abierto hasta recibir evidencia del resultado."
+   "content": "FIN-6645 identifica la solicitud de revisión del cargo duplicado PAY-8857. El importe sigue siendo 32,348.80 MXN y el pago válido PAY-8856 no se modifica. No hay confirmación de abono. El caso financiero permanece abierto hasta recibir evidencia del resultado."
   },
   {
    "role": "user",
@@ -2094,11 +2094,11 @@
   },
   {
    "role": "user",
-   "content": "El precio de cada audífono fue 899 MXN, compramos 40 y aplicamos AULA-12. El descuento era de 12% y el envío original no tenía costo. No quiero que nadie compare los importes sin considerar el descuento."
+   "content": "El precio de cada audífono fue 899 MXN, compramos 40 y aplicamos TALLER-12. El descuento era de 12% y el envío original no tenía costo. No quiero que nadie compare los importes sin considerar el descuento."
   },
   {
    "role": "assistant",
-   "content": "El subtotal es 35,960 MXN; el descuento AULA-12 equivale a 4,315.20 MXN. El total correcto del pedido es 31,644.80 MXN, incluido el envío original gratuito. Para referencias por unidad, el precio descontado es 791.12 MXN. Mantendré separado el precio de lista de cualquier importe ya descontado."
+   "content": "El subtotal es 35,960 MXN; el descuento TALLER-12 equivale a 4,315.20 MXN. El total correcto del pedido es 31,644.80 MXN, incluido el envío original gratuito. Para referencias por unidad, el precio descontado es 791.12 MXN. Mantendré separado el precio de lista de cualquier importe ya descontado."
   },
   {
    "role": "user",
@@ -3118,11 +3118,11 @@
   },
   {
    "role": "user",
-   "content": "El precio de cada audífono fue 899 MXN, compramos 40 y aplicamos AULA-33. El descuento era de 12% y el envío original no tenía costo. No quiero que nadie compare los importes sin considerar el descuento."
+   "content": "El precio de cada audífono fue 929 MXN, compramos 40 y aplicamos TALLER-33. El descuento era de 12% y el envío original no tenía costo. No quiero que nadie compare los importes sin considerar el descuento."
   },
   {
    "role": "assistant",
-   "content": "El subtotal es 35,960 MXN; el descuento AULA-33 equivale a 4,315.20 MXN. El total correcto del pedido es 34,977.80 MXN, incluido el envío original gratuito. Para referencias por unidad, el precio descontado es 791.12 MXN. Mantendré separado el precio de lista de cualquier importe ya descontado."
+   "content": "El subtotal es 37,160 MXN; el descuento TALLER-33 equivale a 4,459.20 MXN. El total correcto del pedido es 32,700.80 MXN, incluido el envío original gratuito. Para referencias por unidad, el precio descontado es 817.52 MXN. Mantendré separado el precio de lista de cualquier importe ya descontado."
   },
   {
    "role": "user",
@@ -3182,11 +3182,11 @@
   },
   {
    "role": "user",
-   "content": "Veo dos cargos iguales. PAY-8863 es el pago que autorizamos y PAY-8864 apareció después. Los dos muestran 34,977.80 MXN. Nuestra administración teme que una devolución termine anulando también el pago válido."
+   "content": "Veo dos cargos iguales. PAY-8863 es el pago que autorizamos y PAY-8864 apareció después. Los dos muestran 32,700.80 MXN. Nuestra administración teme que una devolución termine anulando también el pago válido."
   },
   {
    "role": "assistant",
-   "content": "Separaré la investigación de cobro duplicado de la reposición de equipos. PAY-8863 queda como pago válido; la solicitud de reembolso debe referirse exclusivamente a PAY-8864 por 34,977.80 MXN. La reposición de seis unidades no cancela el pedido ni autoriza devolver el primer pago."
+   "content": "Separaré la investigación de cobro duplicado de la reposición de equipos. PAY-8863 queda como pago válido; la solicitud de reembolso debe referirse exclusivamente a PAY-8864 por 32,700.80 MXN. La reposición de seis unidades no cancela el pedido ni autoriza devolver el primer pago."
   },
   {
    "role": "user",
@@ -3570,7 +3570,7 @@
   },
   {
    "role": "assistant",
-   "content": "La decisión confirmada sigue siendo reposición de los dañados, sin reembolso adicional de esas unidades. El valor descontado de dos unidades sería 1,582.24 MXN como cálculo de referencia, no una devolución aprobada. La solicitud financiera activa sigue siendo únicamente el cargo duplicado PAY-8864 por 34,977.80 MXN."
+   "content": "La decisión confirmada sigue siendo reposición de los dañados, sin reembolso adicional de esas unidades. El valor descontado de dos unidades sería 1,635.04 MXN como cálculo de referencia, no una devolución aprobada. La solicitud financiera activa sigue siendo únicamente el cargo duplicado PAY-8864 por 32,700.80 MXN."
   },
   {
    "role": "user",
@@ -3634,7 +3634,7 @@
   },
   {
    "role": "assistant",
-   "content": "FIN-6652 identifica la solicitud de revisión del cargo duplicado PAY-8864. El importe sigue siendo 34,977.80 MXN y el pago válido PAY-8863 no se modifica. No hay confirmación de abono. El caso financiero permanece abierto hasta recibir evidencia del resultado."
+   "content": "FIN-6652 identifica la solicitud de revisión del cargo duplicado PAY-8864. El importe sigue siendo 32,700.80 MXN y el pago válido PAY-8863 no se modifica. No hay confirmación de abono. El caso financiero permanece abierto hasta recibir evidencia del resultado."
   },
   {
    "role": "user",
@@ -4142,11 +4142,11 @@
   },
   {
    "role": "user",
-   "content": "El precio de cada audífono fue 899 MXN, compramos 40 y aplicamos AULA-40. El descuento era de 12% y el envío original no tenía costo. No quiero que nadie compare los importes sin considerar el descuento."
+   "content": "El precio de cada audífono fue 939 MXN, compramos 40 y aplicamos TALLER-40. El descuento era de 12% y el envío original no tenía costo. No quiero que nadie compare los importes sin considerar el descuento."
   },
   {
    "role": "assistant",
-   "content": "El subtotal es 35,960 MXN; el descuento AULA-40 equivale a 4,315.20 MXN. El total correcto del pedido es 36,088.80 MXN, incluido el envío original gratuito. Para referencias por unidad, el precio descontado es 791.12 MXN. Mantendré separado el precio de lista de cualquier importe ya descontado."
+   "content": "El subtotal es 37,560 MXN; el descuento TALLER-40 equivale a 4,507.20 MXN. El total correcto del pedido es 33,052.80 MXN, incluido el envío original gratuito. Para referencias por unidad, el precio descontado es 826.32 MXN. Mantendré separado el precio de lista de cualquier importe ya descontado."
   },
   {
    "role": "user",
@@ -4206,11 +4206,11 @@
   },
   {
    "role": "user",
-   "content": "Veo dos cargos iguales. PAY-8870 es el pago que autorizamos y PAY-8871 apareció después. Los dos muestran 36,088.80 MXN. Nuestra administración teme que una devolución termine anulando también el pago válido."
+   "content": "Veo dos cargos iguales. PAY-8870 es el pago que autorizamos y PAY-8871 apareció después. Los dos muestran 33,052.80 MXN. Nuestra administración teme que una devolución termine anulando también el pago válido."
   },
   {
    "role": "assistant",
-   "content": "Separaré la investigación de cobro duplicado de la reposición de equipos. PAY-8870 queda como pago válido; la solicitud de reembolso debe referirse exclusivamente a PAY-8871 por 36,088.80 MXN. La reposición de seis unidades no cancela el pedido ni autoriza devolver el primer pago."
+   "content": "Separaré la investigación de cobro duplicado de la reposición de equipos. PAY-8870 queda como pago válido; la solicitud de reembolso debe referirse exclusivamente a PAY-8871 por 33,052.80 MXN. La reposición de seis unidades no cancela el pedido ni autoriza devolver el primer pago."
   },
   {
    "role": "user",
@@ -4594,7 +4594,7 @@
   },
   {
    "role": "assistant",
-   "content": "La decisión confirmada sigue siendo reposición de los dañados, sin reembolso adicional de esas unidades. El valor descontado de dos unidades sería 1,582.24 MXN como cálculo de referencia, no una devolución aprobada. La solicitud financiera activa sigue siendo únicamente el cargo duplicado PAY-8871 por 36,088.80 MXN."
+   "content": "La decisión confirmada sigue siendo reposición de los dañados, sin reembolso adicional de esas unidades. El valor descontado de dos unidades sería 1,652.64 MXN como cálculo de referencia, no una devolución aprobada. La solicitud financiera activa sigue siendo únicamente el cargo duplicado PAY-8871 por 33,052.80 MXN."
   },
   {
    "role": "user",
@@ -4658,7 +4658,7 @@
   },
   {
    "role": "assistant",
-   "content": "FIN-6659 identifica la solicitud de revisión del cargo duplicado PAY-8871. El importe sigue siendo 36,088.80 MXN y el pago válido PAY-8870 no se modifica. No hay confirmación de abono. El caso financiero permanece abierto hasta recibir evidencia del resultado."
+   "content": "FIN-6659 identifica la solicitud de revisión del cargo duplicado PAY-8871. El importe sigue siendo 33,052.80 MXN y el pago válido PAY-8870 no se modifica. No hay confirmación de abono. El caso financiero permanece abierto hasta recibir evidencia del resultado."
   },
   {
    "role": "user",

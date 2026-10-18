@@ -6,8 +6,8 @@ Una persona del equipo le pide al agente analizar cinco casos de soporte casi ig
 
 | Pregunta | Respuesta correcta |
 |---|---|
-| En el caso de Nébula Software, ¿cuántas tarjetas tienen una referencia que termina en un número mayor a 20? | 10 |
-| En el caso de Nébula Software, lista las tarjetas del micrófono USB con su puesto. | MIC-GAIN-18 (25), MIC-MON-21 (26), MIC-48K-16 (27), MIC-TEST-08 (28) |
-| En el caso de Nébula Software, ¿qué tarjetas de la cámara se registraron y en qué puestos? | CAM-1080-30 (05), CAM-ANG-78 (06), CAM-PRIV-03 (07), CAM-UVC-02 (08) |
-| En el caso de Nébula Software, ¿cuál fue la última tarjeta que se registró y para qué puesto? | USB-DEV-31, puesto 32 |
-| En el caso de Nébula Software, ¿qué tarjetas del almacenamiento USB se registraron y en qué puestos? | USB-CAP-512 (29), USB-FMT-17 (30), USB-RESP-23 (31), USB-DEV-31 (32) |
+| ¿A qué dirección se entrega el pedido de cada cliente? | Cada uno a la suya, en Avenida del Laboratorio, edificio B, puerta 3: Despacho Ruiz Contadores 253, Clínica Dental Sonrisa 266, Nébula Software 240, Agencia Pixel 279 y Hotel Mirador 292 |
+| ¿Cómo va la preparación de la sala de Nébula Software? | Tiene sus 32 tarjetas registradas, una por puesto, todas con el procedimiento definido y la prueba pendiente |
+| ¿Qué tan avanzada está la preparación de la sala de cada cliente? | Igual en los cinco: 32 tarjetas cada uno y ninguna prueba ejecutada |
+| ¿Cuántas tarjetas de preparación registró cada cliente? | 32 cada uno, 160 en total |
+| ¿Qué equipos tiene que probar cada cliente antes de su taller? | Los mismos ocho en los cinco: audífonos, cámara, router, dock USB, teclado, monitor, micrófono USB y almacenamiento USB, en cuatro puestos cada uno |

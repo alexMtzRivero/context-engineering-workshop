@@ -13,24 +13,20 @@ El resto ya funciona: `chat_agent.py` arma el agente y decide qué tools ve seg�
 
 El frontend usa CSS propio inspirado en shadcn: tonos neutros, tarjetas, bordes suaves y botones simples. En pantallas amplias muestra conversación y contexto lado a lado; en pantallas pequeñas se apilan. No requiere React, Tailwind, fuentes externas ni instalación de componentes.
 
-## Conversación larga para los estudiantes
-
-Conversación ficticia de **256 mensajes**, unos **26 mil tokens estimados**, y 16 preguntas con respuestas esperadas separadas del historial. Incluye correcciones, acuerdos vigentes, pendientes y detalles antiguos para comprobar qué conserva la compactación.
-
-En el chat, pulsa **Cargar conversación larga**. Se carga sin consumir API, con los toggles que tengas encendidos: con todo apagado sirve para ver cómo responde el agente con los 256 mensajes en contexto. Para compactarla, enciende **Compactación**, y **Leer y escribir en disco** si quieres recuperar el original, y vuelve a cargarla: cada toggle abre un chat nuevo. El mismo botón permite abrir otra copia original y comparar con y sin referencia. Los archivos fuente y las respuestas esperadas están fuera del workspace accesible al agente.
-
 ## Conversación muy larga: context rot en vivo
 
-`datasets/conversacion-muy-larga.json` simula un análisis de procesos: una persona del equipo le pide al agente revisar cinco casos de soporte casi iguales para encontrar la falla que los produce, y le pasa las cinco conversaciones completas, una tras otra. Nébula Software, el caso de la conversación larga, queda a la mitad. Son 1,282 mensajes y unos 205 mil tokens según el proveedor. Se regenera con `python datasets/generar_muy_larga.py`.
+`datasets/conversacion-muy-larga.json` simula un análisis de procesos: una persona del equipo le pide al agente revisar cinco casos de soporte casi iguales para encontrar la falla que los produce, y le pasa las cinco conversaciones completas, una tras otra. Nébula Software queda a la mitad. Son 1,282 mensajes y unos 205 mil tokens según el proveedor.
 
-Con todo apagado, pulsa **Cargar conversación muy larga** y pregunta: **"En el caso de Nébula Software, ¿cuántas tarjetas tienen una referencia que termina en un número mayor a 20?"** La respuesta correcta es 10.
+Pulsa **Cargar conversación muy larga**: se carga sin consumir API, con los toggles que tengas encendidos. Con todo apagado, pregunta: **"En el caso de Nébula Software, ¿cuántas tarjetas tienen una referencia que termina en un número mayor a 20?"** La respuesta correcta es 10.
 
-| Modelo | Conversación larga (~41 mil tokens) | Conversación muy larga (~205 mil tokens) |
-|---|---|---|
-| Haiku 5.5 | 10, correcto (3 de 3) | "No puedo responder" (3 de 3): dice que las tarjetas no son de ningún cliente |
-| Sonnet 5.5 | 10, correcto | Dice 10, pero mezcla tarjetas de otros clientes |
+| Modelo | Respuesta con la conversación muy larga |
+|---|---|
+| Haiku 5.5 | "No puedo responder" (3 de 3): dice que las tarjetas no son de ningún cliente |
+| Sonnet 5.5 | Dice 10, pero mezcla tarjetas de otros clientes |
 
 Las cinco preguntas trampa, con su respuesta correcta: [datasets/README.md](datasets/README.md). Pruebas del 17 de octubre de 2026 vía OpenRouter; los resultados varían entre intentos.
+
+Para compactarla, enciende **Compactación**, y **Leer y escribir en disco** si quieres recuperar el original, y vuelve a cargarla: cada toggle abre un chat nuevo. Las 16 preguntas de `datasets/preguntas-y-respuestas.json` sirven para calificar qué conservó el resumen; el agente nunca las ve.
 
 Cada pregunta manda los 205 mil tokens completos. Arriba de 100 mil tokens, Haiku 5.5 cobra su precio de contexto largo: unos 10 centavos de dólar por pregunta. Con Sonnet 5.5, unos 41.
 
@@ -40,22 +36,21 @@ El catálogo tiene **80 tools**: diez por área de clientes, pedidos, envíos, p
 
 Enciende **Todas las tools** para mandar las 80 de servicio en cada llamada. Cambia a **Tools bajo demanda** para empezar solo con el buscador y comparar la barra: su definición ocupa alrededor de 67 tokens estimados. Los dos modos acceden a las mismas operaciones; lo que cambia es cuáles schemas recibe el modelo.
 
-Datos ficticios para probar:
+Las tools responden con texto fijo sobre los cinco clientes de la conversación muy larga, con las mismas cifras. Identificadores para probar:
 
-| Entidad | Identificador |
-|---|---|
-| Cliente | CUS-001, Ana García, ana@example.com |
-| Pedido | ORD-1001 |
-| Envío | SHP-001 |
-| Pago | PAY-001 |
-| Devolución | RET-001 |
-| Suscripción | SUB-001 |
-| Ticket | TKT-001 |
-| Producto | SKU-001, Audífonos Demo |
+| Cliente | Cuenta | Pedido | Reposición y guía | Pago duplicado | Devolución | Caso |
+|---|---|---|---|---|---|---|
+| Despacho Ruiz Contadores | CUS-L049 | ORD-2055 | ORD-2060, SHP-9924 | PAY-8850 | RET-0733 | SUP-3197 |
+| Clínica Dental Sonrisa | CUS-L056 | ORD-2062 | ORD-2067, SHP-9931 | PAY-8857 | RET-0740 | SUP-3204 |
+| Nébula Software | CUS-L042 | ORD-2048 | ORD-2053, SHP-9917 | PAY-8843 | RET-0726 | SUP-3190 |
+| Agencia Pixel | CUS-L063 | ORD-2069 | ORD-2074, SHP-9938 | PAY-8864 | RET-0747 | SUP-3211 |
+| Hotel Mirador | CUS-L070 | ORD-2076 | ORD-2081, SHP-9945 | PAY-8871 | RET-0754 | SUP-3218 |
 
-Prueba: **"Consulta el estado de mi pedido ORD-1001"**. Para una operación de escritura: **"Registra una solicitud de cancelación de ORD-1001 porque lo pedí por error"**.
+El producto es `SKU-AUD-01`, los audífonos. Ningún cliente tiene suscripciones.
 
-Las lecturas filtran datos sintéticos por los parámetros. Las escrituras registran solicitudes en memoria y devuelven un folio REQ-001; no aplican el cambio comercial ni conectan servicios externos. El mismo handler simulado sirve a todas las tools; sus schemas son distintos. Así se puede explicar un catálogo grande sin implementar ochenta integraciones. Las lecturas de servicio se contabilizan como contexto buscado en la barra.
+Prueba: **"Consulta el estado de mi pedido ORD-2048"**. Para una operación de escritura: **"Registra una solicitud de cancelación de ORD-2048 porque lo pedí por error"**.
+
+Cada lectura busca el identificador que recibe y llena una plantilla de texto con los datos de ese cliente; si no existe, responde "No encontré…". Las escrituras registran la solicitud en memoria y la confirman con un folio, REQ-001, sin aplicar ningún cambio. El mismo handler sirve a las 80 tools; sus schemas son distintos. Así se puede explicar un catálogo grande sin implementar ochenta integraciones. Las lecturas de servicio se contabilizan como contexto buscado en la barra.
 
 En carga completa, compactar el historial no elimina los schemas de las 84 tools: el segmento azul seguirá siendo grande. Para reducir esa parte hay que usar descubrimiento dinámico. Esta diferencia permite explicar por qué compactación y descubrimiento resuelven partes distintas del contexto.
 
@@ -63,7 +58,7 @@ En carga completa, compactar el historial no elimina los schemas de las 84 tools
 
 ## Correr
 
-Python 3.11+ y una API key con crédito disponible. La configuración de ejemplo usa Claude Haiku 5.5 a través de OpenRouter: es barato y con la conversación muy larga se equivoca en vivo. Para comparar, cambia a `openrouter:anthropic/claude-sonnet-5.5`. Salvo la sección de context rot, las pruebas reales que cita este README se hicieron con Sonnet 4.6. Claude Code puede ayudar durante el taller; el servidor hace sus propias llamadas a la API.
+Python 3.11+ y una API key con crédito disponible. La configuración de ejemplo usa Claude Haiku 5.5 a través de OpenRouter: es barato y con la conversación muy larga se equivoca en vivo. Para comparar, cambia a `openrouter:anthropic/claude-sonnet-5.5`. Salvo la sección de context rot, las pruebas reales que cita este README se hicieron con Sonnet 4.6 y una versión anterior del dataset. Claude Code puede ayudar durante el taller; el servidor hace sus propias llamadas a la API.
 
 ```sh
 python3 -m venv .venv
@@ -172,7 +167,7 @@ Las tools descubiertas permanecen disponibles en ese chat hasta compactar. Compa
 
 ### 5. Extra: sub-agente investigador
 
-Para quien termine antes. Enciende **Sub-agente investigador** y pide: **"Investiga el caso completo de CUS-001: pedido, envío, pago, devolución y ticket. ¿Hay algo pendiente?"**.
+Para quien termine antes. Enciende **Sub-agente investigador** y pide: **"Investiga el caso completo de CUS-L042: pedido, envío, pago, devolución y ticket. ¿Hay algo pendiente?"**.
 
 El código está en `paso5_subagente.py`. Con **Todas las tools** apagado, el agente principal no tiene las tools de servicio. Con `delegate_research` delega la tarea a `researcher`, otro agente Pydantic AI con contexto propio y 53 tools de solo lectura (51 de servicio más `list_files` y `read_file`). Los schemas y los resultados de esas consultas viven en el contexto del sub-agente. Al principal solo le llegan el informe, el `run_id` y la ruta del archivo. La conversación completa del sub-agente se guarda en `subagents/<run_id>.json`.
 
@@ -184,7 +179,7 @@ Después pregunta: **"¿Qué consultó el investigador para concluir lo de la de
 | `ask_researcher` | Respuesta a la pregunta | La misma conversación, con la pregunta añadida |
 | `read_file` sobre el JSON | La conversación completa (el segmento naranja crece) | Sin cambios |
 
-**Prueba real (2026-10-12, Claude Sonnet 4.6 vía OpenRouter):** la investigación de CUS-001 hizo que el sub-agente consumiera 92,062 tokens de entrada (8 mensajes, consultas en paralelo). El principal usó 6,366 en ese turno y su contexto quedó en unos 2,400 tokens estimados. Al revivirlo, el sub-agente respondió sin nuevas consultas cuáles 6 tools usó para concluir el estado de RET-001; esa llamada costó 28,308 tokens de entrada, porque reentra todo su historial. En una primera versión el informe venía con tablas y emojis; ahora se pide texto plano para otro agente, pero no se garantiza el límite de 120 palabras.
+**Prueba real (2026-10-12, Claude Sonnet 4.6 vía OpenRouter, con los datos de prueba anteriores):** la investigación de CUS-001 hizo que el sub-agente consumiera 92,062 tokens de entrada (8 mensajes, consultas en paralelo). El principal usó 6,366 en ese turno y su contexto quedó en unos 2,400 tokens estimados. Al revivirlo, el sub-agente respondió sin nuevas consultas cuáles 6 tools usó para concluir el estado de RET-001; esa llamada costó 28,308 tokens de entrada, porque reentra todo su historial. En una primera versión el informe venía con tablas y emojis; ahora se pide texto plano para otro agente, pero no se garantiza el límite de 120 palabras.
 
 Es la misma idea que la compactación con referencia, aplicada a una tarea delegada: un resumen en el contexto y el original recuperable. La diferencia es que aquí el original se puede **interrogar** (revivir) en lugar de solo leer.
 

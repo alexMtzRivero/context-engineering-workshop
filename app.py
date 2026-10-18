@@ -2,7 +2,6 @@
 
 import asyncio
 import json
-from typing import Literal
 from dataclasses import dataclass, field
 from uuid import uuid4
 
@@ -26,10 +25,8 @@ class Session:
 sessions: dict[str, Session] = {}
 
 
-DATASETS = {
-    "larga": "datasets/conversacion-larga.json",  # 256 mensajes, unos 41 mil tokens
-    "muy-larga": "datasets/conversacion-muy-larga.json",  # 5 clientes casi iguales, unos 205 mil tokens
-}
+# Cinco clientes casi iguales, unos 205 mil tokens.
+DATASET = "datasets/conversacion-muy-larga.json"
 
 
 class Start(BaseModel):
@@ -41,7 +38,7 @@ class Start(BaseModel):
     compaction: bool = False
     on_demand: bool = False
     subagent: bool = False
-    dataset: Literal["larga", "muy-larga"] | None = None
+    dataset: bool = False
 
 
 class Message(BaseModel):
@@ -70,9 +67,9 @@ def start(body: Start):
     folder.mkdir(parents=True, exist_ok=True)
     sessions[session_id] = Session(Chat(folder=folder, **body.model_dump(exclude={"dataset"})))
     messages = []
-    # La conversación larga se convierte a mensajes de Pydantic AI sin llamar al modelo.
+    # La conversación muy larga se convierte a mensajes de Pydantic AI sin llamar al modelo.
     if body.dataset:
-        messages = json.loads((ROOT / DATASETS[body.dataset]).read_text())["messages"]
+        messages = json.loads((ROOT / DATASET).read_text())["messages"]
         sessions[session_id].chat.history = [
             ModelRequest(parts=[UserPromptPart(content=message["content"])])
             if message["role"] == "user" else ModelResponse(parts=[TextPart(content=message["content"])])

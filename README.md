@@ -7,7 +7,7 @@ Un chat local para practicar compactación, recuperación de archivos y descubri
 | `paso2_disco.py` | `list_files`, `search_file`, `read_file` y `write_file` |
 | `paso3_compactacion.py` | `compact`, con el mecanismo de compactación que elijas |
 | `paso4_descubrimiento.py` | `discover_tools` |
-| `paso5_subagente.py` | `delegate_research` y `ask_researcher` (extra) |
+| `paso5_subagente.py` | `ask_client`: un agente por cliente (extra) |
 
 El resto ya funciona: `chat_agent.py` arma el agente y decide qué tools ve según los toggles; `base.py` tiene el estado del chat, el catálogo y las rutas seguras; `app.py` conecta el navegador; `customer_tools.py` contiene el catálogo simulado de atención al cliente. El frontend es una página HTML con JavaScript vanilla.
 
@@ -83,7 +83,7 @@ La página no tiene pasos fijos: cada toggle agrega algo a lo que el modelo reci
 | Todas las tools | Las 80 tools de servicio en cada llamada |
 | Compactación | `compact_context` y los botones de compactar |
 | Tools bajo demanda | Solo `discover_tools`; lo que encuentra se suma desde la siguiente llamada |
-| Sub-agente investigador | `delegate_research` y `ask_researcher` |
+| Un agente por cliente | `ask_client` |
 
 **Todas las tools** y **Tools bajo demanda** son dos formas de entregar el mismo catálogo, así que la página solo deja una encendida.
 
@@ -165,23 +165,22 @@ Al principio el modelo solo ve `discover_tools`, en `paso4_descubrimiento.py`. B
 
 Las tools descubiertas permanecen disponibles en ese chat hasta compactar. Compactar también limpia ese conjunto: el agente vuelve a descubrir lo que necesite. Es una búsqueda literal para explicar el mecanismo, no un buscador semántico ni MCP.
 
-### 5. Extra: sub-agente investigador
+### 5. Extra: un agente por cliente
 
-Para quien termine antes. Enciende **Sub-agente investigador** y pide: **"Investiga el caso completo de CUS-L042: pedido, envío, pago, devolución y ticket. ¿Hay algo pendiente?"**.
+Para quien termine antes. Enciende **Un agente por cliente** y carga la conversación muy larga. En vez de meter los cinco casos en un solo contexto, el servidor guarda la conversación de cada cliente en `clientes/<cliente>.json` (256 mensajes, unos 41 mil tokens cada una) y el agente principal empieza vacío. Cada caso empieza con «Hola, soy…, coordinadora de operaciones de <cliente>», así que separarlos no requiere al modelo.
 
-El código está en `paso5_subagente.py`. Con **Todas las tools** apagado, el agente principal no tiene las tools de servicio. Con `delegate_research` delega la tarea a `researcher`, otro agente Pydantic AI con contexto propio y 53 tools de solo lectura (51 de servicio más `list_files` y `read_file`). Los schemas y los resultados de esas consultas viven en el contexto del sub-agente. Al principal solo le llegan el informe, el `run_id` y la ruta del archivo. La conversación completa del sub-agente se guarda en `subagents/<run_id>.json`.
+Pide: **"Pregúntale al agente de cada cliente cuándo recibe su reposición. ¿Cuál la recibe primero?"** o **"¿Qué tan avanzada está la preparación de la sala de cada cliente?"**.
 
-Después pregunta: **"¿Qué consultó el investigador para concluir lo de la devolución? Pregúntale a él, no adivines."**. Con `ask_researcher`, el principal **revive** al sub-agente: carga su historial desde disco, lo pasa como `message_history` y le hace la pregunta. El sub-agente responde con la memoria completa de su proceso y el archivo se actualiza con el nuevo intercambio.
+El código está en `paso5_subagente.py`. Con `ask_client(cliente, pregunta)`, el principal corre `client_agent`, otro agente Pydantic AI, con la conversación de ese cliente como `message_history`. Al principal solo le llega la respuesta. Si la pregunta es sobre varios clientes, le pregunta a cada uno; Pydantic AI corre esas llamadas en paralelo. Cada pregunta arranca de la conversación original del cliente: el sub-agente no acumula las preguntas anteriores.
 
 | | Qué entra al contexto principal | Qué queda en disco |
 |---|---|---|
-| `delegate_research` | Informe breve + `run_id` + ruta | Conversación completa del sub-agente |
-| `ask_researcher` | Respuesta a la pregunta | La misma conversación, con la pregunta añadida |
+| `ask_client` | La respuesta del agente del cliente | `clientes/<cliente>.json`, sin cambios |
 | `search_file` y `read_file` sobre el JSON | Solo las líneas buscadas (el segmento naranja crece poco) | Sin cambios |
 
-**Prueba real (2026-10-12, Claude Sonnet 4.6 vía OpenRouter, con los datos de prueba anteriores):** la investigación de CUS-001 hizo que el sub-agente consumiera 92,062 tokens de entrada (8 mensajes, consultas en paralelo). El principal usó 6,366 en ese turno y su contexto quedó en unos 2,400 tokens estimados. Al revivirlo, el sub-agente respondió sin nuevas consultas cuáles 6 tools usó para concluir el estado de RET-001; esa llamada costó 28,308 tokens de entrada, porque reentra todo su historial. En una primera versión el informe venía con tablas y emojis; ahora se pide texto plano para otro agente, pero no se garantiza el límite de 120 palabras.
+**Prueba real (2026-10-19, Haiku 5.5 vía OpenRouter):** las dos preguntas que fallan con los cinco casos juntos salieron bien 2 de 2: Nébula Software recibe primero (18 de octubre, de 09:00 a 11:30) y las cinco salas están igual, con 32 tarjetas y ninguna prueba ejecutada. Cada agente de cliente usó unos 41 mil tokens de entrada; los cinco suman los mismos ~205 mil de la conversación completa, pero repartidos. El principal usó entre 3 y 4 mil tokens de entrada y su contexto quedó en unos 2 mil. Cada pregunta tardó de 10 a 13 segundos.
 
-Es la misma idea que la compactación con referencia, aplicada a una tarea delegada: un resumen en el contexto y el original recuperable. La diferencia es que aquí el original se puede **interrogar** (revivir) en lugar de solo leer.
+Es la otra cara del context rot: la información no cambió, solo dejó de estar mezclada. Marcar los casos o separarlos en agentes también es ingeniería de contexto.
 
 ## Verificación sin consumir API
 
@@ -192,7 +191,7 @@ python -m unittest discover -s tests -v
 
 Las pruebas usan `FunctionModel` de Pydantic AI para producir respuestas y llamadas a tools controladas. Verifican el loop real del agente, escritura y lectura, límites de rutas, ambos modos de compactación, recuperación del original, descubrimiento de tools y endpoints. No prueban la calidad de Claude al resumir ni su elección de tools: esas dos cosas se revisan con la API key en la demo.
 
-Las pruebas del paso 5 simulan al principal y al sub-agente con `FunctionModel`: verifican que el resultado crudo de las tools no llega al principal, que investigar es solo lectura, que el archivo guarda la conversación completa y que el sub-agente revivido recibe su historial. En la rama `solucion` pasan las 23 pruebas; en `main` fallan las de los pasos que todavía no escribes.
+Las pruebas del paso 5 simulan al principal y a los agentes de cliente con `FunctionModel`: verifican que cada agente ve solo la conversación de su cliente, que al principal solo llegan las respuestas y que cargar la conversación con el extra encendido la reparte en cinco archivos y deja al principal vacío. En la rama `solucion` pasan las 27 pruebas; en `main` fallan las de los pasos que todavía no escribes.
 
 **Prueba real, 2026-10-12:** Claude Sonnet 4.6 vía OpenRouter respondió, descubrió `write_file`, escribió un archivo, compactó con referencia, leyó el archivo después de compactar y compactó sin referencia. También pasaron las 11 pruebas controladas. Se usaron datos sintéticos y carpetas temporales; esto confirma el flujo, no mide todavía calidad de resumen en conversaciones largas.
 

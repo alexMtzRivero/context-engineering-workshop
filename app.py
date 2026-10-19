@@ -27,6 +27,19 @@ sessions: dict[str, Session] = {}
 
 # Cinco clientes casi iguales, unos 205 mil tokens.
 DATASET = "datasets/conversacion-muy-larga.json"
+# Con contextos enormes el filtro de contenido del proveedor a veces bloquea la respuesta; reintentar suele bastar.
+FILTER_RETRIES = 2
+
+
+async def with_filter_retry(call):
+    """Repite la llamada si el filtro la bloquea; a la tercera, el error llega a la página."""
+    for attempt in range(FILTER_RETRIES + 1):
+        try:
+            return await call()
+        except ContentFilterError:
+            if attempt == FILTER_RETRIES:
+                raise
+            print(f"Filtro de contenido del proveedor: reintento {attempt + 1} de {FILTER_RETRIES}.", flush=True)
 
 
 class Start(BaseModel):
@@ -87,13 +100,12 @@ async def send(session_id: str, body: Message):
     # El lock evita dos turnos al mismo tiempo sobre el mismo historial.
     async with session.lock:
         try:
-            return await respond(session.chat, body.message)
+            return await with_filter_retry(lambda: respond(session.chat, body.message))
         except NotImplementedError as error:
             # Una función del taller que todavía no escribes: el mensaje dice cuál y en qué archivo.
             raise HTTPException(501, str(error)) from error
         except ContentFilterError as error:
-            # Con contextos enormes el proveedor a veces rechaza la respuesta; reintentar suele bastar.
-            raise HTTPException(502, "El proveedor rechazó la respuesta con su filtro de contenido. Vuelve a enviar la pregunta.") from error
+            raise HTTPException(502, "El proveedor rechazó la respuesta con su filtro de contenido tres veces seguidas. Vuelve a enviar la pregunta.") from error
         except UnexpectedModelBehavior as error:
             # Por ejemplo, el modelo se quedó sin tokens de salida antes de responder.
             raise HTTPException(502, f"El modelo no terminó la respuesta: {error}") from error
@@ -106,13 +118,13 @@ async def summarize(session_id: str, body: Compaction):
         raise HTTPException(400, "Enciende el toggle de compactación para usar estos botones.")
     async with session.lock:
         try:
-            report = await compact(session.chat, body.with_reference)
+            report = await with_filter_retry(lambda: compact(session.chat, body.with_reference))
         except ValueError as error:
             raise HTTPException(400, str(error)) from error
         except NotImplementedError as error:
             raise HTTPException(501, str(error)) from error
         except ContentFilterError as error:
-            raise HTTPException(502, "El proveedor rechazó el resumen con su filtro de contenido. Vuelve a intentarlo.") from error
+            raise HTTPException(502, "El proveedor rechazó el resumen con su filtro de contenido tres veces seguidas. Vuelve a intentarlo.") from error
         except UnexpectedModelBehavior as error:
             raise HTTPException(502, f"El modelo no terminó el resumen: {error}") from error
         return {"compaction": report, "context": history_json(session.chat), "context_usage": context_usage(session.chat)}

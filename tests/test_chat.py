@@ -9,6 +9,7 @@ from unittest.mock import patch
 
 from fastapi.testclient import TestClient
 from pydantic_ai import ModelRetry
+from pydantic_ai.exceptions import ContentFilterError
 from pydantic_ai.messages import ModelRequest, ModelResponse, ModelMessagesTypeAdapter, TextPart, ToolCallPart, ToolReturnPart, UserPromptPart
 from pydantic_ai.models.function import FunctionModel
 
@@ -412,6 +413,28 @@ class EndpointTests(unittest.TestCase):
                 self.assertEqual(client.post("/sessions", json={"step": 3}).status_code, 422)
                 base = client.post("/sessions", json={}).json()["session_id"]
                 self.assertEqual(client.post(f"/sessions/{base}/compact", json={"with_reference": False}).status_code, 400)
+
+
+    def test_content_filter_is_retried_before_failing(self):
+        calls = []
+
+        async def flaky(chat, message):
+            calls.append(message)
+            if len(calls) < 3:
+                raise ContentFilterError("bloqueado")
+            return {"reply": "ok"}
+
+        with tempfile.TemporaryDirectory() as folder, patch.object(server, "ROOT", Path(folder)), patch.object(server, "respond", flaky):
+            with TestClient(server.app) as client:
+                path = "/sessions/" + client.post("/sessions", json={}).json()["session_id"]
+                self.assertEqual(client.post(path + "/chat", json={"message": "hola"}).json()["reply"], "ok")
+                self.assertEqual(len(calls), 3)
+
+                async def always(chat, message):
+                    raise ContentFilterError("bloqueado")
+
+                with patch.object(server, "respond", always):
+                    self.assertEqual(client.post(path + "/chat", json={"message": "hola"}).status_code, 502)
 
 
 class DatasetTests(unittest.TestCase):

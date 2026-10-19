@@ -1,5 +1,6 @@
 """Pruebas del loop real de Pydantic AI, sin API key ni llamadas externas."""
 
+import shutil
 import tempfile
 import json
 import unittest
@@ -14,6 +15,7 @@ from pydantic_ai.messages import ModelRequest, ModelResponse, ModelMessagesTypeA
 from pydantic_ai.models.function import FunctionModel
 
 import app as server
+from base import CONVERSATION, read_messages
 from chat_agent import Chat, agent, ask_client, client_agent, compact, context_usage, extra_instructions, file_path, history_json, model_settings, read_file, respond, search_file, summarizer
 from customer_tools import CUSTOMER_TOOLS
 
@@ -340,14 +342,12 @@ class AgentTests(unittest.IsolatedAsyncioTestCase):
         self.assertIn("No encontré NO-EXISTE", data)
 
     def seed_clients(self):
-        """Dos clientes con su conversación en disco, como los deja la página al cargar la conversación."""
+        """Dos clientes, cada uno con su archivo de conversación, como los apunta la página al cargar."""
         toggles(self.chat, subagent=True)
         for name, text in [("Nébula Software", "Mi reposición llega el 18 de octubre."), ("Hotel Mirador", "Mi reposición llega el 22 de octubre.")]:
-            reference = f"clientes/{name.split()[0].lower()}.json"
-            path = self.chat.folder / reference
-            path.parent.mkdir(exist_ok=True)
-            path.write_bytes(ModelMessagesTypeAdapter.dump_json([ModelRequest(parts=[UserPromptPart(content=text)])]))
-            self.chat.clients[name] = reference
+            path = self.chat.folder / f"{name.split()[0].lower()}.json"
+            path.write_text(json.dumps({"client": name, "messages": [{"role": "user", "content": text}]}))
+            self.chat.clients[name] = path
 
     async def test_each_client_agent_answers_only_from_its_conversation(self):
         self.seed_clients()
@@ -400,15 +400,13 @@ class EndpointTests(unittest.TestCase):
                 self.assertEqual(client.post(path + "/chat", json={"message": ""}).status_code, 422)
                 self.assertEqual(client.post("/sessions/missing/chat", json={"message": "hola"}).status_code, 404)
                 self.assertEqual(client.post("/sessions", json={"subagent": True}).status_code, 200)
-                (Path(folder) / "datasets").mkdir()
-                real = Path(__file__).resolve().parents[1] / "datasets/conversacion-muy-larga.json"
-                (Path(folder) / "datasets/conversacion-muy-larga.json").write_text(real.read_text())
+                shutil.copytree(REAL_CONVERSATION, Path(folder) / CONVERSATION)
                 split = client.post("/sessions", json={"subagent": True, "dataset": True}).json()
                 self.assertEqual(split["messages"], [])  # el principal empieza vacío
                 self.assertEqual(len(split["clients"]), 5)
                 self.assertIn("Nébula Software", split["clients"])
                 self.assertEqual(split["context_usage"]["tokens"]["chat"], 0)
-                self.assertTrue((Path(split["folder"]) / "clientes/nebula-software.json").is_file())
+                self.assertFalse(Path(split["folder"]).exists())  # cada agente lee su archivo del dataset; no se copia nada
                 self.assertEqual(client.post("/sessions", json={"step": 3}).status_code, 422)
                 base = client.post("/sessions", json={}).json()["session_id"]
                 self.assertEqual(client.post(f"/sessions/{base}/compact", json={"with_reference": False}).status_code, 400)
@@ -436,20 +434,29 @@ class EndpointTests(unittest.TestCase):
                     self.assertEqual(client.post(path + "/chat", json={"message": "hola"}).status_code, 502)
 
 
+REAL_CONVERSATION = Path(__file__).resolve().parents[1] / CONVERSATION
+
+
+def long_conversation():
+    """La conversación muy larga: los seis archivos juntos, en orden."""
+    return [message for path in sorted(REAL_CONVERSATION.glob("*.json")) for message in read_messages(path)]
+
+
 class DatasetTests(unittest.TestCase):
     def test_dataset_is_long_and_answers_are_separate(self):
-        dataset = json.loads((server.ROOT / "datasets/conversacion-muy-larga.json").read_text())
-        messages = dataset["messages"]
+        dataset = json.loads((REAL_CONVERSATION / "00-introduccion.json").read_text())
+        messages = long_conversation()
         self.assertTrue(dataset["synthetic"])
         self.assertGreater(sum(len(message["content"]) for message in messages), 500000)
         self.assertEqual([message["role"] for message in messages], ["user", "assistant"] * (len(messages) // 2))
         self.assertNotIn("questions", dataset)
+        self.assertEqual(sorted(p.name for p in REAL_CONVERSATION.glob("*.json"))[3], "03-nebula-software.json")
         questions = json.loads((server.ROOT / "datasets/preguntas-y-respuestas.json").read_text())
         self.assertEqual(len(questions["questions"]), 16)
         self.assertEqual(questions["dataset_id"], dataset["id"])
 
     def test_very_long_dataset_hides_nebula_among_similar_clients(self):
-        messages = json.loads((server.ROOT / "datasets/conversacion-muy-larga.json").read_text())["messages"]
+        messages = long_conversation()
         self.assertEqual(len(messages), 2 + 256 * 5)
         self.assertIn("análisis de procesos", messages[0]["content"])
         starts = [message["content"] for message in messages if message["content"].startswith("Hola, soy")]
@@ -461,7 +468,6 @@ class DatasetTests(unittest.TestCase):
         self.assertEqual(cards[2], "DOCK-CAB-14")
 
     def test_loading_is_free_and_both_compaction_modes_use_the_original(self):
-        fixture = (server.ROOT / "datasets/conversacion-muy-larga.json").read_text()
         calls = []
 
         def summary_model(messages, info):
@@ -471,9 +477,7 @@ class DatasetTests(unittest.TestCase):
             return summarize(messages, info)
 
         with tempfile.TemporaryDirectory() as folder, patch.object(server, "ROOT", Path(folder)):
-            dataset_folder = Path(folder) / "datasets"
-            dataset_folder.mkdir()
-            (dataset_folder / "conversacion-muy-larga.json").write_text(fixture)
+            shutil.copytree(REAL_CONVERSATION, Path(folder) / CONVERSATION)
             with TestClient(server.app) as client, summarizer.override(model=FunctionModel(summary_model)):
                 for index, with_reference in enumerate([False, True]):
                     started = client.post("/sessions", json={"on_demand": True, "compaction": True, "dataset": True}).json()

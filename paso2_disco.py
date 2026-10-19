@@ -16,6 +16,7 @@ SNIPPET = 160  # caracteres a cada lado de una coincidencia
 
 def list_files(ctx: RunContext[Chat], keyword: str = "") -> list[str]:
     """Lista rutas de archivos que contienen keyword; no carga sus contenidos."""
+    # Equivale a: find . -type f -iname "*keyword*"
     # Escribe aquí tu código.
     # Devuelve las rutas relativas dentro de ctx.deps.folder que contienen keyword.
     raise NotImplementedError("Paso 2: escribe list_files en paso2_disco.py")
@@ -26,6 +27,7 @@ def read_file(ctx: RunContext[Chat], name: str, start_line: int = 1, line_count:
 
     En un archivo grande, primero busca con search_file y lee solo alrededor de las líneas que encontró.
     """
+    # Equivale a: cat -n archivo | sed -n '14044,14067p', con un tope de líneas y de caracteres.
     # Escribe aquí tu código.
     # Devuelve las líneas desde start_line, numeradas ("15: texto"), sin pasar de MAX_LINES ni de MAX_CHARS.
     # Lo que regreses entra completo al contexto: si devuelves el archivo entero, un historial archivado
@@ -38,6 +40,7 @@ def search_file(ctx: RunContext[Chat], name: str, text: str, max_results: int = 
 
     Cada resultado trae su número de línea para leer alrededor con read_file.
     """
+    # Equivale a: grep -n -i -F "texto" archivo | head -30, con cada línea recortada alrededor del texto.
     # Escribe aquí tu código.
     # Como grep: cuenta las líneas que contienen text y devuelve hasta max_results (nunca más de MAX_RESULTS),
     # cada una con su número y solo SNIPPET caracteres alrededor de la coincidencia.
@@ -46,6 +49,7 @@ def search_file(ctx: RunContext[Chat], name: str, text: str, max_results: int = 
 
 def write_file(ctx: RunContext[Chat], name: str, content: str) -> str:
     """Guarda texto en una ruta relativa; reemplaza el contenido si el archivo existe."""
+    # Equivale a: echo "contenido" > archivo
     # Escribe aquí tu código.
     # Crea las carpetas que falten, guarda content y confirma con un texto corto.
     raise NotImplementedError("Paso 2: escribe write_file en paso2_disco.py")

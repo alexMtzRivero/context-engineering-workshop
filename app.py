@@ -2,8 +2,6 @@
 
 import asyncio
 import json
-import re
-import unicodedata
 from dataclasses import dataclass, field
 from uuid import uuid4
 
@@ -11,9 +9,9 @@ from fastapi import FastAPI, HTTPException
 from fastapi.responses import FileResponse
 from pydantic import BaseModel, ConfigDict, Field
 from pydantic_ai.exceptions import ContentFilterError, UnexpectedModelBehavior
-from pydantic_ai.messages import ModelMessagesTypeAdapter, ModelRequest, ModelResponse, TextPart, UserPromptPart
 
-from chat_agent import ROOT, Chat, compact, context_usage, file_path, history_json, respond
+from base import CONVERSATION, read_messages, to_model_messages
+from chat_agent import ROOT, Chat, compact, context_usage, history_json, respond
 
 app = FastAPI()
 
@@ -27,8 +25,6 @@ class Session:
 sessions: dict[str, Session] = {}
 
 
-# Cinco clientes casi iguales, unos 205 mil tokens.
-DATASET = "datasets/conversacion-muy-larga.json"
 # Con contextos enormes el filtro de contenido del proveedor a veces bloquea la respuesta; reintentar suele bastar.
 FILTER_RETRIES = 2
 
@@ -84,40 +80,23 @@ def start(body: Start):
     chat = Chat(folder=folder, archives=ROOT / "archives", **body.model_dump(exclude={"dataset"}))
     sessions[session_id] = Session(chat)
     messages = []
-    # La conversación muy larga se convierte a mensajes de Pydantic AI sin llamar al modelo.
     if body.dataset:
-        messages = json.loads((ROOT / DATASET).read_text())["messages"]
+        files = sorted((ROOT / CONVERSATION).glob("*.json"))
         if chat.subagent:
-            # Extra: cada cliente se queda con su conversación y el principal empieza vacío.
-            split_by_client(chat, messages)
-            messages = []
+            # Extra: cada cliente ya tiene su archivo; su agente lo lee y el principal empieza vacío.
+            for path in files:
+                client = json.loads(path.read_text()).get("client")
+                if client:
+                    chat.clients[client] = path
         else:
-            chat.history = to_history(messages)
+            # La conversación muy larga son los seis archivos juntos, en orden: unos 205 mil tokens, sin llamar al modelo.
+            for path in files:
+                messages += read_messages(path)
+            chat.history = to_model_messages(messages)
     return {
         "session_id": session_id, "folder": str(folder), "messages": messages, "clients": list(chat.clients),
         "context_usage": context_usage(chat),
     }
-
-
-def to_history(messages: list[dict]) -> list:
-    return [
-        ModelRequest(parts=[UserPromptPart(content=message["content"])])
-        if message["role"] == "user" else ModelResponse(parts=[TextPart(content=message["content"])])
-        for message in messages
-    ]
-
-
-def split_by_client(chat: Chat, messages: list[dict]) -> None:
-    """Guarda la conversación de cada cliente en clientes/<cliente>.json; cada caso empieza con «Hola, soy...»."""
-    starts = [index for index, message in enumerate(messages) if message["content"].startswith("Hola, soy")]
-    for start, end in zip(starts, [*starts[1:], len(messages)]):
-        name = re.search(r"coordinadora de operaciones de ([^.]+)\.", messages[start]["content"]).group(1)
-        slug = re.sub(r"[^a-z0-9]+", "-", unicodedata.normalize("NFKD", name).encode("ascii", "ignore").decode().lower()).strip("-")
-        reference = f"clientes/{slug}.json"
-        path = file_path(chat, reference)
-        path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_bytes(ModelMessagesTypeAdapter.dump_json(to_history(messages[start:end]), indent=2))
-        chat.clients[name] = reference
 
 
 @app.post("/sessions/{session_id}/chat")

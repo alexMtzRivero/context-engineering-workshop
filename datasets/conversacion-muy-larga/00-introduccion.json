@@ -1,0 +1,16 @@
+{
+  "id": "nebula-conversacion-muy-larga-v2",
+  "title": "Análisis de cinco casos casi idénticos; Nébula Software a la mitad",
+  "synthetic": true,
+  "description": "Pedido de análisis de procesos y cinco conversaciones de soporte completas.",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Necesito tu ayuda con un análisis de procesos. En las últimas semanas atendimos cinco casos casi iguales: pedidos de 40 audífonos para capacitaciones internas, con unidades faltantes y dañadas, entregas reprogramadas y cobros duplicados. Sospechamos que hay una falla en nuestro proceso. Te voy a compartir, una tras otra, las conversaciones completas de soporte con cada cliente; en ellas habla el cliente y responde nuestro agente. Al final quiero un reporte de qué pasó en cada caso y qué tienen en común. Todos los datos son ficticios."
+    },
+    {
+      "role": "assistant",
+      "content": "De acuerdo. Revisaré los cinco casos en el orden en que los compartas y mantendré separados el cliente, los pedidos y los identificadores de cada uno. Cuando termines, preparo el reporte con lo que tienen en común."
+    }
+  ]
+}

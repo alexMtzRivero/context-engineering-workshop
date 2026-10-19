@@ -15,7 +15,7 @@ El frontend usa CSS propio inspirado en shadcn: tonos neutros, tarjetas, bordes 
 
 ## Conversación muy larga: context rot en vivo
 
-`datasets/conversacion-muy-larga.json` simula un análisis de procesos: una persona del equipo le pide al agente revisar cinco casos de soporte casi iguales para encontrar la falla que los produce, y le pasa las cinco conversaciones completas, una tras otra. Nébula Software queda a la mitad. Son 1,282 mensajes y unos 205 mil tokens según el proveedor.
+La conversación muy larga simula un análisis de procesos: una persona del equipo le pide al agente revisar cinco casos de soporte casi iguales para encontrar la falla que los produce, y le pasa las cinco conversaciones completas, una tras otra. Nébula Software queda a la mitad. Son 1,282 mensajes y unos 205 mil tokens según el proveedor. Vive en `datasets/conversacion-muy-larga/`, partida en archivos: `00-introduccion.json` y uno por cliente, de `01-despacho-ruiz-contadores.json` a `05-hotel-mirador.json`. Al cargarla, el servidor los junta en orden.
 
 Pulsa **Cargar conversación muy larga**: se carga sin consumir API, con los toggles que tengas encendidos. Con todo apagado, pregunta: **"En el caso de Nébula Software, ¿cuántas tarjetas tienen una referencia que termina en un número mayor a 20?"** La respuesta correcta es 10.
 
@@ -167,7 +167,7 @@ Las tools descubiertas permanecen disponibles en ese chat hasta compactar. Compa
 
 ### 5. Extra: un agente por cliente
 
-Para quien termine antes. Enciende **Un agente por cliente** y carga la conversación muy larga. En vez de meter los cinco casos en un solo contexto, el servidor guarda la conversación de cada cliente en `clientes/<cliente>.json` (256 mensajes, unos 41 mil tokens cada una) y el agente principal empieza vacío. Cada caso empieza con «Hola, soy…, coordinadora de operaciones de <cliente>», así que separarlos no requiere al modelo.
+Para quien termine antes. Enciende **Un agente por cliente** y carga la conversación muy larga. En vez de juntar los cinco casos en un solo contexto, cada agente de cliente lee su propio archivo de `datasets/conversacion-muy-larga/` (256 mensajes, unos 41 mil tokens cada uno) y el agente principal empieza vacío.
 
 Pide: **"Pregúntale al agente de cada cliente cuándo recibe su reposición. ¿Cuál la recibe primero?"** o **"¿Qué tan avanzada está la preparación de la sala de cada cliente?"**.
 
@@ -175,7 +175,7 @@ El código está en `paso5_subagente.py`. Con `ask_client(cliente, pregunta)`, e
 
 | | Qué entra al contexto principal | Qué queda en disco |
 |---|---|---|
-| `ask_client` | La respuesta del agente del cliente | `clientes/<cliente>.json`, sin cambios |
+| `ask_client` | La respuesta del agente del cliente | Nada nuevo: lee el archivo del cliente en `datasets/` |
 | `search_file` y `read_file` sobre el JSON | Solo las líneas buscadas (el segmento naranja crece poco) | Sin cambios |
 
 **Prueba real (2026-10-19, Haiku 5.5 vía OpenRouter):** las dos preguntas que fallan con los cinco casos juntos salieron bien 2 de 2: Nébula Software recibe primero (18 de octubre, de 09:00 a 11:30) y las cinco salas están igual, con 32 tarjetas y ninguna prueba ejecutada. Cada agente de cliente usó unos 41 mil tokens de entrada; los cinco suman los mismos ~205 mil de la conversación completa, pero repartidos. El principal usó entre 3 y 4 mil tokens de entrada y su contexto quedó en unos 2 mil. Cada pregunta tardó de 10 a 13 segundos.
@@ -191,7 +191,7 @@ python -m unittest discover -s tests -v
 
 Las pruebas usan `FunctionModel` de Pydantic AI para producir respuestas y llamadas a tools controladas. Verifican el loop real del agente, escritura y lectura, límites de rutas, ambos modos de compactación, recuperación del original, descubrimiento de tools y endpoints. No prueban la calidad de Claude al resumir ni su elección de tools: esas dos cosas se revisan con la API key en la demo.
 
-Las pruebas del paso 5 simulan al principal y a los agentes de cliente con `FunctionModel`: verifican que cada agente ve solo la conversación de su cliente, que al principal solo llegan las respuestas y que cargar la conversación con el extra encendido la reparte en cinco archivos y deja al principal vacío. En la rama `solucion` pasan las 27 pruebas; en `main` fallan las de los pasos que todavía no escribes.
+Las pruebas del paso 5 simulan al principal y a los agentes de cliente con `FunctionModel`: verifican que cada agente ve solo la conversación de su cliente, que al principal solo llegan las respuestas y que cargar la conversación con el extra encendido apunta a los cinco archivos del dataset y deja al principal vacío. En la rama `solucion` pasan las 27 pruebas; en `main` fallan las de los pasos que todavía no escribes.
 
 **Prueba real, 2026-10-12:** Claude Sonnet 4.6 vía OpenRouter respondió, descubrió `write_file`, escribió un archivo, compactó con referencia, leyó el archivo después de compactar y compactó sin referencia. También pasaron las 11 pruebas controladas. Se usaron datos sintéticos y carpetas temporales; esto confirma el flujo, no mide todavía calidad de resumen en conversaciones largas.
 

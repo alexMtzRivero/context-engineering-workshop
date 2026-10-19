@@ -1,13 +1,12 @@
 """Extra: un agente por cliente. Cada uno tiene solo la conversación de su caso; el principal le hace preguntas.
 
-Las conversaciones de los clientes viven en disco (clientes/<cliente>.json) y en el contexto de cada sub-agente;
-al principal solo llegan las respuestas.
+Cada cliente tiene su conversación en su propio archivo (datasets/conversacion-muy-larga/0X-<cliente>.json);
+su agente la lee como historial y al principal solo llegan las respuestas.
 """
 
 from pydantic_ai import Agent, ModelRetry, RunContext
-from pydantic_ai.messages import ModelMessagesTypeAdapter
 
-from base import MODEL, Chat, file_path
+from base import MODEL, Chat, read_conversation
 
 # Un solo agente, que se corre con el historial de un cliente distinto en cada pregunta. No tiene tools,
 # así que no razona (como el principal sin tools).
@@ -41,8 +40,8 @@ async def ask_client(ctx: RunContext[Chat], client: str, question: str) -> str:
     """Pregunta al agente de un cliente por su caso. Ese agente tiene la conversación completa del cliente;
     tú solo recibes su respuesta. Si la pregunta es sobre varios clientes, pregúntale a cada uno."""
     # Escribe aquí tu código.
-    # 1. find_client(ctx.deps, client) da el nombre exacto; ctx.deps.clients[nombre] es la ruta de su conversación.
-    # 2. Lee ese archivo con ModelMessagesTypeAdapter.validate_json y pásalo a client_agent como message_history.
+    # 1. find_client(ctx.deps, client) da el nombre exacto; ctx.deps.clients[nombre] es el archivo de su conversación.
+    # 2. Léelo con read_conversation(archivo) y pásalo a client_agent.run(question, message_history=...).
     # 3. Agrega a ctx.deps.subagent_runs un dict con client, question, answer, transcript, messages e input_tokens
     #    para que la página lo muestre, y devuelve solo la respuesta: es lo único que entra al contexto del principal.
     raise NotImplementedError("Extra: escribe ask_client en paso5_subagente.py")

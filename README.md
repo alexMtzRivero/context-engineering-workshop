@@ -122,7 +122,7 @@ Enciende **Leer y escribir en disco**. Cada cambio de toggle abre un chat nuevo.
 
 Las cuatro funciones son `write_file`, `list_files`, `search_file` y `read_file`, en `paso2_disco.py`. Listar devuelve rutas. `search_file` busca un texto en un archivo y devuelve solo las líneas que coinciden, con su número, como `grep`. `read_file` lee un rango de líneas, con un tope de 200 por llamada. Lo que regresa una tool entra completo al contexto: si leer cargara el archivo entero, un historial archivado de 1.3 MB volvería a llenar la ventana. Esa es la recuperación dinámica: el disco puede tener más información de la que enviamos en una llamada, y solo entra lo que hace falta. No usamos embeddings ni una base vectorial.
 
-Cada chat tiene su carpeta bajo `workspace/<id>/`. Se muestra la ruta en la página para que puedas agregar o inspeccionar archivos manualmente. Las tools solo acceden a esa carpeta. `write_file` reemplaza un archivo existente.
+Cada chat tiene su carpeta bajo `workspace/<id>/`. Se muestra la ruta en la página para que puedas agregar o inspeccionar archivos manualmente. Las tools solo acceden a esa carpeta y a `archives/`, donde quedan los historiales compactados, junto al código. `write_file` reemplaza un archivo existente.
 
 ### 3. Compactar con o sin referencia
 
@@ -139,7 +139,7 @@ Enciende **Compactación**, y también **Leer y escribir en disco** para que el 
 | Opción | Qué queda en el contexto | Qué queda en disco |
 |---|---|---|
 | Sin referencia | Resumen | No se crea una copia del historial. |
-| Con referencia | Resumen + ruta exacta al original | Historial completo en `archives/<id>.json`. |
+| Con referencia | Resumen + ruta exacta al original | Historial completo en `archives/<id>.json`, en la carpeta del proyecto, junto a `app.py`. |
 
 Con referencia, pide un detalle que no aparezca en el resumen: el agente lo busca en el original con `search_file` y lee solo esas líneas con `read_file`. Con la conversación muy larga y Haiku 5.5, recuperar los seriales dañados de Nébula costó unos 12 mil tokens de entrada (cuatro llamadas) en lugar de volver a cargar los 205 mil, y la respuesta citó las líneas del archivo. Buscar por texto encuentra detalles exactos (seriales, folios, fechas), no estructura: la pregunta de la sala de cada cliente sigue fallando después de compactar, porque la conversación no marca de qué cliente es cada tarjeta. Sin referencia, ese detalle puede perderse. Los archivos que el agente ya había escrito siguen existiendo en ambas opciones. Por eso, para comparar la pérdida causada por resumir, usa un dato que solo hayas mencionado en la conversación y que no esté guardado en otro archivo.
 

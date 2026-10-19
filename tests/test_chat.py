@@ -14,7 +14,7 @@ from pydantic_ai.messages import ModelRequest, ModelResponse, ModelMessagesTypeA
 from pydantic_ai.models.function import FunctionModel
 
 import app as server
-from chat_agent import Chat, agent, compact, context_usage, file_path, history_json, read_file, researcher, respond, search_file, summarizer
+from chat_agent import Chat, agent, compact, context_usage, file_path, history_json, model_settings, read_file, researcher, respond, search_file, summarizer
 from customer_tools import CUSTOMER_TOOLS
 
 
@@ -181,6 +181,18 @@ class AgentTests(unittest.IsolatedAsyncioTestCase):
             (self.chat.folder / "link").symlink_to(outside, target_is_directory=True)
             with self.assertRaises(ModelRetry):
                 file_path(self.chat, "link/secret.txt")
+
+    def test_archives_can_live_outside_the_chat_folder(self):
+        chat = Chat(folder=self.chat.folder, archives=self.chat.folder.parent / "archivos-del-codigo")
+        self.assertEqual(file_path(chat, "archives/abc.json"), (chat.archives / "abc.json").resolve())
+        self.assertEqual(file_path(chat, "nota.md"), (chat.folder / "nota.md").resolve())
+        for name in ["archives/../../fuera.json", "archives"]:
+            with self.assertRaises(ModelRetry):
+                file_path(chat, name)
+
+    def test_thinking_is_off_only_without_tools(self):
+        self.assertEqual(model_settings(SimpleNamespace(deps=Chat(folder=self.chat.folder))), {"thinking": False})
+        self.assertEqual(model_settings(SimpleNamespace(deps=Chat(folder=self.chat.folder, disk=True))), {})
 
     def test_missing_file_is_a_tool_retry(self):
         with self.assertRaises(ModelRetry):
@@ -491,7 +503,8 @@ class DatasetTests(unittest.TestCase):
                     self.assertGreater(compacted["context_usage"]["tokens"]["summary"], 0)
                     reference = compacted["compaction"]["reference"]
                     if with_reference:
-                        archive = ModelMessagesTypeAdapter.validate_json((workspace / reference).read_bytes())
+                        archive = ModelMessagesTypeAdapter.validate_json((Path(folder) / reference).read_bytes())
+                        self.assertEqual(list(workspace.iterdir()), [])  # el original queda junto al código, no en el chat
                         self.assertEqual(len(archive), 1282)
                     else:
                         self.assertIsNone(reference)

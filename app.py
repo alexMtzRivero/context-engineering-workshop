@@ -78,7 +78,9 @@ def start(body: Start):
     session_id = uuid4().hex
     folder = ROOT / "workspace" / session_id
     folder.mkdir(parents=True, exist_ok=True)
-    sessions[session_id] = Session(Chat(folder=folder, **body.model_dump(exclude={"dataset"})))
+    # Los historiales compactados van a archives/, junto al código; lo demás, a la carpeta del chat.
+    chat = Chat(folder=folder, archives=ROOT / "archives", **body.model_dump(exclude={"dataset"}))
+    sessions[session_id] = Session(chat)
     messages = []
     # La conversación muy larga se convierte a mensajes de Pydantic AI sin llamar al modelo.
     if body.dataset:

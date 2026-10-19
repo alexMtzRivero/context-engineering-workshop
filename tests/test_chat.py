@@ -481,7 +481,7 @@ class DatasetTests(unittest.TestCase):
                     self.assertEqual(len(started["messages"]), 1282)
                     self.assertGreater(started["context_usage"]["tokens"]["chat"], 25000)
                     workspace = Path(started["folder"])
-                    self.assertEqual(list(workspace.iterdir()), [])
+                    self.assertFalse(workspace.exists())  # abrir un chat no crea su carpeta
                     path = "/sessions/" + started["session_id"]
                     result = client.post(path + "/compact", json={"with_reference": with_reference})
                     self.assertEqual(result.status_code, 200)
@@ -491,8 +491,8 @@ class DatasetTests(unittest.TestCase):
                     reference = compacted["compaction"]["reference"]
                     if with_reference:
                         archive = ModelMessagesTypeAdapter.validate_json((Path(folder) / reference).read_bytes())
-                        self.assertEqual(list(workspace.iterdir()), [])  # el original queda junto al código, no en el chat
+                        self.assertFalse(workspace.exists())  # el original queda junto al código, no en el chat
                         self.assertEqual(len(archive), 1282)
                     else:
                         self.assertIsNone(reference)
-                        self.assertEqual(list(workspace.iterdir()), [])
+                        self.assertFalse(workspace.exists())

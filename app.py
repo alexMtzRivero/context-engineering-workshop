@@ -78,8 +78,8 @@ def index():
 @app.post("/sessions")
 def start(body: Start):
     session_id = uuid4().hex
+    # La carpeta se crea cuando el agente guarda algo: abrir un chat no deja carpetas vacías.
     folder = ROOT / "workspace" / session_id
-    folder.mkdir(parents=True, exist_ok=True)
     # Los historiales compactados van a archives/, junto al código; lo demás, a la carpeta del chat.
     chat = Chat(folder=folder, archives=ROOT / "archives", **body.model_dump(exclude={"dataset"}))
     sessions[session_id] = Session(chat)

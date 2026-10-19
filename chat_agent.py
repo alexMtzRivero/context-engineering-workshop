@@ -10,6 +10,7 @@ from math import ceil
 from pydantic_ai import Agent, RunContext
 from pydantic_ai.capabilities import PrepareTools
 from pydantic_ai.messages import ModelMessagesTypeAdapter, SystemPromptPart, ToolCallPart, ToolReturnPart, UserPromptPart
+from pydantic_ai.settings import ModelSettings
 from pydantic_ai.tools import ToolDefinition
 
 # ROOT, file_path, summarizer y researcher también se importan desde aquí en app.py y en las pruebas.
@@ -68,12 +69,21 @@ async def available_tools(ctx: RunContext[Chat], tools: list[ToolDefinition]):
     return visible
 
 
+def model_settings(ctx: RunContext[Chat]) -> ModelSettings:
+    """Sin tools no hay búsquedas que planear: el modelo responde sin razonar."""
+    # Con la conversación muy larga y todo apagado, el clasificador de seguridad de Anthropic cortaba
+    # uno de cada tres turnos mientras Haiku razonaba (refusal, categoría «bio»); sin razonar, 0 de 8.
+    # Con tools, razonar le ayuda a buscar en disco, así que se deja el comportamiento del modelo.
+    return {} if visible_tool_names(ctx.deps) else {"thinking": False}
+
+
 # Se registran todas las tools; PrepareTools filtra en cada llamada cuáles ve el modelo.
 # defer_model_check deja crear el agente sin API key, como en las pruebas.
 agent = Agent(
     MODEL,
     deps_type=Chat,
     instructions=BASE,
+    model_settings=model_settings,
     capabilities=[PrepareTools(available_tools)],
     tools=[
         *CUSTOMER_TOOLS, list_files, read_file, search_file, write_file,

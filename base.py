@@ -20,6 +20,7 @@ class Chat:
     """Estado de una conversación. Cada tool lo recibe como ctx.deps."""
 
     folder: Path  # carpeta de trabajo de este chat: workspace/<id>/
+    archives: Path | None = None  # historiales compactados; la app los guarda junto al código, en archives/
     # Toggles de la página: qué puede usar el agente. Todos apagados = chat básico.
     disk: bool = False  # Leer y escribir en disco
     all_tools: bool = False  # Todas las tools: las 80 de servicio en cada llamada
@@ -47,8 +48,12 @@ CATALOG = {
 
 
 def file_path(chat: Chat, name: str) -> Path:
-    """Convierte una ruta relativa en una ruta dentro de la carpeta del chat."""
+    """Convierte una ruta relativa en una ruta dentro de la carpeta del chat (o de archives/, si el chat la tiene)."""
     root = chat.folder.resolve()
+    parts = Path(name).parts
+    # archives/ puede vivir fuera de la carpeta del chat, junto al código, para encontrar fácil los historiales.
+    if chat.archives is not None and parts[:1] == ("archives",):
+        root, name = chat.archives.resolve(), str(Path(*parts[1:])) if len(parts) > 1 else ""
     path = (root / name).resolve()
     # resolve() quita los "..": si la ruta final sale de la carpeta, se rechaza.
     if path == root or not path.is_relative_to(root):

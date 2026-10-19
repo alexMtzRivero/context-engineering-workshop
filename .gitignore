@@ -2,6 +2,7 @@
 .venv/
 __pycache__/
 workspace/
+archives/
 .DS_Store
 output/
 .server-port

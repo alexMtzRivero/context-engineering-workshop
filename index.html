@@ -248,7 +248,7 @@
       ? `Conversación cargada: ${data.messages.length} mensajes, sin consumir API. `
         + ($('compaction').checked ? 'Lista para compactar.'
           : 'Pregúntale algo con todo ese contexto. Para compactarla, enciende Compactación y vuelve a cargarla.')
-      : `Archivos de este chat: ${data.folder}`;
+      : `Archivos de este chat (la carpeta aparece cuando el agente guarda algo): ${data.folder}`;
   }
 
   function showCompaction(report) {

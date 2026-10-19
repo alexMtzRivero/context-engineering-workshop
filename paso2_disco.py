@@ -14,21 +14,27 @@ SNIPPET = 160  # caracteres a cada lado de una coincidencia
 def list_files(ctx: RunContext[Chat], keyword: str = "") -> list[str]:
     """Lista rutas de archivos que contienen keyword; no carga sus contenidos."""
     folder = ctx.deps.folder
-    return sorted(
-        str(path.relative_to(folder))
-        for path in folder.rglob("*")
-        # Solo archivos que siguen dentro de la carpeta: un enlace simbólico podría apuntar afuera.
-        if path.is_file() and path.resolve().is_relative_to(folder.resolve())
-        and keyword.casefold() in str(path.relative_to(folder)).casefold()
-    )
+    found = []
+    for path in folder.rglob("*"):
+        if not path.is_file():
+            continue
+        # Un enlace simbólico podría apuntar fuera de la carpeta del chat.
+        if not path.resolve().is_relative_to(folder.resolve()):
+            continue
+        relative_path = str(path.relative_to(folder))
+        if keyword.lower() in relative_path.lower():
+            found.append(relative_path)
+    return sorted(found)
 
 
-def _lines(ctx: RunContext[Chat], name: str) -> list[str]:
+def read_lines(ctx: RunContext[Chat], name: str) -> list[str]:
+    """Lee un archivo de la carpeta del chat y lo devuelve separado en líneas."""
     try:
-        return file_path(ctx.deps, name).read_text(encoding="utf-8").splitlines()
+        text = file_path(ctx.deps, name).read_text(encoding="utf-8")
     except (OSError, UnicodeError) as error:
         # ModelRetry le devuelve el error al modelo para que corrija la ruta.
         raise ModelRetry(f"No se pudo leer {name}: {error}") from error
+    return text.splitlines()
 
 
 def read_file(ctx: RunContext[Chat], name: str, start_line: int = 1, line_count: int = 100) -> str:
@@ -36,22 +42,33 @@ def read_file(ctx: RunContext[Chat], name: str, start_line: int = 1, line_count:
 
     En un archivo grande, primero busca con search_file y lee solo alrededor de las líneas que encontró.
     """
-    lines = _lines(ctx, name)
-    start = max(start_line, 1)
-    end = min(start + max(min(line_count, MAX_LINES), 1), len(lines) + 1)
-    chunk, size = [], 0
-    for number in range(start, end):
+    lines = read_lines(ctx, name)
+    total_lines = len(lines)
+
+    # 1. Qué rango leer: nunca más de MAX_LINES líneas.
+    first_line = max(start_line, 1)
+    lines_to_read = min(line_count, MAX_LINES)
+    if lines_to_read < 1:
+        lines_to_read = 1
+    last_line = min(first_line + lines_to_read - 1, total_lines)
+
+    # 2. Juntar las líneas numeradas hasta llegar al tope de caracteres.
+    page = []
+    characters = 0
+    for number in range(first_line, last_line + 1):
         line = f"{number}: {lines[number - 1]}"
         # Una sola línea enorme tampoco debe llenar el contexto.
-        if chunk and size + len(line) > MAX_CHARS:
-            end = number
+        if page and characters + len(line) > MAX_CHARS:
+            last_line = number - 1
             break
-        chunk.append(line[:MAX_CHARS])
-        size += len(line)
-    header = f"{name}, líneas {start}-{end - 1} de {len(lines)}."
-    if end - 1 < len(lines):
+        page.append(line[:MAX_CHARS])
+        characters += len(line)
+
+    # 3. Decirle al agente qué leyó y si quedó algo pendiente.
+    header = f"{name}, líneas {first_line}-{last_line} de {total_lines}."
+    if last_line < total_lines:
         header += " Hay más: pide otro rango o busca con search_file."
-    return "\n".join([header, *chunk])
+    return "\n".join([header] + page)
 
 
 def search_file(ctx: RunContext[Chat], name: str, text: str, max_results: int = 20) -> str:
@@ -59,22 +76,43 @@ def search_file(ctx: RunContext[Chat], name: str, text: str, max_results: int = 
 
     Cada resultado trae su número de línea para leer alrededor con read_file.
     """
-    lines = _lines(ctx, name)
-    needle = text.casefold()
-    hits = [number for number, line in enumerate(lines, 1) if needle in line.casefold()]
-    if not hits:
+    lines = read_lines(ctx, name)
+    wanted = text.lower()
+
+    # 1. Como grep: anotar el número de cada línea que contiene el texto.
+    matching_lines = []
+    for number, line in enumerate(lines, start=1):
+        if wanted in line.lower():
+            matching_lines.append(number)
+
+    if not matching_lines:
         return f"Sin coincidencias de «{text}» en {name}."
-    shown = hits[:max(min(max_results, MAX_RESULTS), 1)]
-    results = [f"{len(hits)} coincidencias de «{text}» en {name}, entre las líneas {hits[0]} y {hits[-1]}."]
-    for number in shown:
-        line = lines[number - 1]
-        # Solo el fragmento alrededor de la coincidencia, no la línea completa.
-        at = line.casefold().find(needle)
-        start, end = max(at - SNIPPET, 0), at + len(text) + SNIPPET
-        results.append(f"{number}: {'…' if start else ''}{line[start:end].strip()}{'…' if end < len(line) else ''}")
-    if len(hits) > len(shown):
-        results.append(f"Se muestran {len(shown)}. Busca un texto más específico o lee un rango con read_file.")
-    return "\n".join(results)
+
+    # 2. Mostrar pocas: el total y las primeras, cada una recortada alrededor de la coincidencia.
+    results_to_show = min(max_results, MAX_RESULTS)
+    if results_to_show < 1:
+        results_to_show = 1
+    first, last = matching_lines[0], matching_lines[-1]
+    report = [f"{len(matching_lines)} coincidencias de «{text}» en {name}, entre las líneas {first} y {last}."]
+    for number in matching_lines[:results_to_show]:
+        report.append(f"{number}: {fragment_around(lines[number - 1], wanted)}")
+
+    if len(matching_lines) > results_to_show:
+        report.append(f"Se muestran {results_to_show}. Busca un texto más específico o lee un rango con read_file.")
+    return "\n".join(report)
+
+
+def fragment_around(line: str, wanted: str) -> str:
+    """El pedazo de la línea alrededor de la coincidencia, no la línea completa."""
+    position = line.lower().find(wanted)
+    start = max(position - SNIPPET, 0)
+    end = position + len(wanted) + SNIPPET
+    fragment = line[start:end].strip()
+    if start > 0:
+        fragment = "…" + fragment
+    if end < len(line):
+        fragment = fragment + "…"
+    return fragment
 
 
 def write_file(ctx: RunContext[Chat], name: str, content: str) -> str:
@@ -83,6 +121,6 @@ def write_file(ctx: RunContext[Chat], name: str, content: str) -> str:
         path = file_path(ctx.deps, name)
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(content, encoding="utf-8")
-        return f"Guardado: {name}"
     except OSError as error:
         raise ModelRetry(f"No se pudo guardar {name}: {error}") from error
+    return f"Guardado: {name}"

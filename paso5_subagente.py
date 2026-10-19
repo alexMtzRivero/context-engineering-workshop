@@ -27,25 +27,39 @@ client_agent = Agent(
 
 def find_client(chat: Chat, client: str) -> str:
     """Encuentra el cliente por nombre completo o parcial, sin distinguir mayúsculas."""
-    matches = [name for name in chat.clients if client.casefold() in name.casefold()]
-    if len(matches) != 1:
-        raise ModelRetry(f"No reconozco a «{client}». Clientes con agente: {', '.join(chat.clients) or 'ninguno'}.")
-    return matches[0]
+    matches = []
+    for name in chat.clients:
+        if client.lower() in name.lower():
+            matches.append(name)
+    if len(matches) == 1:
+        return matches[0]
+    known_clients = ", ".join(chat.clients) or "ninguno"
+    raise ModelRetry(f"No reconozco a «{client}». Clientes con agente: {known_clients}.")
 
 
 async def ask_client(ctx: RunContext[Chat], client: str, question: str) -> str:
     """Pregunta al agente de un cliente por su caso. Ese agente tiene la conversación completa del cliente;
     tú solo recibes su respuesta. Si la pregunta es sobre varios clientes, pregúntale a cada uno."""
+    # 1. Cargar la conversación de ese cliente desde disco.
     name = find_client(ctx.deps, client)
-    reference = ctx.deps.clients[name]
-    history = ModelMessagesTypeAdapter.validate_json(file_path(ctx.deps, reference).read_bytes())
-    # Cada pregunta arranca de la conversación del cliente: el sub-agente no acumula preguntas anteriores.
-    result = await client_agent.run(question, message_history=history)
-    run = {
-        "client": name, "question": question, "answer": result.output, "transcript": reference,
-        "messages": len(history), "input_tokens": result.usage.input_tokens,
-    }
-    ctx.deps.subagent_runs.append(run)
-    ctx.deps.events.append(f"Agente de {name}: {run['messages']} mensajes, {run['input_tokens']} tokens de entrada")
-    # Esto es lo único que entra al contexto del agente principal.
-    return result.output
+    conversation_path = ctx.deps.clients[name]
+    conversation = ModelMessagesTypeAdapter.validate_json(file_path(ctx.deps, conversation_path).read_bytes())
+
+    # 2. Preguntarle a su agente, con esa conversación como historial.
+    #    Cada pregunta arranca de la conversación original: el agente no acumula preguntas anteriores.
+    result = await client_agent.run(question, message_history=conversation)
+    answer = result.output
+
+    # 3. Avisar a la página quién respondió y cuánto contexto usó; esto no entra al contexto del principal.
+    ctx.deps.subagent_runs.append({
+        "client": name,
+        "question": question,
+        "answer": answer,
+        "transcript": conversation_path,
+        "messages": len(conversation),
+        "input_tokens": result.usage.input_tokens,
+    })
+    ctx.deps.events.append(f"Agente de {name}: {len(conversation)} mensajes, {result.usage.input_tokens} tokens de entrada")
+
+    # Lo único que entra al contexto del agente principal es la respuesta.
+    return answer

@@ -35,27 +35,40 @@ async def compact(chat: Chat, with_reference: bool) -> dict:
     if not chat.history:
         raise ValueError("Primero escribe algo en el chat.")
     original = history_json(chat)
+
+    # 1. Otra llamada al modelo resume todo el historial.
     result = await summarizer.run(original)
     summary = "Resumen de la conversación anterior:\n" + result.output
+
+    # 2. Con referencia: el original se guarda en disco y su ruta va dentro del resumen,
+    #    para que el agente busque ahí lo que falte sin cargar el archivo completo.
     reference = None
     if with_reference:
-        reference = f"archives/{uuid4().hex}.json"
-        path = file_path(chat, reference)
-        path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_text(original, encoding="utf-8")
-        # La ruta va dentro del resumen: el agente busca ahí lo que falte, sin cargar el archivo completo.
+        reference = save_original(chat, original)
         summary += (
             f"\n\nHistorial completo: {reference}. Si faltan detalles, búscalos con search_file "
             "y lee con read_file solo las líneas que necesites."
         )
-    # Reemplazar, no añadir: el historial completo deja de enviarse al modelo.
-    # La metadata marca el mensaje como resumen para que la barra lo cuente aparte.
-    chat.history = [ModelRequest(parts=[UserPromptPart(content=summary)], metadata={"context_kind": "summary"})]
+
+    # 3. Reemplazar, no añadir: el historial completo deja de enviarse al modelo.
+    #    La metadata marca el mensaje como resumen para que la barra lo cuente aparte.
+    summary_message = ModelRequest(parts=[UserPromptPart(content=summary)], metadata={"context_kind": "summary"})
+    chat.history = [summary_message]
     # Las tools descubiertas en el paso 4 también son contexto: el agente vuelve a buscarlas.
     chat.loaded_tools.clear()
+
     return {
         "before_bytes": len(original.encode()),
         "after_bytes": len(history_json(chat).encode()),
         "reference": reference,
         "summary": summary,
     }
+
+
+def save_original(chat: Chat, original: str) -> str:
+    """Guarda el historial completo en archives/<id>.json y devuelve esa ruta."""
+    reference = f"archives/{uuid4().hex}.json"
+    path = file_path(chat, reference)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(original, encoding="utf-8")
+    return reference

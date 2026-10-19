@@ -4,7 +4,7 @@ Un chat local para practicar compactación, recuperación de archivos y descubri
 
 | Archivo | Qué escribes |
 |---|---|
-| `paso2_disco.py` | `list_files`, `read_file` y `write_file` |
+| `paso2_disco.py` | `list_files`, `search_file`, `read_file` y `write_file` |
 | `paso3_compactacion.py` | `compact`, con el mecanismo de compactación que elijas |
 | `paso4_descubrimiento.py` | `discover_tools` |
 | `paso5_subagente.py` | `delegate_research` y `ask_researcher` (extra) |
@@ -79,7 +79,7 @@ La página no tiene pasos fijos: cada toggle agrega algo a lo que el modelo reci
 
 | Toggle | Lo que el modelo recibe |
 |---|---|
-| Leer y escribir en disco | `list_files`, `read_file` y `write_file` |
+| Leer y escribir en disco | `list_files`, `search_file`, `read_file` y `write_file` |
 | Todas las tools | Las 80 tools de servicio en cada llamada |
 | Compactación | `compact_context` y los botones de compactar |
 | Tools bajo demanda | Solo `discover_tools`; lo que encuentra se suma desde la siguiente llamada |
@@ -120,7 +120,7 @@ Enciende **Leer y escribir en disco**. Cada cambio de toggle abre un chat nuevo.
 
 > Lista los archivos relacionados con viaje y lee el que corresponda.
 
-Las tres funciones son `write_file`, `list_files` y `read_file`, en `paso2_disco.py`. Listar devuelve rutas; leer carga el contenido de un archivo en el contexto. Esa es la recuperación dinámica: el disco puede tener más información de la que enviamos en una llamada. No usamos embeddings ni una base vectorial.
+Las cuatro funciones son `write_file`, `list_files`, `search_file` y `read_file`, en `paso2_disco.py`. Listar devuelve rutas. `search_file` busca un texto en un archivo y devuelve solo las líneas que coinciden, con su número, como `grep`. `read_file` lee un rango de líneas, con un tope de 200 por llamada. Lo que regresa una tool entra completo al contexto: si leer cargara el archivo entero, un historial archivado de 1.3 MB volvería a llenar la ventana. Esa es la recuperación dinámica: el disco puede tener más información de la que enviamos en una llamada, y solo entra lo que hace falta. No usamos embeddings ni una base vectorial.
 
 Cada chat tiene su carpeta bajo `workspace/<id>/`. Se muestra la ruta en la página para que puedas agregar o inspeccionar archivos manualmente. Las tools solo acceden a esa carpeta. `write_file` reemplaza un archivo existente.
 
@@ -141,7 +141,7 @@ Enciende **Compactación**, y también **Leer y escribir en disco** para que el 
 | Sin referencia | Resumen | No se crea una copia del historial. |
 | Con referencia | Resumen + ruta exacta al original | Historial completo en `archives/<id>.json`. |
 
-Con referencia, pide un detalle que no aparezca en el resumen: el agente puede usar `read_file` para recuperarlo del original. Sin referencia, ese detalle puede perderse. Los archivos que el agente ya había escrito siguen existiendo en ambas opciones. Por eso, para comparar la pérdida causada por resumir, usa un dato que solo hayas mencionado en la conversación y que no esté guardado en otro archivo.
+Con referencia, pide un detalle que no aparezca en el resumen: el agente lo busca en el original con `search_file` y lee solo esas líneas con `read_file`. Con la conversación muy larga y Haiku 5.5, recuperar los seriales dañados de Nébula costó unos 12 mil tokens de entrada (cuatro llamadas) en lugar de volver a cargar los 205 mil, y la respuesta citó las líneas del archivo. Buscar por texto encuentra detalles exactos (seriales, folios, fechas), no estructura: la pregunta de la sala de cada cliente sigue fallando después de compactar, porque la conversación no marca de qué cliente es cada tarjeta. Sin referencia, ese detalle puede perderse. Los archivos que el agente ya había escrito siguen existiendo en ambas opciones. Por eso, para comparar la pérdida causada por resumir, usa un dato que solo hayas mencionado en la conversación y que no esté guardado en otro archivo.
 
 En **Contexto que se enviará al agente** puedes ver las instrucciones, las definiciones de tools activas y el historial en orden. Al compactar, el chat visible también se reemplaza: solo queda el mensaje de compactación, igual que en el historial que recibe el modelo. No hay compactación automática ni umbral oculto.
 
@@ -177,7 +177,7 @@ Después pregunta: **"¿Qué consultó el investigador para concluir lo de la de
 |---|---|---|
 | `delegate_research` | Informe breve + `run_id` + ruta | Conversación completa del sub-agente |
 | `ask_researcher` | Respuesta a la pregunta | La misma conversación, con la pregunta añadida |
-| `read_file` sobre el JSON | La conversación completa (el segmento naranja crece) | Sin cambios |
+| `search_file` y `read_file` sobre el JSON | Solo las líneas buscadas (el segmento naranja crece poco) | Sin cambios |
 
 **Prueba real (2026-10-12, Claude Sonnet 4.6 vía OpenRouter, con los datos de prueba anteriores):** la investigación de CUS-001 hizo que el sub-agente consumiera 92,062 tokens de entrada (8 mensajes, consultas en paralelo). El principal usó 6,366 en ese turno y su contexto quedó en unos 2,400 tokens estimados. Al revivirlo, el sub-agente respondió sin nuevas consultas cuáles 6 tools usó para concluir el estado de RET-001; esa llamada costó 28,308 tokens de entrada, porque reentra todo su historial. En una primera versión el informe venía con tablas y emojis; ahora se pide texto plano para otro agente, pero no se garantiza el límite de 120 palabras.
 

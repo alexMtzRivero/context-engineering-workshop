@@ -41,5 +41,6 @@ async def compact(chat: Chat, with_reference: bool) -> dict:
     original = history_json(chat)
     # Escribe aquí tu código.
     # Tienes summarizer para resumir y file_path para guardar el original en disco.
+    # Si guardas el original, pon su ruta en el resumen para que el agente la busque con search_file.
     # Si el nuevo historial es un resumen, márcalo con metadata={"context_kind": "summary"} para que la barra lo cuente aparte.
     raise NotImplementedError("Paso 3: escribe compact en paso3_compactacion.py")

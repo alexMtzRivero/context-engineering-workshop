@@ -13,7 +13,7 @@ from pydantic_ai.messages import ModelRequest, ModelResponse, ModelMessagesTypeA
 from pydantic_ai.models.function import FunctionModel
 
 import app as server
-from chat_agent import Chat, agent, compact, context_usage, file_path, history_json, read_file, researcher, respond, summarizer
+from chat_agent import Chat, agent, compact, context_usage, file_path, history_json, read_file, researcher, respond, search_file, summarizer
 from customer_tools import CUSTOMER_TOOLS
 
 
@@ -67,7 +67,7 @@ class AgentTests(unittest.IsolatedAsyncioTestCase):
         ])
 
         def model(messages, info):
-            self.assertEqual({t.name for t in info.function_tools}, {"list_files", "read_file", "write_file"})
+            self.assertEqual({t.name for t in info.function_tools}, {"list_files", "read_file", "search_file", "write_file"})
             call = next(calls, None)
             return ModelResponse(parts=[call]) if call else answer(messages, info)
 
@@ -185,6 +185,25 @@ class AgentTests(unittest.IsolatedAsyncioTestCase):
         with self.assertRaises(ModelRetry):
             read_file(SimpleNamespace(deps=self.chat), "missing.md")
 
+    def test_search_and_ranged_read_never_load_a_big_file(self):
+        ctx = SimpleNamespace(deps=self.chat)
+        lines = [f"mensaje {n}: " + ("relleno " * 50) for n in range(1, 5001)]
+        lines[3141] = "mensaje 3142: el serial dañado es AO-2048-009"
+        (self.chat.folder / "archivo.txt").write_text("\n".join(lines))
+        found = search_file(ctx, "archivo.txt", "ao-2048")
+        self.assertIn("1 coincidencias", found)
+        self.assertIn("3142: ", found)
+        self.assertIn("Sin coincidencias", search_file(ctx, "archivo.txt", "LUNA-58"))
+        many = search_file(ctx, "archivo.txt", "relleno", max_results=500)
+        self.assertIn("4999 coincidencias", many)
+        self.assertLess(len(many), 15_000)
+        page = read_file(ctx, "archivo.txt", start_line=3140, line_count=5)
+        self.assertIn("líneas 3140-3144 de 5000", page)
+        self.assertIn("3142: mensaje 3142: el serial dañado es AO-2048-009", page)
+        whole = read_file(ctx, "archivo.txt", line_count=10_000)
+        self.assertLess(len(whole), 45_000)
+        self.assertIn("Hay más", whole)
+
     def test_context_meter_separates_categories_and_hidden_tools(self):
         self.chat.history = [
             ModelRequest(parts=[UserPromptPart(content="Resumen conservado")], metadata={"context_kind": "summary"}),
@@ -236,7 +255,7 @@ class AgentTests(unittest.IsolatedAsyncioTestCase):
             toggles(self.chat, on_demand=True)
             await respond(self.chat, "Hola otra vez")
         self.assertEqual(len(CUSTOMER_TOOLS), 80)
-        self.assertEqual(len(seen[0]), 84)
+        self.assertEqual(len(seen[0]), 85)
         self.assertEqual(seen[1], {"discover_tools"})
         self.assertGreater(context_usage(Chat(folder=self.chat.folder, all_tools=True))["tokens"]["tools"], 20000)
 

@@ -27,10 +27,14 @@ client_agent = Agent(
 
 def find_client(chat: Chat, client: str) -> str:
     """Encuentra el cliente por nombre completo o parcial, sin distinguir mayúsculas."""
-    matches = [name for name in chat.clients if client.casefold() in name.casefold()]
-    if len(matches) != 1:
-        raise ModelRetry(f"No reconozco a «{client}». Clientes con agente: {', '.join(chat.clients) or 'ninguno'}.")
-    return matches[0]
+    matches = []
+    for name in chat.clients:
+        if client.lower() in name.lower():
+            matches.append(name)
+    if len(matches) == 1:
+        return matches[0]
+    known_clients = ", ".join(chat.clients) or "ninguno"
+    raise ModelRetry(f"No reconozco a «{client}». Clientes con agente: {known_clients}.")
 
 
 async def ask_client(ctx: RunContext[Chat], client: str, question: str) -> str:

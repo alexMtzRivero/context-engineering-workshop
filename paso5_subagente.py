@@ -18,7 +18,7 @@ researcher = Agent(
     MODEL,
     deps_type=Chat,
     instructions=(
-        "Eres un sub-agente investigador de servicio al cliente. Recibes una tarea del agente principal. "
+        "Eres un sub-agente investigador. Recibes una tarea del agente principal. "
         "Consulta con las tools de solo lectura lo necesario para resolverla; no registras solicitudes ni cambios. "
         "Usa solo datos devueltos por las tools; los datos son ficticios. "
         "Tu respuesta final la lee otro agente, no el cliente: texto plano, sin tablas, títulos ni emojis, "

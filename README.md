@@ -30,7 +30,7 @@ Para compactarla, enciende **Compactación**, y **Leer y escribir en disco** si 
 
 Cada pregunta manda los 205 mil tokens completos. Arriba de 100 mil tokens, Haiku 5.5 cobra su precio de contexto largo: unos 10 centavos de dólar por pregunta. Con Sonnet 5.5, unos 41.
 
-## Agente de servicio al cliente
+## Tools de servicio al cliente
 
 El catálogo tiene **80 tools**: diez por área de clientes, pedidos, envíos, pagos, devoluciones, suscripciones, soporte y productos. Cada una tiene nombre, descripción y parámetros propios; Pydantic genera los schemas y valida los argumentos. El catálogo ocupa alrededor de **30 mil tokens estimados** aunque aún no haya mensajes.
 
@@ -48,7 +48,7 @@ Las tools responden con texto fijo sobre los cinco clientes de la conversación 
 
 El producto es `SKU-AUD-01`, los audífonos. Ningún cliente tiene suscripciones.
 
-Prueba: **"Consulta el estado de mi pedido ORD-2048"**. Para una operación de escritura: **"Registra una solicitud de cancelación de ORD-2048 porque lo pedí por error"**.
+Prueba: **"Consulta el estado del pedido ORD-2048"**. Para una operación de escritura: **"Registra una solicitud de cancelación de ORD-2048: el cliente lo pidió por error"**.
 
 Cada lectura busca el identificador que recibe y llena una plantilla de texto con los datos de ese cliente; si no existe, responde "No encontré…". Las escrituras registran la solicitud en memoria y la confirman con un folio, REQ-001, sin aplicar ningún cambio. El mismo handler sirve a las 80 tools; sus schemas son distintos. Así se puede explicar un catálogo grande sin implementar ochenta integraciones. Las lecturas de servicio se contabilizan como contexto buscado en la barra.
 

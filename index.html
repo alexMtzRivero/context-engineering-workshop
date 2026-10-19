@@ -119,7 +119,7 @@
         <label class="toggle"><input type="checkbox" role="switch" id="all_tools">Todas las tools</label>
         <label class="toggle"><input type="checkbox" role="switch" id="compaction">Compactación</label>
         <label class="toggle"><input type="checkbox" role="switch" id="on_demand">Tools bajo demanda</label>
-        <label class="toggle"><input type="checkbox" role="switch" id="subagent">Sub-agente investigador</label>
+        <label class="toggle"><input type="checkbox" role="switch" id="subagent">Un agente por cliente</label>
       </div>
     </fieldset>
   </div>
@@ -207,7 +207,7 @@
 
   function bubble(who, text) {
     const node = document.createElement('div');
-    node.className = 'message' + (['Tú', 'Cliente'].includes(who) ? ' user' : '') + (who.startsWith('Sub-agente') ? ' subagent' : '');
+    node.className = 'message' + (['Tú', 'Cliente'].includes(who) ? ' user' : '') + (who.startsWith('Agente de ') ? ' subagent' : '');
     const author = document.createElement('span');
     author.className = 'message-author';
     author.textContent = who;
@@ -237,10 +237,14 @@
     $('messages').replaceChildren();
     $('tools').textContent = '';
     for (const message of data.messages) bubble(message.role === 'user' ? 'Cliente' : 'Agente', message.content);
-    $('chat-hint').textContent = dataset ? `5 clientes · ${data.messages.length} mensajes · pregunta por Nébula Software`
-      : $('subagent').checked ? 'Prueba: investiga el caso completo de CUS-L042' : 'Prueba con el pedido ORD-2048';
+    const perClient = dataset && data.clients.length > 0;
+    $('chat-hint').textContent = perClient ? `${data.clients.length} agentes, uno por cliente · el principal empieza vacío`
+      : dataset ? `5 clientes · ${data.messages.length} mensajes · pregunta por Nébula Software`
+      : $('subagent').checked ? 'Prueba: carga la conversación muy larga' : 'Prueba con el pedido ORD-2048';
     showUsage(data.context_usage);
-    $('status').textContent = dataset
+    $('status').textContent = perClient
+      ? `Conversación repartida, sin consumir API: cada agente tiene solo la de su cliente (${data.clients.join(', ')}).`
+      : dataset
       ? `Conversación cargada: ${data.messages.length} mensajes, sin consumir API. `
         + ($('compaction').checked ? 'Lista para compactar.'
           : 'Pregúntale algo con todo ese contexto. Para compactarla, enciende Compactación y vuelve a cargarla.')
@@ -257,9 +261,9 @@
   }
 
   function showSubagent(run) {
-    bubble(`Sub-agente ${run.run_id}${run.revived ? ' · revivido' : ''}`,
-      `${run.revived ? 'Pregunta' : 'Tarea'}: ${run.task}\n\n${run.report}\n\n`
-      + `Conversación completa: ${run.transcript} (${run.messages} mensajes, ${number(run.input_tokens)} tokens de entrada). Al agente principal solo le llega este informe.`);
+    bubble(`Agente de ${run.client}`,
+      `Pregunta: ${run.question}\n\n${run.answer}\n\n`
+      + `Su conversación: ${run.transcript} (${run.messages} mensajes, ${number(run.input_tokens)} tokens de entrada). Al agente principal solo le llega esta respuesta.`);
   }
 
   $('form').onsubmit = (event) => {
@@ -278,7 +282,7 @@
       showUsage(data.context_usage);
       const subagentTokens = data.subagents.reduce((sum, run) => sum + run.input_tokens, 0);
       $('status').textContent = `Tokens del agente en este turno: ${data.input_tokens} entrada, ${data.output_tokens} salida.`
-        + (data.subagents.length ? ` Sub-agentes: ${subagentTokens} de entrada, fuera del contexto principal.` : ' El resumen usa una llamada aparte.');
+        + (data.subagents.length ? ` Agentes de cliente: ${subagentTokens} de entrada, fuera del contexto principal.` : ' El resumen usa una llamada aparte.');
     });
   };
   // Las preguntas de la presentación, en el orden en que salen. Un clic la pone en la caja; se manda con Enviar.
@@ -287,8 +291,8 @@
     'En el caso de Nébula Software, ¿cuáles fueron los seriales de los dos audífonos dañados?',
     'Lee el historial original usando su referencia y recupera el dato. No lo inventes.',
     'Consulta el estado del pedido ORD-2048',
-    'Investiga el caso completo de CUS-L042: pedido, envío, pago, devolución y ticket. ¿Hay algo pendiente?',
-    '¿Qué consultó el investigador para concluir lo de la devolución? Pregúntale a él, no adivines.',
+    'Pregúntale al agente de cada cliente cuándo recibe su reposición. ¿Cuál la recibe primero?',
+    '¿Qué tan avanzada está la preparación de la sala de cada cliente?',
   ];
   quickReplies.forEach((text, index) => {
     const button = document.createElement('button');

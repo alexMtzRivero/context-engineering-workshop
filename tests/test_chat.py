@@ -14,7 +14,7 @@ from pydantic_ai.messages import ModelRequest, ModelResponse, ModelMessagesTypeA
 from pydantic_ai.models.function import FunctionModel
 
 import app as server
-from chat_agent import Chat, agent, compact, context_usage, file_path, history_json, model_settings, read_file, researcher, respond, search_file, summarizer
+from chat_agent import Chat, agent, ask_client, client_agent, compact, context_usage, extra_instructions, file_path, history_json, model_settings, read_file, respond, search_file, summarizer
 from customer_tools import CUSTOMER_TOOLS
 
 
@@ -339,73 +339,51 @@ class AgentTests(unittest.IsolatedAsyncioTestCase):
         data = lookup.function(SimpleNamespace(deps=self.chat), customer_id="NO-EXISTE")
         self.assertIn("No encontré NO-EXISTE", data)
 
-    async def delegate(self):
-        """El principal delega; el sub-agente consulta un pedido y entrega su informe."""
+    def seed_clients(self):
+        """Dos clientes con su conversación en disco, como los deja la página al cargar la conversación."""
         toggles(self.chat, subagent=True)
-        main_calls, research_calls = [], []
+        for name, text in [("Nébula Software", "Mi reposición llega el 18 de octubre."), ("Hotel Mirador", "Mi reposición llega el 22 de octubre.")]:
+            reference = f"clientes/{name.split()[0].lower()}.json"
+            path = self.chat.folder / reference
+            path.parent.mkdir(exist_ok=True)
+            path.write_bytes(ModelMessagesTypeAdapter.dump_json([ModelRequest(parts=[UserPromptPart(content=text)])]))
+            self.chat.clients[name] = reference
+
+    async def test_each_client_agent_answers_only_from_its_conversation(self):
+        self.seed_clients()
+        main_calls, client_calls = [], []
 
         def main(messages, info):
             main_calls.append((messages, {tool.name for tool in info.function_tools}))
             if len(main_calls) == 1:
-                return ModelResponse(parts=[ToolCallPart(tool_name="delegate_research", args={"task": "Investiga ORD-2048"})])
-            return ModelResponse(parts=[TextPart(content="Tu pedido va en camino.")])
+                return ModelResponse(parts=[
+                    ToolCallPart(tool_name="ask_client", args={"client": "nébula", "question": "¿Cuándo llega tu reposición?"}),
+                    ToolCallPart(tool_name="ask_client", args={"client": "Hotel Mirador", "question": "¿Cuándo llega tu reposición?"}),
+                ])
+            return ModelResponse(parts=[TextPart(content="Nébula Software primero.")])
 
-        def research(messages, info):
-            research_calls.append({tool.name for tool in info.function_tools})
-            if len(research_calls) == 1:
-                return ModelResponse(parts=[ToolCallPart(tool_name="get_order_status", args={"order_id": "ORD-2048"})])
-            return ModelResponse(parts=[TextPart(content="Informe: ORD-2048 llegó incompleto.")])
+        def client(messages, info):
+            client_calls.append(str(messages))
+            self.assertEqual(info.function_tools, [])
+            return ModelResponse(parts=[TextPart(content="18 de octubre." if "18 de octubre" in str(messages) else "22 de octubre.")])
 
-        with agent.override(model=FunctionModel(main)), researcher.override(model=FunctionModel(research)):
-            data = await respond(self.chat, "Investiga mi pedido")
-        return data, main_calls, research_calls
-
-    async def test_subagent_returns_report_and_keeps_full_transcript_on_disk(self):
-        data, main_calls, research_calls = await self.delegate()
-        self.assertEqual(main_calls[0][1], {"delegate_research", "ask_researcher"})
-        self.assertIn("get_order_status", research_calls[0])
-        self.assertNotIn("cancel_order", research_calls[0])  # investigar es solo lectura
-        self.assertIn("ORD-2048 llegó incompleto", str(main_calls[1][0]))
-        self.assertNotIn("AO-2048-009", str(main_calls[1][0]))  # el resultado crudo no llega al principal
-        run = data["subagents"][0]
-        transcript = (self.chat.folder / run["transcript"]).read_text()
-        self.assertIn("get_order_status", transcript)
-        self.assertIn("AO-2048-009", transcript)
-        self.assertEqual(run["messages"], 4)
+        with agent.override(model=FunctionModel(main)), client_agent.override(model=FunctionModel(client)):
+            data = await respond(self.chat, "¿Quién recibe primero su reposición?")
+        self.assertEqual(main_calls[0][1], {"ask_client"})
+        self.assertIn("Hotel Mirador", extra_instructions(self.chat))
+        self.assertEqual(len(client_calls), 2)
+        self.assertTrue(all(("18 de octubre" in call) != ("22 de octubre" in call) for call in client_calls))  # cada uno ve solo su caso
+        self.assertIn("18 de octubre.", str(main_calls[1][0]))
+        self.assertNotIn("Mi reposición llega", str(main_calls[1][0]))  # al principal solo llegan las respuestas
+        self.assertEqual(sorted(run["client"] for run in data["subagents"]), ["Hotel Mirador", "Nébula Software"])
         self.assertGreater(data["context_usage"]["tokens"]["retrieved"], 0)
 
-    async def test_revived_subagent_answers_with_its_full_history(self):
-        data, _, _ = await self.delegate()
-        run_id = data["subagents"][0]["run_id"]
-        calls = 0
-
-        def main(messages, info):
-            nonlocal calls
-            calls += 1
-            if calls == 1:
-                return ModelResponse(parts=[ToolCallPart(tool_name="ask_researcher", args={"run_id": run_id, "question": "¿Qué consultaste?"})])
-            return ModelResponse(parts=[TextPart(content="Consultó el estado del pedido.")])
-
-        def remember(messages, info):
-            self.assertIn("Investiga ORD-2048", str(messages))
-            self.assertIn("get_order_status", str(messages))
-            return ModelResponse(parts=[TextPart(content="Consulté get_order_status de ORD-2048.")])
-
-        with agent.override(model=FunctionModel(main)), researcher.override(model=FunctionModel(remember)):
-            data = await respond(self.chat, "¿Cómo llegó a esa conclusión?")
-        revived = data["subagents"][0]
-        self.assertTrue(revived["revived"])
-        self.assertEqual(revived["run_id"], run_id)
-        self.assertEqual(revived["messages"], 6)
-        self.assertIn("¿Qué consultaste?", (self.chat.folder / revived["transcript"]).read_text())
-
-    async def test_unknown_subagent_is_a_tool_retry(self):
-        toggles(self.chat, subagent=True)
+    async def test_unknown_client_is_a_tool_retry(self):
+        self.seed_clients()
         ctx = SimpleNamespace(deps=self.chat)
-        from chat_agent import ask_researcher
-        for run_id in ["noexiste", "../x"]:
+        for name in ["Pixel", "o"]:  # inexistente y ambiguo
             with self.assertRaises(ModelRetry):
-                await ask_researcher(ctx, run_id, "¿Qué hiciste?")
+                await ask_client(ctx, name, "¿Qué pasó?")
 
 
 class EndpointTests(unittest.TestCase):
@@ -422,6 +400,15 @@ class EndpointTests(unittest.TestCase):
                 self.assertEqual(client.post(path + "/chat", json={"message": ""}).status_code, 422)
                 self.assertEqual(client.post("/sessions/missing/chat", json={"message": "hola"}).status_code, 404)
                 self.assertEqual(client.post("/sessions", json={"subagent": True}).status_code, 200)
+                (Path(folder) / "datasets").mkdir()
+                real = Path(__file__).resolve().parents[1] / "datasets/conversacion-muy-larga.json"
+                (Path(folder) / "datasets/conversacion-muy-larga.json").write_text(real.read_text())
+                split = client.post("/sessions", json={"subagent": True, "dataset": True}).json()
+                self.assertEqual(split["messages"], [])  # el principal empieza vacío
+                self.assertEqual(len(split["clients"]), 5)
+                self.assertIn("Nébula Software", split["clients"])
+                self.assertEqual(split["context_usage"]["tokens"]["chat"], 0)
+                self.assertTrue((Path(split["folder"]) / "clientes/nebula-software.json").is_file())
                 self.assertEqual(client.post("/sessions", json={"step": 3}).status_code, 422)
                 base = client.post("/sessions", json={}).json()["session_id"]
                 self.assertEqual(client.post(f"/sessions/{base}/compact", json={"with_reference": False}).status_code, 400)

@@ -26,7 +26,7 @@ class Chat:
     all_tools: bool = False  # Todas las tools: las 80 de servicio en cada llamada
     compaction: bool = False  # Compactación
     on_demand: bool = False  # Tools bajo demanda
-    subagent: bool = False  # Sub-agente investigador
+    subagent: bool = False  # Un agente por cliente
     history: list[ModelMessage] = field(default_factory=list)  # lo que se reenvía al modelo en cada llamada
     pending_compaction: bool | None = None  # compactación pedida por el agente; se aplica al terminar el turno
     loaded_tools: set[str] = field(default_factory=set)  # tools descubiertas con Tools bajo demanda
@@ -34,6 +34,7 @@ class Chat:
     last_input_tokens: int | None = None
     service_requests: list[dict] = field(default_factory=list)  # solicitudes simuladas de las tools de escritura
     subagent_runs: list[dict] = field(default_factory=list)  # sub-agentes que corrieron en este turno
+    clients: dict[str, str] = field(default_factory=dict)  # extra: cliente -> su conversación en disco
 
 
 # Nombre y descripción de cada tool que se puede descubrir con Tools bajo demanda.

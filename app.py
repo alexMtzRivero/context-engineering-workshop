@@ -2,6 +2,8 @@
 
 import asyncio
 import json
+import re
+import unicodedata
 from dataclasses import dataclass, field
 from uuid import uuid4
 
@@ -9,9 +11,9 @@ from fastapi import FastAPI, HTTPException
 from fastapi.responses import FileResponse
 from pydantic import BaseModel, ConfigDict, Field
 from pydantic_ai.exceptions import ContentFilterError, UnexpectedModelBehavior
-from pydantic_ai.messages import ModelRequest, ModelResponse, TextPart, UserPromptPart
+from pydantic_ai.messages import ModelMessagesTypeAdapter, ModelRequest, ModelResponse, TextPart, UserPromptPart
 
-from chat_agent import ROOT, Chat, compact, context_usage, history_json, respond
+from chat_agent import ROOT, Chat, compact, context_usage, file_path, history_json, respond
 
 app = FastAPI()
 
@@ -85,15 +87,37 @@ def start(body: Start):
     # La conversación muy larga se convierte a mensajes de Pydantic AI sin llamar al modelo.
     if body.dataset:
         messages = json.loads((ROOT / DATASET).read_text())["messages"]
-        sessions[session_id].chat.history = [
-            ModelRequest(parts=[UserPromptPart(content=message["content"])])
-            if message["role"] == "user" else ModelResponse(parts=[TextPart(content=message["content"])])
-            for message in messages
-        ]
+        if chat.subagent:
+            # Extra: cada cliente se queda con su conversación y el principal empieza vacío.
+            split_by_client(chat, messages)
+            messages = []
+        else:
+            chat.history = to_history(messages)
     return {
-        "session_id": session_id, "folder": str(folder),
-        "messages": messages, "context_usage": context_usage(sessions[session_id].chat),
+        "session_id": session_id, "folder": str(folder), "messages": messages, "clients": list(chat.clients),
+        "context_usage": context_usage(chat),
     }
+
+
+def to_history(messages: list[dict]) -> list:
+    return [
+        ModelRequest(parts=[UserPromptPart(content=message["content"])])
+        if message["role"] == "user" else ModelResponse(parts=[TextPart(content=message["content"])])
+        for message in messages
+    ]
+
+
+def split_by_client(chat: Chat, messages: list[dict]) -> None:
+    """Guarda la conversación de cada cliente en clientes/<cliente>.json; cada caso empieza con «Hola, soy...»."""
+    starts = [index for index, message in enumerate(messages) if message["content"].startswith("Hola, soy")]
+    for start, end in zip(starts, [*starts[1:], len(messages)]):
+        name = re.search(r"coordinadora de operaciones de ([^.]+)\.", messages[start]["content"]).group(1)
+        slug = re.sub(r"[^a-z0-9]+", "-", unicodedata.normalize("NFKD", name).encode("ascii", "ignore").decode().lower()).strip("-")
+        reference = f"clientes/{slug}.json"
+        path = file_path(chat, reference)
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_bytes(ModelMessagesTypeAdapter.dump_json(to_history(messages[start:end]), indent=2))
+        chat.clients[name] = reference
 
 
 @app.post("/sessions/{session_id}/chat")

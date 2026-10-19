@@ -43,8 +43,11 @@ async def compact(chat: Chat, with_reference: bool) -> dict:
         path = file_path(chat, reference)
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(original, encoding="utf-8")
-        # La ruta va dentro del resumen para que el agente sepa qué leer con read_file.
-        summary += f"\n\nHistorial completo: {reference}. Usa read_file si faltan detalles."
+        # La ruta va dentro del resumen: el agente busca ahí lo que falte, sin cargar el archivo completo.
+        summary += (
+            f"\n\nHistorial completo: {reference}. Si faltan detalles, búscalos con search_file "
+            "y lee con read_file solo las líneas que necesites."
+        )
     # Reemplazar, no añadir: el historial completo deja de enviarse al modelo.
     # La metadata marca el mensaje como resumen para que la barra lo cuente aparte.
     chat.history = [ModelRequest(parts=[UserPromptPart(content=summary)], metadata={"context_kind": "summary"})]

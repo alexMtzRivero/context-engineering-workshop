@@ -38,7 +38,8 @@ class Chat:
 # Nombre y descripción de cada tool que se puede descubrir con Tools bajo demanda.
 CATALOG = {
     "list_files": "Encontrar archivos por una palabra en su ruta.",
-    "read_file": "Leer un archivo de texto, incluido un historial archivado.",
+    "read_file": "Leer un rango de líneas de un archivo de texto, incluido un historial archivado.",
+    "search_file": "Buscar un texto dentro de un archivo y ver solo las líneas que coinciden.",
     "write_file": "Guardar texto en un archivo.",
     "compact_context": "Resumir el historial, con o sin referencia al original en disco.",
     **CUSTOMER_CATALOG,

@@ -7,7 +7,9 @@ Una persona del equipo le pide al agente analizar cinco casos de soporte casi ig
 | Pregunta | Respuesta correcta |
 |---|---|
 | ¿A qué dirección se entrega el pedido de cada cliente? | Cada uno a la suya, en Avenida del Laboratorio, edificio B, puerta 3: Despacho Ruiz Contadores 253, Clínica Dental Sonrisa 266, Nébula Software 240, Agencia Pixel 279 y Hotel Mirador 292 |
-| ¿Cómo va la preparación de la sala de Nébula Software? | Tiene sus 32 tarjetas registradas, una por puesto, todas con el procedimiento definido y la prueba pendiente |
 | ¿Qué tan avanzada está la preparación de la sala de cada cliente? | Igual en los cinco: 32 tarjetas cada uno y ninguna prueba ejecutada |
+| ¿Cómo va la preparación de la sala de Nébula Software? | Tiene sus 32 tarjetas registradas, una por puesto, todas con el procedimiento definido y la prueba pendiente |
 | ¿Cuántas tarjetas de preparación registró cada cliente? | 32 cada uno, 160 en total |
 | ¿Qué equipos tiene que probar cada cliente antes de su taller? | Los mismos ocho en los cinco: audífonos, cámara, router, dock USB, teclado, monitor, micrófono USB y almacenamiento USB, en cuatro puestos cada uno |
+
+La más confiable para la demo es la de la sala de cada cliente (respuesta rápida 1 de la página). En una medición del 18 de octubre de 2026 con Haiku 5.5, todo apagado y un chat nuevo por intento, falló 4 de 4 veces. La de Nébula Software falla seguido, pero a veces acierta. Si el proveedor responde con el aviso de su filtro de contenido, basta con volver a preguntar.

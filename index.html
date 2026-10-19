@@ -56,6 +56,11 @@
   textarea::placeholder { color: #a1a1aa; }
   #send { height: 38px; background: var(--ink); border-color: var(--ink); color: white; }
   #send:hover { background: #3f3f46; }
+  .quick { padding: 2px 18px 12px; }
+  .quick strong { display: block; margin-bottom: 8px; font-size: 11px; font-weight: 600; color: var(--muted); }
+  #quick-replies { display: flex; flex-direction: column; gap: 6px; margin: 0; padding: 0; list-style: none; }
+  #quick-replies button { display: flex; gap: 8px; width: 100%; min-height: 0; text-align: left; white-space: normal; font-weight: 500; line-height: 1.45; }
+  #quick-replies .number { flex-shrink: 0; min-width: 16px; font-weight: 600; color: var(--muted); font-variant-numeric: tabular-nums; }
   pre { white-space: pre-wrap; overflow-wrap: anywhere; font: 11px/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
   #status { margin: 0; padding: 0 18px 16px; font-size: 10px; color: var(--muted); overflow-wrap: anywhere; }
   .meter { order: 2; padding: 18px; }
@@ -131,6 +136,10 @@
   <textarea id="message" aria-label="Mensaje" placeholder="Escribe un mensaje" required></textarea>
   <button id="send">Enviar</button>
 </form>
+<section class="quick" aria-label="Respuestas rápidas">
+  <strong>Respuestas rápidas</strong>
+  <ol id="quick-replies"></ol>
+</section>
 <p id="status" role="status"></p>
 </section>
 </div>
@@ -272,6 +281,27 @@
         + (data.subagents.length ? ` Sub-agentes: ${subagentTokens} de entrada, fuera del contexto principal.` : ' El resumen usa una llamada aparte.');
     });
   };
+  // Las preguntas de la presentación, en el orden en que salen. Un clic la pone en la caja; se manda con Enviar.
+  const quickReplies = [
+    '¿Qué tan avanzada está la preparación de la sala de cada cliente?',
+    'En el caso de Nébula Software, ¿cuáles fueron los seriales de los dos audífonos dañados?',
+    'Lee el historial original usando su referencia y recupera el dato. No lo inventes.',
+    'Consulta el estado de mi pedido ORD-2048',
+    'Investiga el caso completo de CUS-L042: pedido, envío, pago, devolución y ticket. ¿Hay algo pendiente?',
+    '¿Qué consultó el investigador para concluir lo de la devolución? Pregúntale a él, no adivines.',
+  ];
+  quickReplies.forEach((text, index) => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    const number = document.createElement('span');
+    number.className = 'number';
+    number.textContent = `${index + 1}.`;
+    button.append(number, text);
+    button.onclick = () => { $('message').value = text; $('message').focus(); };
+    const item = document.createElement('li');
+    item.append(button);
+    $('quick-replies').append(item);
+  });
   $('new').onclick = () => action(newChat);
   for (const id of toggleIds) {
     $(id).onchange = () => {

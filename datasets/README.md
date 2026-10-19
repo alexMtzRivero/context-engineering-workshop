@@ -1,5 +1,7 @@
 # Conversación muy larga
 
+La conversación está en `conversacion-muy-larga/`, partida en archivos: `00-introduccion.json` (el pedido del análisis) y uno por cliente, en el orden en que aparecen. Juntos, en orden, son los 1,282 mensajes; cada archivo de cliente sirve también por separado para el agente de ese cliente (paso 5).
+
 Una persona del equipo le pide al agente analizar cinco casos de soporte casi iguales para encontrar por qué se repiten. Le pasa las cinco conversaciones completas, una tras otra: Despacho Ruiz Contadores, Clínica Dental Sonrisa, Nébula Software, Agencia Pixel y Hotel Mirador. En cada una, el cliente reporta audífonos faltantes y dañados y un cobro duplicado y, entre los mensajes del pedido, prepara la sala de su taller: para cada uno de 32 puestos pide una prueba del equipo, que el agente registra como una tarjeta con identificador (por ejemplo, LAB-BT-04). Todo es ficticio.
 
 ## Preguntas trampa

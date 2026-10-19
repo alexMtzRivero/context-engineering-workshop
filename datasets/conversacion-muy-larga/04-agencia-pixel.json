@@ -1,0 +1,1029 @@
+{
+  "client": "Agencia Pixel",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Hola, soy Sara Molina, coordinadora de operaciones de Agencia Pixel. Esta es una práctica con datos ficticios. Mi cuenta histórica es CUS-L063 y necesito revisar ORD-2069: compramos 40 audífonos para un taller del 22 de octubre de 2026. Hay varios problemas y quiero resolverlos sin cancelar el pedido completo."
+    },
+    {
+      "role": "assistant",
+      "content": "Hola, Sara. Mantendremos abierto el caso histórico de Agencia Pixel. Registraré por separado entrega, unidades dañadas y cobros para que una solución no afecte otra. La cuenta es CUS-L063 y el pedido original ORD-2069. Las gestiones de esta conversación son simuladas; distinguiré las solicitudes registradas de cualquier confirmación pendiente."
+    },
+    {
+      "role": "user",
+      "content": "Consulta adicional para el puesto 01: quiero revisar conexión Bluetooth del audífonos. En ese puesto trabajarán varias personas por turnos y necesitamos un procedimiento que pueda repetir el facilitador. Es planificación del laboratorio; no autoriza una compra ni cambia los acuerdos de la incidencia. ¿Qué debo verificar y qué no debería dar por hecho?"
+    },
+    {
+      "role": "assistant",
+      "content": "Para el puesto 01, la ficha ficticia de audífonos indica lo siguiente: Se emparejan con un equipo a la vez y guardan hasta dos dispositivos conocidos. El cambio entre equipos requiere desconectar el anterior; no prometemos audio simultáneo. La comprobación propuesta es: Olvidar el dispositivo anterior, reiniciar la búsqueda y probar con un segundo equipo. Registra el equipo, las conexiones y el resultado para que otra persona pueda repetir la prueba. Si el resultado difiere, conserva el dato observado y revisa una variable por vez. Esta consulta no modifica el pedido, el reembolso ni las fechas acordadas del caso abierto."
+    },
+    {
+      "role": "user",
+      "content": "Voy a convertir esa explicación de conexión Bluetooth en una tarjeta de preparación del puesto 01. Quiero que el registro diga qué probamos, con qué condiciones y qué resultado se considera suficiente para la práctica. También necesitamos distinguir una especificación de catálogo de un resultado realmente observado. ¿Cómo lo dejarías escrito sin prometer que funcionará en cualquier equipo?"
+    },
+    {
+      "role": "assistant",
+      "content": "Tarjeta propuesta: puesto 01; equipo audífonos; revisión de conexión Bluetooth. Preparación: anotar conexiones, aplicación y condiciones del ambiente. Prueba: Olvidar el dispositivo anterior, reiniciar la búsqueda y probar con un segundo equipo. Evidencia: registrar el resultado y cualquier diferencia respecto a la ficha ficticia. Criterio de cierre: la prueba requerida para este puesto se reproduce con el equipo que se usará en la sesión. Si cambia equipo o conexión, se repite. No es una garantía universal ni una confirmación de que la incidencia logística o financiera ya esté resuelta."
+    },
+    {
+      "role": "user",
+      "content": "El identificador de esta tarjeta será LAB-BT-25. Lo eligió el equipo de la sala; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de conexión Bluetooth, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada."
+    },
+    {
+      "role": "assistant",
+      "content": "Registro la tarjeta LAB-BT-25 para conexión Bluetooth de audífonos en el puesto 01. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación de la sala y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa."
+    },
+    {
+      "role": "user",
+      "content": "El precio de cada audífono fue 929 MXN, compramos 40 y aplicamos TALLER-33. El descuento era de 12% y el envío original no tenía costo. No quiero que nadie compare los importes sin considerar el descuento."
+    },
+    {
+      "role": "assistant",
+      "content": "El subtotal es 37,160 MXN; el descuento TALLER-33 equivale a 4,459.20 MXN. El total correcto del pedido es 32,700.80 MXN, incluido el envío original gratuito. Para referencias por unidad, el precio descontado es 817.52 MXN. Mantendré separado el precio de lista de cualquier importe ya descontado."
+    },
+    {
+      "role": "user",
+      "content": "Consulta adicional para el puesto 02: quiero revisar autonomía de batería del audífonos. En ese puesto trabajarán varias personas por turnos y necesitamos un procedimiento que pueda repetir el facilitador. Es planificación del laboratorio; no autoriza una compra ni cambia los acuerdos de la incidencia. ¿Qué debo verificar y qué no debería dar por hecho?"
+    },
+    {
+      "role": "assistant",
+      "content": "Para el puesto 02, la ficha ficticia de audífonos indica lo siguiente: La ficha ficticia indica 28 horas a volumen medio. El uso del micrófono y un volumen alto reducen la autonomía; para una sesión larga hay que revisar carga y horario. La comprobación propuesta es: Cargar durante dos horas y repetir una sesión de audio de 45 minutos. Registra el equipo, las conexiones y el resultado para que otra persona pueda repetir la prueba. Si el resultado difiere, conserva el dato observado y revisa una variable por vez. Esta consulta no modifica el pedido, el reembolso ni las fechas acordadas del caso abierto."
+    },
+    {
+      "role": "user",
+      "content": "Voy a convertir esa explicación de autonomía de batería en una tarjeta de preparación del puesto 02. Quiero que el registro diga qué probamos, con qué condiciones y qué resultado se considera suficiente para la práctica. También necesitamos distinguir una especificación de catálogo de un resultado realmente observado. ¿Cómo lo dejarías escrito sin prometer que funcionará en cualquier equipo?"
+    },
+    {
+      "role": "assistant",
+      "content": "Tarjeta propuesta: puesto 02; equipo audífonos; revisión de autonomía de batería. Preparación: anotar conexiones, aplicación y condiciones del ambiente. Prueba: Cargar durante dos horas y repetir una sesión de audio de 45 minutos. Evidencia: registrar el resultado y cualquier diferencia respecto a la ficha ficticia. Criterio de cierre: la prueba requerida para este puesto se reproduce con el equipo que se usará en la sesión. Si cambia equipo o conexión, se repite. No es una garantía universal ni una confirmación de que la incidencia logística o financiera ya esté resuelta."
+    },
+    {
+      "role": "user",
+      "content": "El identificador de esta tarjeta será LAB-BAT-49. Lo eligió el equipo de la sala; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de autonomía de batería, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada."
+    },
+    {
+      "role": "assistant",
+      "content": "Registro la tarjeta LAB-BAT-49 para autonomía de batería de audífonos en el puesto 02. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación de la sala y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa."
+    },
+    {
+      "role": "user",
+      "content": "En recepción contaron 36 unidades: 34 funcionan y dos están dañadas. Faltan cuatro más. Los dañados tienen números de serie AO-2069-030 y AO-2069-048. La caja llegó con una esquina aplastada; no asumiré que todo el lote está mal."
+    },
+    {
+      "role": "assistant",
+      "content": "Registro 40 unidades compradas, 36 recibidas, 34 utilizables, dos dañadas y cuatro faltantes. Los seriales dañados son AO-2069-030 y AO-2069-048. La solución debe cubrir seis unidades: cuatro faltantes y dos reemplazos. No registraré 38 unidades funcionales ni una devolución del lote completo."
+    },
+    {
+      "role": "user",
+      "content": "Consulta adicional para el puesto 03: quiero revisar micrófono y ruido del audífonos. En ese puesto trabajarán varias personas por turnos y necesitamos un procedimiento que pueda repetir el facilitador. Es planificación del laboratorio; no autoriza una compra ni cambia los acuerdos de la incidencia. ¿Qué debo verificar y qué no debería dar por hecho?"
+    },
+    {
+      "role": "assistant",
+      "content": "Para el puesto 03, la ficha ficticia de audífonos indica lo siguiente: El micrófono integrado sirve para videollamadas; no sustituye un micrófono de grabación. Conviene separar al hablante de ventiladores y revisar la ganancia antes de aplicar filtros. La comprobación propuesta es: Grabar una frase con ventilador apagado y otra con ventilador encendido. Registra el equipo, las conexiones y el resultado para que otra persona pueda repetir la prueba. Si el resultado difiere, conserva el dato observado y revisa una variable por vez. Esta consulta no modifica el pedido, el reembolso ni las fechas acordadas del caso abierto."
+    },
+    {
+      "role": "user",
+      "content": "Voy a convertir esa explicación de micrófono y ruido en una tarjeta de preparación del puesto 03. Quiero que el registro diga qué probamos, con qué condiciones y qué resultado se considera suficiente para la práctica. También necesitamos distinguir una especificación de catálogo de un resultado realmente observado. ¿Cómo lo dejarías escrito sin prometer que funcionará en cualquier equipo?"
+    },
+    {
+      "role": "assistant",
+      "content": "Tarjeta propuesta: puesto 03; equipo audífonos; revisión de micrófono y ruido. Preparación: anotar conexiones, aplicación y condiciones del ambiente. Prueba: Grabar una frase con ventilador apagado y otra con ventilador encendido. Evidencia: registrar el resultado y cualquier diferencia respecto a la ficha ficticia. Criterio de cierre: la prueba requerida para este puesto se reproduce con el equipo que se usará en la sesión. Si cambia equipo o conexión, se repite. No es una garantía universal ni una confirmación de que la incidencia logística o financiera ya esté resuelta."
+    },
+    {
+      "role": "user",
+      "content": "El identificador de esta tarjeta será LAB-MIC-33. Lo eligió el equipo de la sala; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de micrófono y ruido, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada."
+    },
+    {
+      "role": "assistant",
+      "content": "Registro la tarjeta LAB-MIC-33 para micrófono y ruido de audífonos en el puesto 03. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación de la sala y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa."
+    },
+    {
+      "role": "user",
+      "content": "Veo dos cargos iguales. PAY-8863 es el pago que autorizamos y PAY-8864 apareció después. Los dos muestran 32,700.80 MXN. Nuestra administración teme que una devolución termine anulando también el pago válido."
+    },
+    {
+      "role": "assistant",
+      "content": "Separaré la investigación de cobro duplicado de la reposición de equipos. PAY-8863 queda como pago válido; la solicitud de reembolso debe referirse exclusivamente a PAY-8864 por 32,700.80 MXN. La reposición de seis unidades no cancela el pedido ni autoriza devolver el primer pago."
+    },
+    {
+      "role": "user",
+      "content": "Consulta adicional para el puesto 04: quiero revisar limpieza de almohadillas del audífonos. En ese puesto trabajarán varias personas por turnos y necesitamos un procedimiento que pueda repetir el facilitador. Es planificación del laboratorio; no autoriza una compra ni cambia los acuerdos de la incidencia. ¿Qué debo verificar y qué no debería dar por hecho?"
+    },
+    {
+      "role": "assistant",
+      "content": "Para el puesto 04, la ficha ficticia de audífonos indica lo siguiente: Las almohadillas ficticias se limpian con paño ligeramente húmedo y se secan al aire. No se recomienda sumergir el equipo ni usar disolventes; cada puesto tendrá un registro de limpieza. La comprobación propuesta es: Desconectar, limpiar superficies y dejar secar antes de volver a usar. Registra el equipo, las conexiones y el resultado para que otra persona pueda repetir la prueba. Si el resultado difiere, conserva el dato observado y revisa una variable por vez. Esta consulta no modifica el pedido, el reembolso ni las fechas acordadas del caso abierto."
+    },
+    {
+      "role": "user",
+      "content": "Voy a convertir esa explicación de limpieza de almohadillas en una tarjeta de preparación del puesto 04. Quiero que el registro diga qué probamos, con qué condiciones y qué resultado se considera suficiente para la práctica. También necesitamos distinguir una especificación de catálogo de un resultado realmente observado. ¿Cómo lo dejarías escrito sin prometer que funcionará en cualquier equipo?"
+    },
+    {
+      "role": "assistant",
+      "content": "Tarjeta propuesta: puesto 04; equipo audífonos; revisión de limpieza de almohadillas. Preparación: anotar conexiones, aplicación y condiciones del ambiente. Prueba: Desconectar, limpiar superficies y dejar secar antes de volver a usar. Evidencia: registrar el resultado y cualquier diferencia respecto a la ficha ficticia. Criterio de cierre: la prueba requerida para este puesto se reproduce con el equipo que se usará en la sesión. Si cambia equipo o conexión, se repite. No es una garantía universal ni una confirmación de que la incidencia logística o financiera ya esté resuelta."
+    },
+    {
+      "role": "user",
+      "content": "El identificador de esta tarjeta será LAB-LIM-28. Lo eligió el equipo de la sala; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de limpieza de almohadillas, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada."
+    },
+    {
+      "role": "assistant",
+      "content": "Registro la tarjeta LAB-LIM-28 para limpieza de almohadillas de audífonos en el puesto 04. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación de la sala y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa."
+    },
+    {
+      "role": "user",
+      "content": "Al principio pensé que podríamos recibir los reemplazos el 20 de octubre antes de las 15:00. La dirección era Calle del Taller 18, puerta principal. Tómalo como propuesta inicial, todavía debo revisar el acceso con el responsable del edificio."
+    },
+    {
+      "role": "assistant",
+      "content": "Dejo esa fecha y esa dirección como propuestas, no como compromisos definitivos: 20 de octubre antes de las 15:00 y Calle del Taller 18, puerta principal. Falta tu confirmación de acceso. Si después corriges estos datos, usaré el último acuerdo explícito y conservaré el anterior solo como antecedente."
+    },
+    {
+      "role": "user",
+      "content": "Consulta adicional para el puesto 05: quiero revisar resolución en videollamadas del cámara. En ese puesto trabajarán varias personas por turnos y necesitamos un procedimiento que pueda repetir el facilitador. Es planificación del laboratorio; no autoriza una compra ni cambia los acuerdos de la incidencia. ¿Qué debo verificar y qué no debería dar por hecho?"
+    },
+    {
+      "role": "assistant",
+      "content": "Para el puesto 05, la ficha ficticia de cámara indica lo siguiente: El modelo demo ofrece 1080p a 30 cuadros por segundo. La aplicación puede reducir calidad si detecta poca luz o mala conexión; la selección de resolución no prueba el rendimiento real. La comprobación propuesta es: Comparar una grabación local con una videollamada en la misma iluminación. Registra el equipo, las conexiones y el resultado para que otra persona pueda repetir la prueba. Si el resultado difiere, conserva el dato observado y revisa una variable por vez. Esta consulta no modifica el pedido, el reembolso ni las fechas acordadas del caso abierto."
+    },
+    {
+      "role": "user",
+      "content": "Voy a convertir esa explicación de resolución en videollamadas en una tarjeta de preparación del puesto 05. Quiero que el registro diga qué probamos, con qué condiciones y qué resultado se considera suficiente para la práctica. También necesitamos distinguir una especificación de catálogo de un resultado realmente observado. ¿Cómo lo dejarías escrito sin prometer que funcionará en cualquier equipo?"
+    },
+    {
+      "role": "assistant",
+      "content": "Tarjeta propuesta: puesto 05; equipo cámara; revisión de resolución en videollamadas. Preparación: anotar conexiones, aplicación y condiciones del ambiente. Prueba: Comparar una grabación local con una videollamada en la misma iluminación. Evidencia: registrar el resultado y cualquier diferencia respecto a la ficha ficticia. Criterio de cierre: la prueba requerida para este puesto se reproduce con el equipo que se usará en la sesión. Si cambia equipo o conexión, se repite. No es una garantía universal ni una confirmación de que la incidencia logística o financiera ya esté resuelta."
+    },
+    {
+      "role": "user",
+      "content": "El identificador de esta tarjeta será CAM-1101-51. Lo eligió el equipo de la sala; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de resolución en videollamadas, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada."
+    },
+    {
+      "role": "assistant",
+      "content": "Registro la tarjeta CAM-1101-51 para resolución en videollamadas de cámara en el puesto 05. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación de la sala y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa."
+    },
+    {
+      "role": "user",
+      "content": "Usa por ahora coordinacion@agenciapixel.example para las novedades. También tenemos un chat de WhatsApp, pero no autorizo avisos por ese medio durante esta gestión. Quiero que el registro deje clara esa preferencia."
+    },
+    {
+      "role": "assistant",
+      "content": "Preferencia inicial: correo a coordinacion@agenciapixel.example. WhatsApp no está autorizado y no se enviarán mensajes externos desde esta práctica. Registraré los cambios de destinatario si los confirmas después, y usaré la preferencia más reciente al redactar los siguientes pasos."
+    },
+    {
+      "role": "user",
+      "content": "Consulta adicional para el puesto 06: quiero revisar ángulo de visión del cámara. En ese puesto trabajarán varias personas por turnos y necesitamos un procedimiento que pueda repetir el facilitador. Es planificación del laboratorio; no autoriza una compra ni cambia los acuerdos de la incidencia. ¿Qué debo verificar y qué no debería dar por hecho?"
+    },
+    {
+      "role": "assistant",
+      "content": "Para el puesto 06, la ficha ficticia de cámara indica lo siguiente: La cámara demo tiene un ángulo horizontal de 78 grados. Para grupos conviene ubicarla a la altura de los ojos; moverla más lejos también cambia el tamaño de cada participante en cuadro. La comprobación propuesta es: Marcar el lugar de la cámara y revisar si caben tres personas sin cortar rostros. Registra el equipo, las conexiones y el resultado para que otra persona pueda repetir la prueba. Si el resultado difiere, conserva el dato observado y revisa una variable por vez. Esta consulta no modifica el pedido, el reembolso ni las fechas acordadas del caso abierto."
+    },
+    {
+      "role": "user",
+      "content": "Voy a convertir esa explicación de ángulo de visión en una tarjeta de preparación del puesto 06. Quiero que el registro diga qué probamos, con qué condiciones y qué resultado se considera suficiente para la práctica. También necesitamos distinguir una especificación de catálogo de un resultado realmente observado. ¿Cómo lo dejarías escrito sin prometer que funcionará en cualquier equipo?"
+    },
+    {
+      "role": "assistant",
+      "content": "Tarjeta propuesta: puesto 06; equipo cámara; revisión de ángulo de visión. Preparación: anotar conexiones, aplicación y condiciones del ambiente. Prueba: Marcar el lugar de la cámara y revisar si caben tres personas sin cortar rostros. Evidencia: registrar el resultado y cualquier diferencia respecto a la ficha ficticia. Criterio de cierre: la prueba requerida para este puesto se reproduce con el equipo que se usará en la sesión. Si cambia equipo o conexión, se repite. No es una garantía universal ni una confirmación de que la incidencia logística o financiera ya esté resuelta."
+    },
+    {
+      "role": "user",
+      "content": "El identificador de esta tarjeta será CAM-ANG-99. Lo eligió el equipo de la sala; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de ángulo de visión, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada."
+    },
+    {
+      "role": "assistant",
+      "content": "Registro la tarjeta CAM-ANG-99 para ángulo de visión de cámara en el puesto 06. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación de la sala y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa."
+    },
+    {
+      "role": "user",
+      "content": "Abrimos el caso SUP-3127. Necesitamos reposición, no saldo a favor: el curso ya tiene participantes inscritos. Si los dañados se recogen después de recibir los reemplazos, nos quedamos con los 34 que sí funcionan."
+    },
+    {
+      "role": "assistant",
+      "content": "El caso inicial es SUP-3127. La opción elegida es reposición: seis unidades para alcanzar 40 utilizables. Los 34 audífonos que funcionan se conservan. No transformo la reposición en saldo a favor ni condiciono el uso del lote funcional a devolver todo el pedido."
+    },
+    {
+      "role": "user",
+      "content": "Consulta adicional para el puesto 07: quiero revisar privacidad y tapa del cámara. En ese puesto trabajarán varias personas por turnos y necesitamos un procedimiento que pueda repetir el facilitador. Es planificación del laboratorio; no autoriza una compra ni cambia los acuerdos de la incidencia. ¿Qué debo verificar y qué no debería dar por hecho?"
+    },
+    {
+      "role": "assistant",
+      "content": "Para el puesto 07, la ficha ficticia de cámara indica lo siguiente: La tapa física cubre la lente, pero no controla los permisos de la aplicación. Para el protocolo del laboratorio se revisan ambos: cubierta al terminar y cierre de la videollamada. La comprobación propuesta es: Cerrar la aplicación, colocar la tapa y comprobar el indicador de actividad. Registra el equipo, las conexiones y el resultado para que otra persona pueda repetir la prueba. Si el resultado difiere, conserva el dato observado y revisa una variable por vez. Esta consulta no modifica el pedido, el reembolso ni las fechas acordadas del caso abierto."
+    },
+    {
+      "role": "user",
+      "content": "Voy a convertir esa explicación de privacidad y tapa en una tarjeta de preparación del puesto 07. Quiero que el registro diga qué probamos, con qué condiciones y qué resultado se considera suficiente para la práctica. También necesitamos distinguir una especificación de catálogo de un resultado realmente observado. ¿Cómo lo dejarías escrito sin prometer que funcionará en cualquier equipo?"
+    },
+    {
+      "role": "assistant",
+      "content": "Tarjeta propuesta: puesto 07; equipo cámara; revisión de privacidad y tapa. Preparación: anotar conexiones, aplicación y condiciones del ambiente. Prueba: Cerrar la aplicación, colocar la tapa y comprobar el indicador de actividad. Evidencia: registrar el resultado y cualquier diferencia respecto a la ficha ficticia. Criterio de cierre: la prueba requerida para este puesto se reproduce con el equipo que se usará en la sesión. Si cambia equipo o conexión, se repite. No es una garantía universal ni una confirmación de que la incidencia logística o financiera ya esté resuelta."
+    },
+    {
+      "role": "user",
+      "content": "El identificador de esta tarjeta será CAM-PRIV-24. Lo eligió el equipo de la sala; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de privacidad y tapa, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada."
+    },
+    {
+      "role": "assistant",
+      "content": "Registro la tarjeta CAM-PRIV-24 para privacidad y tapa de cámara en el puesto 07. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación de la sala y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa."
+    },
+    {
+      "role": "user",
+      "content": "Vamos a revisar muchas cosas del laboratorio mientras se gestiona esto. Algunas serán compras futuras; no las añadas automáticamente al pedido ni pierdas los tres problemas abiertos por hablar de productos."
+    },
+    {
+      "role": "assistant",
+      "content": "Las consultas técnicas y de compras futuras serán información adicional. No modificarán ORD-2069 por sí solas. Seguimos con tres frentes: cuatro faltantes y dos dañados, entrega de las seis unidades y cobro duplicado PAY-8864. Mantendré separadas las preguntas del laboratorio de las decisiones operativas confirmadas."
+    },
+    {
+      "role": "user",
+      "content": "Consulta adicional para el puesto 08: quiero revisar compatibilidad de conexión del cámara. En ese puesto trabajarán varias personas por turnos y necesitamos un procedimiento que pueda repetir el facilitador. Es planificación del laboratorio; no autoriza una compra ni cambia los acuerdos de la incidencia. ¿Qué debo verificar y qué no debería dar por hecho?"
+    },
+    {
+      "role": "assistant",
+      "content": "Para el puesto 08, la ficha ficticia de cámara indica lo siguiente: La cámara demo usa UVC por USB y se prueba en los sistemas de la sala antes del evento. Un adaptador que solo carga no sirve para datos; hay que identificar el cable y el puerto. La comprobación propuesta es: Probar conexión directa antes de usar un hub y registrar el puerto utilizado. Registra el equipo, las conexiones y el resultado para que otra persona pueda repetir la prueba. Si el resultado difiere, conserva el dato observado y revisa una variable por vez. Esta consulta no modifica el pedido, el reembolso ni las fechas acordadas del caso abierto."
+    },
+    {
+      "role": "user",
+      "content": "Voy a convertir esa explicación de compatibilidad de conexión en una tarjeta de preparación del puesto 08. Quiero que el registro diga qué probamos, con qué condiciones y qué resultado se considera suficiente para la práctica. También necesitamos distinguir una especificación de catálogo de un resultado realmente observado. ¿Cómo lo dejarías escrito sin prometer que funcionará en cualquier equipo?"
+    },
+    {
+      "role": "assistant",
+      "content": "Tarjeta propuesta: puesto 08; equipo cámara; revisión de compatibilidad de conexión. Preparación: anotar conexiones, aplicación y condiciones del ambiente. Prueba: Probar conexión directa antes de usar un hub y registrar el puerto utilizado. Evidencia: registrar el resultado y cualquier diferencia respecto a la ficha ficticia. Criterio de cierre: la prueba requerida para este puesto se reproduce con el equipo que se usará en la sesión. Si cambia equipo o conexión, se repite. No es una garantía universal ni una confirmación de que la incidencia logística o financiera ya esté resuelta."
+    },
+    {
+      "role": "user",
+      "content": "El identificador de esta tarjeta será CAM-UVC-23. Lo eligió el equipo de la sala; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de compatibilidad de conexión, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada."
+    },
+    {
+      "role": "assistant",
+      "content": "Registro la tarjeta CAM-UVC-23 para compatibilidad de conexión de cámara en el puesto 08. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación de la sala y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa."
+    },
+    {
+      "role": "user",
+      "content": "Ya revisé el edificio: la propuesta del día 17 no sirve. El acuerdo final es entregar el 21 de octubre de 2026 entre las 10:00 y las 12:30. El taller sigue siendo el día 19; no confundas la fecha de entrega con la del evento."
+    },
+    {
+      "role": "assistant",
+      "content": "Sustituyo la propuesta anterior. Fecha de entrega acordada: 21 de octubre de 2026, ventana 10:00 a 12:30. Fecha del taller: 22 de octubre. La referencia al día 17 antes de las 15:00 queda obsoleta. Falta que la transportadora confirme la nueva ventana; aún no es una entrega realizada."
+    },
+    {
+      "role": "user",
+      "content": "Consulta adicional para el puesto 09: quiero revisar red de invitados del router. En ese puesto trabajarán varias personas por turnos y necesitamos un procedimiento que pueda repetir el facilitador. Es planificación del laboratorio; no autoriza una compra ni cambia los acuerdos de la incidencia. ¿Qué debo verificar y qué no debería dar por hecho?"
+    },
+    {
+      "role": "assistant",
+      "content": "Para el puesto 09, la ficha ficticia de router indica lo siguiente: La red de invitados demo debe aislar a participantes de dispositivos administrativos. Compartir el nombre de la red no requiere dar acceso al panel del router ni credenciales de otros sistemas. La comprobación propuesta es: Conectar dos equipos de prueba y verificar que no acceden a una impresora interna. Registra el equipo, las conexiones y el resultado para que otra persona pueda repetir la prueba. Si el resultado difiere, conserva el dato observado y revisa una variable por vez. Esta consulta no modifica el pedido, el reembolso ni las fechas acordadas del caso abierto."
+    },
+    {
+      "role": "user",
+      "content": "Voy a convertir esa explicación de red de invitados en una tarjeta de preparación del puesto 09. Quiero que el registro diga qué probamos, con qué condiciones y qué resultado se considera suficiente para la práctica. También necesitamos distinguir una especificación de catálogo de un resultado realmente observado. ¿Cómo lo dejarías escrito sin prometer que funcionará en cualquier equipo?"
+    },
+    {
+      "role": "assistant",
+      "content": "Tarjeta propuesta: puesto 09; equipo router; revisión de red de invitados. Preparación: anotar conexiones, aplicación y condiciones del ambiente. Prueba: Conectar dos equipos de prueba y verificar que no acceden a una impresora interna. Evidencia: registrar el resultado y cualquier diferencia respecto a la ficha ficticia. Criterio de cierre: la prueba requerida para este puesto se reproduce con el equipo que se usará en la sesión. Si cambia equipo o conexión, se repite. No es una garantía universal ni una confirmación de que la incidencia logística o financiera ya esté resuelta."
+    },
+    {
+      "role": "user",
+      "content": "El identificador de esta tarjeta será NET-INV-27. Lo eligió el equipo de la sala; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de red de invitados, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada."
+    },
+    {
+      "role": "assistant",
+      "content": "Registro la tarjeta NET-INV-27 para red de invitados de router en el puesto 09. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación de la sala y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa."
+    },
+    {
+      "role": "user",
+      "content": "También cambia la ubicación: Avenida del Laboratorio 279, edificio B, acceso de proveedores por la puerta 3. La recepción principal es para visitantes y allí rechazarían una caja de logística."
+    },
+    {
+      "role": "assistant",
+      "content": "Dirección final de entrega: Avenida del Laboratorio 279, edificio B, puerta 3 para proveedores. Calle del Taller 18 y la puerta principal quedan como antecedentes descartados. El acceso correcto debe aparecer en la solicitud y en la confirmación de la transportadora."
+    },
+    {
+      "role": "user",
+      "content": "Consulta adicional para el puesto 10: quiero revisar prioridad de videollamadas del router. En ese puesto trabajarán varias personas por turnos y necesitamos un procedimiento que pueda repetir el facilitador. Es planificación del laboratorio; no autoriza una compra ni cambia los acuerdos de la incidencia. ¿Qué debo verificar y qué no debería dar por hecho?"
+    },
+    {
+      "role": "assistant",
+      "content": "Para el puesto 10, la ficha ficticia de router indica lo siguiente: La priorización de tráfico ayuda cuando hay saturación; no aumenta el ancho de banda contratado. Antes de cambiar reglas se mide latencia con y sin una transferencia grande. La comprobación propuesta es: Comparar una llamada de cinco minutos con una descarga paralela y sin ella. Registra el equipo, las conexiones y el resultado para que otra persona pueda repetir la prueba. Si el resultado difiere, conserva el dato observado y revisa una variable por vez. Esta consulta no modifica el pedido, el reembolso ni las fechas acordadas del caso abierto."
+    },
+    {
+      "role": "user",
+      "content": "Voy a convertir esa explicación de prioridad de videollamadas en una tarjeta de preparación del puesto 10. Quiero que el registro diga qué probamos, con qué condiciones y qué resultado se considera suficiente para la práctica. También necesitamos distinguir una especificación de catálogo de un resultado realmente observado. ¿Cómo lo dejarías escrito sin prometer que funcionará en cualquier equipo?"
+    },
+    {
+      "role": "assistant",
+      "content": "Tarjeta propuesta: puesto 10; equipo router; revisión de prioridad de videollamadas. Preparación: anotar conexiones, aplicación y condiciones del ambiente. Prueba: Comparar una llamada de cinco minutos con una descarga paralela y sin ella. Evidencia: registrar el resultado y cualquier diferencia respecto a la ficha ficticia. Criterio de cierre: la prueba requerida para este puesto se reproduce con el equipo que se usará en la sesión. Si cambia equipo o conexión, se repite. No es una garantía universal ni una confirmación de que la incidencia logística o financiera ya esté resuelta."
+    },
+    {
+      "role": "user",
+      "content": "El identificador de esta tarjeta será NET-QOS-36. Lo eligió el equipo de la sala; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de prioridad de videollamadas, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada."
+    },
+    {
+      "role": "assistant",
+      "content": "Registro la tarjeta NET-QOS-36 para prioridad de videollamadas de router en el puesto 10. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación de la sala y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa."
+    },
+    {
+      "role": "user",
+      "content": "La persona que recibirá es Julia Campos. Óscar Rey era la persona propuesta al principio, pero estará fuera. Julia puede firmar la recepción del paquete; eso no le da autorización para cambiar el importe del reembolso."
+    },
+    {
+      "role": "assistant",
+      "content": "La receptora autorizada es Julia Campos. Óscar Rey no será el contacto de entrega. La autorización de Julia se limita a recibir y firmar el paquete; no se extiende a decisiones financieras. La solicitud de devolución del cargo duplicado mantiene los datos que ya confirmaste."
+    },
+    {
+      "role": "user",
+      "content": "Consulta adicional para el puesto 11: quiero revisar canales inalámbricos del router. En ese puesto trabajarán varias personas por turnos y necesitamos un procedimiento que pueda repetir el facilitador. Es planificación del laboratorio; no autoriza una compra ni cambia los acuerdos de la incidencia. ¿Qué debo verificar y qué no debería dar por hecho?"
+    },
+    {
+      "role": "assistant",
+      "content": "Para el puesto 11, la ficha ficticia de router indica lo siguiente: En el plano ficticio hay varias redes vecinas. Se revisan interferencias y cobertura por zonas; elegir un canal sin medir puede trasladar el problema a otra parte del edificio. La comprobación propuesta es: Registrar intensidad de señal en puerta, centro de la sala y última fila. Registra el equipo, las conexiones y el resultado para que otra persona pueda repetir la prueba. Si el resultado difiere, conserva el dato observado y revisa una variable por vez. Esta consulta no modifica el pedido, el reembolso ni las fechas acordadas del caso abierto."
+    },
+    {
+      "role": "user",
+      "content": "Voy a convertir esa explicación de canales inalámbricos en una tarjeta de preparación del puesto 11. Quiero que el registro diga qué probamos, con qué condiciones y qué resultado se considera suficiente para la práctica. También necesitamos distinguir una especificación de catálogo de un resultado realmente observado. ¿Cómo lo dejarías escrito sin prometer que funcionará en cualquier equipo?"
+    },
+    {
+      "role": "assistant",
+      "content": "Tarjeta propuesta: puesto 11; equipo router; revisión de canales inalámbricos. Preparación: anotar conexiones, aplicación y condiciones del ambiente. Prueba: Registrar intensidad de señal en puerta, centro de la sala y última fila. Evidencia: registrar el resultado y cualquier diferencia respecto a la ficha ficticia. Criterio de cierre: la prueba requerida para este puesto se reproduce con el equipo que se usará en la sesión. Si cambia equipo o conexión, se repite. No es una garantía universal ni una confirmación de que la incidencia logística o financiera ya esté resuelta."
+    },
+    {
+      "role": "user",
+      "content": "El identificador de esta tarjeta será NET-CAN-32. Lo eligió el equipo de la sala; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de canales inalámbricos, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada."
+    },
+    {
+      "role": "assistant",
+      "content": "Registro la tarjeta NET-CAN-32 para canales inalámbricos de router en el puesto 11. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación de la sala y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa."
+    },
+    {
+      "role": "user",
+      "content": "Cambia el correo operativo a logistica@agenciapixel.example. El de coordinación puede quedarse como antecedente, pero el seguimiento de este caso debe ir a logística. Seguimos sin autorizar llamadas ni WhatsApp."
+    },
+    {
+      "role": "assistant",
+      "content": "Destinatario operativo vigente: logistica@agenciapixel.example. El correo coordinacion@agenciapixel.example ya no es el principal para este seguimiento. No hay autorización para llamadas o WhatsApp. En esta simulación registraré el canal acordado sin enviar comunicaciones externas."
+    },
+    {
+      "role": "user",
+      "content": "Consulta adicional para el puesto 12: quiero revisar actualización de firmware del router. En ese puesto trabajarán varias personas por turnos y necesitamos un procedimiento que pueda repetir el facilitador. Es planificación del laboratorio; no autoriza una compra ni cambia los acuerdos de la incidencia. ¿Qué debo verificar y qué no debería dar por hecho?"
+    },
+    {
+      "role": "assistant",
+      "content": "Para el puesto 12, la ficha ficticia de router indica lo siguiente: El protocolo demo reserva una ventana de mantenimiento para actualizar y conservar la configuración anterior. No se actualiza durante una clase; se prepara una forma de volver al estado anterior. La comprobación propuesta es: Guardar configuración y comprobar una red de prueba después de la actualización. Registra el equipo, las conexiones y el resultado para que otra persona pueda repetir la prueba. Si el resultado difiere, conserva el dato observado y revisa una variable por vez. Esta consulta no modifica el pedido, el reembolso ni las fechas acordadas del caso abierto."
+    },
+    {
+      "role": "user",
+      "content": "Voy a convertir esa explicación de actualización de firmware en una tarjeta de preparación del puesto 12. Quiero que el registro diga qué probamos, con qué condiciones y qué resultado se considera suficiente para la práctica. También necesitamos distinguir una especificación de catálogo de un resultado realmente observado. ¿Cómo lo dejarías escrito sin prometer que funcionará en cualquier equipo?"
+    },
+    {
+      "role": "assistant",
+      "content": "Tarjeta propuesta: puesto 12; equipo router; revisión de actualización de firmware. Preparación: anotar conexiones, aplicación y condiciones del ambiente. Prueba: Guardar configuración y comprobar una red de prueba después de la actualización. Evidencia: registrar el resultado y cualquier diferencia respecto a la ficha ficticia. Criterio de cierre: la prueba requerida para este puesto se reproduce con el equipo que se usará en la sesión. Si cambia equipo o conexión, se repite. No es una garantía universal ni una confirmación de que la incidencia logística o financiera ya esté resuelta."
+    },
+    {
+      "role": "user",
+      "content": "El identificador de esta tarjeta será NET-FW-30. Lo eligió el equipo de la sala; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de actualización de firmware, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada."
+    },
+    {
+      "role": "assistant",
+      "content": "Registro la tarjeta NET-FW-30 para actualización de firmware de router en el puesto 12. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación de la sala y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa."
+    },
+    {
+      "role": "user",
+      "content": "Recepción nos pide una frase de acceso: LUNA-79. No es el número de pedido ni la guía. Quiero que la anotes aunque quizá no sea parte del resumen corto; si la solicitan después debe poder recuperarse."
+    },
+    {
+      "role": "assistant",
+      "content": "Anoto la frase de acceso ficticia LUNA-79 como detalle de recepción de este caso. Es distinta de ORD-2069 y del identificador que asigne la transportadora. Se debe recuperar de la conversación original si no queda incluida en un resumen corto. No la trataré como una credencial real de otro sistema."
+    },
+    {
+      "role": "user",
+      "content": "Consulta adicional para el puesto 13: quiero revisar potencia de carga del dock USB. En ese puesto trabajarán varias personas por turnos y necesitamos un procedimiento que pueda repetir el facilitador. Es planificación del laboratorio; no autoriza una compra ni cambia los acuerdos de la incidencia. ¿Qué debo verificar y qué no debería dar por hecho?"
+    },
+    {
+      "role": "assistant",
+      "content": "Para el puesto 13, la ficha ficticia de dock USB indica lo siguiente: El dock ficticio entrega hasta 65 W al portátil cuando usa su fuente de 90 W. Ese valor no se suma a todos los puertos; los dispositivos conectados comparten parte de la potencia. La comprobación propuesta es: Probar con portátil y periféricos habituales y observar si aparece aviso de carga lenta. Registra el equipo, las conexiones y el resultado para que otra persona pueda repetir la prueba. Si el resultado difiere, conserva el dato observado y revisa una variable por vez. Esta consulta no modifica el pedido, el reembolso ni las fechas acordadas del caso abierto."
+    },
+    {
+      "role": "user",
+      "content": "Voy a convertir esa explicación de potencia de carga en una tarjeta de preparación del puesto 13. Quiero que el registro diga qué probamos, con qué condiciones y qué resultado se considera suficiente para la práctica. También necesitamos distinguir una especificación de catálogo de un resultado realmente observado. ¿Cómo lo dejarías escrito sin prometer que funcionará en cualquier equipo?"
+    },
+    {
+      "role": "assistant",
+      "content": "Tarjeta propuesta: puesto 13; equipo dock USB; revisión de potencia de carga. Preparación: anotar conexiones, aplicación y condiciones del ambiente. Prueba: Probar con portátil y periféricos habituales y observar si aparece aviso de carga lenta. Evidencia: registrar el resultado y cualquier diferencia respecto a la ficha ficticia. Criterio de cierre: la prueba requerida para este puesto se reproduce con el equipo que se usará en la sesión. Si cambia equipo o conexión, se repite. No es una garantía universal ni una confirmación de que la incidencia logística o financiera ya esté resuelta."
+    },
+    {
+      "role": "user",
+      "content": "El identificador de esta tarjeta será DOCK-PD-86. Lo eligió el equipo de la sala; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de potencia de carga, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada."
+    },
+    {
+      "role": "assistant",
+      "content": "Registro la tarjeta DOCK-PD-86 para potencia de carga de dock USB en el puesto 13. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación de la sala y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa."
+    },
+    {
+      "role": "user",
+      "content": "Tenemos el pedido de reposición ORD-2074 y la guía SHP-9938. Son seis audífonos, no dos. La etiqueta de devolución de los dañados será RET-0747. La recogida puede ser después de la reposición, pero sin costo para nosotros."
+    },
+    {
+      "role": "assistant",
+      "content": "Relaciono ORD-2074 con seis audífonos y la guía SHP-9938. La etiqueta de devolución de los dos dañados es RET-0747. La condición es recogerlos después de recibir la reposición y con costo cero para Agencia Pixel. El pedido original ORD-2069 sigue vigente."
+    },
+    {
+      "role": "user",
+      "content": "Consulta adicional para el puesto 14: quiero revisar monitor externo del dock USB. En ese puesto trabajarán varias personas por turnos y necesitamos un procedimiento que pueda repetir el facilitador. Es planificación del laboratorio; no autoriza una compra ni cambia los acuerdos de la incidencia. ¿Qué debo verificar y qué no debería dar por hecho?"
+    },
+    {
+      "role": "assistant",
+      "content": "Para el puesto 14, la ficha ficticia de dock USB indica lo siguiente: La salida de video del dock requiere un puerto del portátil con modo alternativo compatible. Un conector USB-C por sí solo no demuestra compatibilidad de video. La comprobación propuesta es: Revisar el puerto del portátil y probar primero un monitor con su cable directo. Registra el equipo, las conexiones y el resultado para que otra persona pueda repetir la prueba. Si el resultado difiere, conserva el dato observado y revisa una variable por vez. Esta consulta no modifica el pedido, el reembolso ni las fechas acordadas del caso abierto."
+    },
+    {
+      "role": "user",
+      "content": "Voy a convertir esa explicación de monitor externo en una tarjeta de preparación del puesto 14. Quiero que el registro diga qué probamos, con qué condiciones y qué resultado se considera suficiente para la práctica. También necesitamos distinguir una especificación de catálogo de un resultado realmente observado. ¿Cómo lo dejarías escrito sin prometer que funcionará en cualquier equipo?"
+    },
+    {
+      "role": "assistant",
+      "content": "Tarjeta propuesta: puesto 14; equipo dock USB; revisión de monitor externo. Preparación: anotar conexiones, aplicación y condiciones del ambiente. Prueba: Revisar el puerto del portátil y probar primero un monitor con su cable directo. Evidencia: registrar el resultado y cualquier diferencia respecto a la ficha ficticia. Criterio de cierre: la prueba requerida para este puesto se reproduce con el equipo que se usará en la sesión. Si cambia equipo o conexión, se repite. No es una garantía universal ni una confirmación de que la incidencia logística o financiera ya esté resuelta."
+    },
+    {
+      "role": "user",
+      "content": "El identificador de esta tarjeta será DOCK-VID-29. Lo eligió el equipo de la sala; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de monitor externo, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada."
+    },
+    {
+      "role": "assistant",
+      "content": "Registro la tarjeta DOCK-VID-29 para monitor externo de dock USB en el puesto 14. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación de la sala y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa."
+    },
+    {
+      "role": "user",
+      "content": "Un correo anterior mencionaba cobrar 75 MXN por recogida. No aceptamos ese cargo. La agente Alba Nuñez autorizó la excepción de costo cero con folio EXC-4423. Regístralo como corrección del presupuesto anterior."
+    },
+    {
+      "role": "assistant",
+      "content": "La cotización anterior de 75 MXN queda descartada para esta recogida. El acuerdo vigente es costo cero, autorizado en la simulación por Alba Nuñez con folio EXC-4423. La excepción aplica a la devolución de los dos equipos dañados, no a cualquier compra o envío futuro."
+    },
+    {
+      "role": "user",
+      "content": "Consulta adicional para el puesto 15: quiero revisar desconexiones intermitentes del dock USB. En ese puesto trabajarán varias personas por turnos y necesitamos un procedimiento que pueda repetir el facilitador. Es planificación del laboratorio; no autoriza una compra ni cambia los acuerdos de la incidencia. ¿Qué debo verificar y qué no debería dar por hecho?"
+    },
+    {
+      "role": "assistant",
+      "content": "Para el puesto 15, la ficha ficticia de dock USB indica lo siguiente: Los cortes demo se investigan separando alimentación, cable y cantidad de periféricos. Probar todo conectado al mismo tiempo no permite identificar qué componente dispara el fallo. La comprobación propuesta es: Empezar con un periférico y añadir los demás uno por uno. Registra el equipo, las conexiones y el resultado para que otra persona pueda repetir la prueba. Si el resultado difiere, conserva el dato observado y revisa una variable por vez. Esta consulta no modifica el pedido, el reembolso ni las fechas acordadas del caso abierto."
+    },
+    {
+      "role": "user",
+      "content": "Voy a convertir esa explicación de desconexiones intermitentes en una tarjeta de preparación del puesto 15. Quiero que el registro diga qué probamos, con qué condiciones y qué resultado se considera suficiente para la práctica. También necesitamos distinguir una especificación de catálogo de un resultado realmente observado. ¿Cómo lo dejarías escrito sin prometer que funcionará en cualquier equipo?"
+    },
+    {
+      "role": "assistant",
+      "content": "Tarjeta propuesta: puesto 15; equipo dock USB; revisión de desconexiones intermitentes. Preparación: anotar conexiones, aplicación y condiciones del ambiente. Prueba: Empezar con un periférico y añadir los demás uno por uno. Evidencia: registrar el resultado y cualquier diferencia respecto a la ficha ficticia. Criterio de cierre: la prueba requerida para este puesto se reproduce con el equipo que se usará en la sesión. Si cambia equipo o conexión, se repite. No es una garantía universal ni una confirmación de que la incidencia logística o financiera ya esté resuelta."
+    },
+    {
+      "role": "user",
+      "content": "El identificador de esta tarjeta será DOCK-DROP-26. Lo eligió el equipo de la sala; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de desconexiones intermitentes, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada."
+    },
+    {
+      "role": "assistant",
+      "content": "Registro la tarjeta DOCK-DROP-26 para desconexiones intermitentes de dock USB en el puesto 15. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación de la sala y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa."
+    },
+    {
+      "role": "user",
+      "content": "¿Podríamos recibir dinero por los dos dañados y además quedarnos con sus reemplazos? Lo pregunto para entender opciones, pero por ahora mantenemos la reposición sin reembolso de esas dos unidades."
+    },
+    {
+      "role": "assistant",
+      "content": "La decisión confirmada sigue siendo reposición de los dañados, sin reembolso adicional de esas unidades. El valor descontado de dos unidades sería 1,635.04 MXN como cálculo de referencia, no una devolución aprobada. La solicitud financiera activa sigue siendo únicamente el cargo duplicado PAY-8864 por 32,700.80 MXN."
+    },
+    {
+      "role": "user",
+      "content": "Consulta adicional para el puesto 16: quiero revisar etiquetado de cables del dock USB. En ese puesto trabajarán varias personas por turnos y necesitamos un procedimiento que pueda repetir el facilitador. Es planificación del laboratorio; no autoriza una compra ni cambia los acuerdos de la incidencia. ¿Qué debo verificar y qué no debería dar por hecho?"
+    },
+    {
+      "role": "assistant",
+      "content": "Para el puesto 16, la ficha ficticia de dock USB indica lo siguiente: La sala usará etiquetas para distinguir cable de carga, datos y video. La etiqueta describe la prueba realizada, no una capacidad que alguien haya supuesto por la forma del conector. La comprobación propuesta es: Marcar cada cable después de comprobar transferencia y, si aplica, salida de video. Registra el equipo, las conexiones y el resultado para que otra persona pueda repetir la prueba. Si el resultado difiere, conserva el dato observado y revisa una variable por vez. Esta consulta no modifica el pedido, el reembolso ni las fechas acordadas del caso abierto."
+    },
+    {
+      "role": "user",
+      "content": "Voy a convertir esa explicación de etiquetado de cables en una tarjeta de preparación del puesto 16. Quiero que el registro diga qué probamos, con qué condiciones y qué resultado se considera suficiente para la práctica. También necesitamos distinguir una especificación de catálogo de un resultado realmente observado. ¿Cómo lo dejarías escrito sin prometer que funcionará en cualquier equipo?"
+    },
+    {
+      "role": "assistant",
+      "content": "Tarjeta propuesta: puesto 16; equipo dock USB; revisión de etiquetado de cables. Preparación: anotar conexiones, aplicación y condiciones del ambiente. Prueba: Marcar cada cable después de comprobar transferencia y, si aplica, salida de video. Evidencia: registrar el resultado y cualquier diferencia respecto a la ficha ficticia. Criterio de cierre: la prueba requerida para este puesto se reproduce con el equipo que se usará en la sesión. Si cambia equipo o conexión, se repite. No es una garantía universal ni una confirmación de que la incidencia logística o financiera ya esté resuelta."
+    },
+    {
+      "role": "user",
+      "content": "El identificador de esta tarjeta será DOCK-CAB-35. Lo eligió el equipo de la sala; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de etiquetado de cables, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada."
+    },
+    {
+      "role": "assistant",
+      "content": "Registro la tarjeta DOCK-CAB-35 para etiquetado de cables de dock USB en el puesto 16. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación de la sala y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa."
+    },
+    {
+      "role": "user",
+      "content": "La transportadora preguntó si podía traer el paquete a las 13:30 del día 18. No lo acepté. La ventana que debemos mantener es de 10:00 a 12:30, porque después no hay quien reciba en puerta 3."
+    },
+    {
+      "role": "assistant",
+      "content": "La propuesta de las 13:30 fue rechazada. No sustituye el acuerdo de 21 de octubre entre 10:00 y 12:30. Mantengo edificio B, puerta 3 y Julia Campos. La confirmación pendiente debe respetar esos datos y no referirse a la ventana descartada."
+    },
+    {
+      "role": "user",
+      "content": "Consulta adicional para el puesto 17: quiero revisar distribución de idioma del teclado. En ese puesto trabajarán varias personas por turnos y necesitamos un procedimiento que pueda repetir el facilitador. Es planificación del laboratorio; no autoriza una compra ni cambia los acuerdos de la incidencia. ¿Qué debo verificar y qué no debería dar por hecho?"
+    },
+    {
+      "role": "assistant",
+      "content": "Para el puesto 17, la ficha ficticia de teclado indica lo siguiente: El teclado demo tiene distribución física española. El sistema operativo puede usar otra distribución y cambiar símbolos; el protocolo revisa ambas antes de una práctica de programación. La comprobación propuesta es: Escribir arroba, corchetes, barra y acentos en una aplicación de texto. Registra el equipo, las conexiones y el resultado para que otra persona pueda repetir la prueba. Si el resultado difiere, conserva el dato observado y revisa una variable por vez. Esta consulta no modifica el pedido, el reembolso ni las fechas acordadas del caso abierto."
+    },
+    {
+      "role": "user",
+      "content": "Voy a convertir esa explicación de distribución de idioma en una tarjeta de preparación del puesto 17. Quiero que el registro diga qué probamos, con qué condiciones y qué resultado se considera suficiente para la práctica. También necesitamos distinguir una especificación de catálogo de un resultado realmente observado. ¿Cómo lo dejarías escrito sin prometer que funcionará en cualquier equipo?"
+    },
+    {
+      "role": "assistant",
+      "content": "Tarjeta propuesta: puesto 17; equipo teclado; revisión de distribución de idioma. Preparación: anotar conexiones, aplicación y condiciones del ambiente. Prueba: Escribir arroba, corchetes, barra y acentos en una aplicación de texto. Evidencia: registrar el resultado y cualquier diferencia respecto a la ficha ficticia. Criterio de cierre: la prueba requerida para este puesto se reproduce con el equipo que se usará en la sesión. Si cambia equipo o conexión, se repite. No es una garantía universal ni una confirmación de que la incidencia logística o financiera ya esté resuelta."
+    },
+    {
+      "role": "user",
+      "content": "El identificador de esta tarjeta será KEY-ES-22. Lo eligió el equipo de la sala; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de distribución de idioma, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada."
+    },
+    {
+      "role": "assistant",
+      "content": "Registro la tarjeta KEY-ES-22 para distribución de idioma de teclado en el puesto 17. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación de la sala y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa."
+    },
+    {
+      "role": "user",
+      "content": "Nos entregaron el folio FIN-6652 para la revisión de PAY-8864. Es una solicitud registrada, no el comprobante de que el dinero ya llegó. Tampoco queremos que se cierre la investigación por tener ese número."
+    },
+    {
+      "role": "assistant",
+      "content": "FIN-6652 identifica la solicitud de revisión del cargo duplicado PAY-8864. El importe sigue siendo 32,700.80 MXN y el pago válido PAY-8863 no se modifica. No hay confirmación de abono. El caso financiero permanece abierto hasta recibir evidencia del resultado."
+    },
+    {
+      "role": "user",
+      "content": "Consulta adicional para el puesto 18: quiero revisar atajos de videollamada del teclado. En ese puesto trabajarán varias personas por turnos y necesitamos un procedimiento que pueda repetir el facilitador. Es planificación del laboratorio; no autoriza una compra ni cambia los acuerdos de la incidencia. ¿Qué debo verificar y qué no debería dar por hecho?"
+    },
+    {
+      "role": "assistant",
+      "content": "Para el puesto 18, la ficha ficticia de teclado indica lo siguiente: Los atajos dependen de la aplicación activa. El botón de silencio del teclado no se da por equivalente al silencio de una videollamada; se comprueba el indicador de la aplicación. La comprobación propuesta es: Alternar silencio y audio mientras otra persona verifica si recibe sonido. Registra el equipo, las conexiones y el resultado para que otra persona pueda repetir la prueba. Si el resultado difiere, conserva el dato observado y revisa una variable por vez. Esta consulta no modifica el pedido, el reembolso ni las fechas acordadas del caso abierto."
+    },
+    {
+      "role": "user",
+      "content": "Voy a convertir esa explicación de atajos de videollamada en una tarjeta de preparación del puesto 18. Quiero que el registro diga qué probamos, con qué condiciones y qué resultado se considera suficiente para la práctica. También necesitamos distinguir una especificación de catálogo de un resultado realmente observado. ¿Cómo lo dejarías escrito sin prometer que funcionará en cualquier equipo?"
+    },
+    {
+      "role": "assistant",
+      "content": "Tarjeta propuesta: puesto 18; equipo teclado; revisión de atajos de videollamada. Preparación: anotar conexiones, aplicación y condiciones del ambiente. Prueba: Alternar silencio y audio mientras otra persona verifica si recibe sonido. Evidencia: registrar el resultado y cualquier diferencia respecto a la ficha ficticia. Criterio de cierre: la prueba requerida para este puesto se reproduce con el equipo que se usará en la sesión. Si cambia equipo o conexión, se repite. No es una garantía universal ni una confirmación de que la incidencia logística o financiera ya esté resuelta."
+    },
+    {
+      "role": "user",
+      "content": "El identificador de esta tarjeta será KEY-MUTE-25. Lo eligió el equipo de la sala; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de atajos de videollamada, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada."
+    },
+    {
+      "role": "assistant",
+      "content": "Registro la tarjeta KEY-MUTE-25 para atajos de videollamada de teclado en el puesto 18. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación de la sala y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa."
+    },
+    {
+      "role": "user",
+      "content": "Faltaba una prueba: tenemos el archivo caja-esquina.jpg del daño exterior, seriales-danados.csv con los dos números y autorizacion-recogida.pdf para la excepción de 75 a cero. Solo los estamos nombrando; no los hemos cargado a este chat."
+    },
+    {
+      "role": "assistant",
+      "content": "Registro nombres de evidencias: caja-esquina.jpg, seriales-danados.csv y autorizacion-recogida.pdf. Esta conversación no contiene los binarios ni prueba que el sistema los haya recibido. Si alguien necesita revisar una imagen o un documento, deberá cargarlo o abrirlo por una vía disponible; por ahora son referencias declaradas por el cliente."
+    },
+    {
+      "role": "user",
+      "content": "Consulta adicional para el puesto 19: quiero revisar uso compartido del teclado. En ese puesto trabajarán varias personas por turnos y necesitamos un procedimiento que pueda repetir el facilitador. Es planificación del laboratorio; no autoriza una compra ni cambia los acuerdos de la incidencia. ¿Qué debo verificar y qué no debería dar por hecho?"
+    },
+    {
+      "role": "assistant",
+      "content": "Para el puesto 19, la ficha ficticia de teclado indica lo siguiente: El protocolo demo asigna un teclado por puesto y registra cambios de ubicación. Así se puede separar un problema del periférico de uno de la computadora sin perder la trazabilidad. La comprobación propuesta es: Intercambiar dos teclados y observar si el síntoma sigue al dispositivo. Registra el equipo, las conexiones y el resultado para que otra persona pueda repetir la prueba. Si el resultado difiere, conserva el dato observado y revisa una variable por vez. Esta consulta no modifica el pedido, el reembolso ni las fechas acordadas del caso abierto."
+    },
+    {
+      "role": "user",
+      "content": "Voy a convertir esa explicación de uso compartido en una tarjeta de preparación del puesto 19. Quiero que el registro diga qué probamos, con qué condiciones y qué resultado se considera suficiente para la práctica. También necesitamos distinguir una especificación de catálogo de un resultado realmente observado. ¿Cómo lo dejarías escrito sin prometer que funcionará en cualquier equipo?"
+    },
+    {
+      "role": "assistant",
+      "content": "Tarjeta propuesta: puesto 19; equipo teclado; revisión de uso compartido. Preparación: anotar conexiones, aplicación y condiciones del ambiente. Prueba: Intercambiar dos teclados y observar si el síntoma sigue al dispositivo. Evidencia: registrar el resultado y cualquier diferencia respecto a la ficha ficticia. Criterio de cierre: la prueba requerida para este puesto se reproduce con el equipo que se usará en la sesión. Si cambia equipo o conexión, se repite. No es una garantía universal ni una confirmación de que la incidencia logística o financiera ya esté resuelta."
+    },
+    {
+      "role": "user",
+      "content": "El identificador de esta tarjeta será KEY-PUESTO-43. Lo eligió el equipo de la sala; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de uso compartido, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada."
+    },
+    {
+      "role": "assistant",
+      "content": "Registro la tarjeta KEY-PUESTO-43 para uso compartido de teclado en el puesto 19. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación de la sala y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa."
+    },
+    {
+      "role": "user",
+      "content": "Para evitar duplicar solicitudes, el caso maestro pasa a ser SUP-3211. SUP-3127 queda vinculado como antecedente, no como otro caso que deba resolverse aparte. La persona responsable es Hugo Serra, del equipo de logística."
+    },
+    {
+      "role": "assistant",
+      "content": "Caso maestro vigente: SUP-3211. SUP-3127 se conserva como antecedente vinculado y no se trata como un segundo caso independiente. Responsable de logística: Hugo Serra. El frente financiero FIN-6652 se relaciona con el caso maestro y mantiene su propio pendiente de confirmación."
+    },
+    {
+      "role": "user",
+      "content": "Consulta adicional para el puesto 20: quiero revisar limpieza y líquidos del teclado. En ese puesto trabajarán varias personas por turnos y necesitamos un procedimiento que pueda repetir el facilitador. Es planificación del laboratorio; no autoriza una compra ni cambia los acuerdos de la incidencia. ¿Qué debo verificar y qué no debería dar por hecho?"
+    },
+    {
+      "role": "assistant",
+      "content": "Para el puesto 20, la ficha ficticia de teclado indica lo siguiente: La limpieza se hace con el teclado desconectado. Si hubo derrame, el puesto se retira de la práctica hasta revisar el periférico; no se insiste en encenderlo para comprobar si ya secó. La comprobación propuesta es: Registrar el incidente y usar el periférico de reserva del laboratorio. Registra el equipo, las conexiones y el resultado para que otra persona pueda repetir la prueba. Si el resultado difiere, conserva el dato observado y revisa una variable por vez. Esta consulta no modifica el pedido, el reembolso ni las fechas acordadas del caso abierto."
+    },
+    {
+      "role": "user",
+      "content": "Voy a convertir esa explicación de limpieza y líquidos en una tarjeta de preparación del puesto 20. Quiero que el registro diga qué probamos, con qué condiciones y qué resultado se considera suficiente para la práctica. También necesitamos distinguir una especificación de catálogo de un resultado realmente observado. ¿Cómo lo dejarías escrito sin prometer que funcionará en cualquier equipo?"
+    },
+    {
+      "role": "assistant",
+      "content": "Tarjeta propuesta: puesto 20; equipo teclado; revisión de limpieza y líquidos. Preparación: anotar conexiones, aplicación y condiciones del ambiente. Prueba: Registrar el incidente y usar el periférico de reserva del laboratorio. Evidencia: registrar el resultado y cualquier diferencia respecto a la ficha ficticia. Criterio de cierre: la prueba requerida para este puesto se reproduce con el equipo que se usará en la sesión. Si cambia equipo o conexión, se repite. No es una garantía universal ni una confirmación de que la incidencia logística o financiera ya esté resuelta."
+    },
+    {
+      "role": "user",
+      "content": "El identificador de esta tarjeta será KEY-RES-23. Lo eligió el equipo de la sala; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de limpieza y líquidos, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada."
+    },
+    {
+      "role": "assistant",
+      "content": "Registro la tarjeta KEY-RES-23 para limpieza y líquidos de teclado en el puesto 20. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación de la sala y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa."
+    },
+    {
+      "role": "user",
+      "content": "El ticket de logística tiene la referencia interna MESA-48. Hugo me explicó que no es una mesa física ni una dirección; es el identificador de su cola de coordinación. Tal vez luego necesite encontrarlo."
+    },
+    {
+      "role": "assistant",
+      "content": "Anoto MESA-48 como referencia interna ficticia de coordinación de logística. No reemplaza SUP-3211, SHP-9938 ni la puerta 3 del edificio B. Es un detalle histórico recuperable de esta conversación, aunque no sea necesario para un resumen operativo de 150 palabras."
+    },
+    {
+      "role": "user",
+      "content": "Consulta adicional para el puesto 21: quiero revisar escala del sistema del monitor. En ese puesto trabajarán varias personas por turnos y necesitamos un procedimiento que pueda repetir el facilitador. Es planificación del laboratorio; no autoriza una compra ni cambia los acuerdos de la incidencia. ¿Qué debo verificar y qué no debería dar por hecho?"
+    },
+    {
+      "role": "assistant",
+      "content": "Para el puesto 21, la ficha ficticia de monitor indica lo siguiente: El monitor demo es de 24 pulgadas y resolución 1920 por 1080. La escala de interfaz puede hacer legible el texto sin cambiar la resolución; se evalúa desde el asiento de cada estudiante. La comprobación propuesta es: Mostrar un editor y una página, ajustando escala sin deformar la imagen. Registra el equipo, las conexiones y el resultado para que otra persona pueda repetir la prueba. Si el resultado difiere, conserva el dato observado y revisa una variable por vez. Esta consulta no modifica el pedido, el reembolso ni las fechas acordadas del caso abierto."
+    },
+    {
+      "role": "user",
+      "content": "Voy a convertir esa explicación de escala del sistema en una tarjeta de preparación del puesto 21. Quiero que el registro diga qué probamos, con qué condiciones y qué resultado se considera suficiente para la práctica. También necesitamos distinguir una especificación de catálogo de un resultado realmente observado. ¿Cómo lo dejarías escrito sin prometer que funcionará en cualquier equipo?"
+    },
+    {
+      "role": "assistant",
+      "content": "Tarjeta propuesta: puesto 21; equipo monitor; revisión de escala del sistema. Preparación: anotar conexiones, aplicación y condiciones del ambiente. Prueba: Mostrar un editor y una página, ajustando escala sin deformar la imagen. Evidencia: registrar el resultado y cualquier diferencia respecto a la ficha ficticia. Criterio de cierre: la prueba requerida para este puesto se reproduce con el equipo que se usará en la sesión. Si cambia equipo o conexión, se repite. No es una garantía universal ni una confirmación de que la incidencia logística o financiera ya esté resuelta."
+    },
+    {
+      "role": "user",
+      "content": "El identificador de esta tarjeta será MON-ESC-45. Lo eligió el equipo de la sala; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de escala del sistema, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada."
+    },
+    {
+      "role": "assistant",
+      "content": "Registro la tarjeta MON-ESC-45 para escala del sistema de monitor en el puesto 21. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación de la sala y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa."
+    },
+    {
+      "role": "user",
+      "content": "No quiero que el plazo se pierda por una pregunta técnica del laboratorio. Hugo debe confirmar la ventana antes del 18 de octubre a las 18:00. Si no lo hace, escalamos la solicitud; no vamos a cancelar silenciosamente ORD-2069."
+    },
+    {
+      "role": "assistant",
+      "content": "Pendiente de logística: Hugo Serra debe confirmar la ventana de SHP-9938 antes del 18 de octubre de 2026 a las 18:00. Si no hay confirmación, se solicita escalamiento. Esa condición no autoriza cancelar el pedido original ni registrar como entregados los reemplazos."
+    },
+    {
+      "role": "user",
+      "content": "Consulta adicional para el puesto 22: quiero revisar perfil de color del monitor. En ese puesto trabajarán varias personas por turnos y necesitamos un procedimiento que pueda repetir el facilitador. Es planificación del laboratorio; no autoriza una compra ni cambia los acuerdos de la incidencia. ¿Qué debo verificar y qué no debería dar por hecho?"
+    },
+    {
+      "role": "assistant",
+      "content": "Para el puesto 22, la ficha ficticia de monitor indica lo siguiente: Para la práctica importa que capturas y diagramas sean consistentes. El perfil demo es sRGB; no se presenta como calibración profesional ni como certificación para trabajo de impresión. La comprobación propuesta es: Comparar un gráfico con etiquetas y revisar que el color no sea la única señal. Registra el equipo, las conexiones y el resultado para que otra persona pueda repetir la prueba. Si el resultado difiere, conserva el dato observado y revisa una variable por vez. Esta consulta no modifica el pedido, el reembolso ni las fechas acordadas del caso abierto."
+    },
+    {
+      "role": "user",
+      "content": "Voy a convertir esa explicación de perfil de color en una tarjeta de preparación del puesto 22. Quiero que el registro diga qué probamos, con qué condiciones y qué resultado se considera suficiente para la práctica. También necesitamos distinguir una especificación de catálogo de un resultado realmente observado. ¿Cómo lo dejarías escrito sin prometer que funcionará en cualquier equipo?"
+    },
+    {
+      "role": "assistant",
+      "content": "Tarjeta propuesta: puesto 22; equipo monitor; revisión de perfil de color. Preparación: anotar conexiones, aplicación y condiciones del ambiente. Prueba: Comparar un gráfico con etiquetas y revisar que el color no sea la única señal. Evidencia: registrar el resultado y cualquier diferencia respecto a la ficha ficticia. Criterio de cierre: la prueba requerida para este puesto se reproduce con el equipo que se usará en la sesión. Si cambia equipo o conexión, se repite. No es una garantía universal ni una confirmación de que la incidencia logística o financiera ya esté resuelta."
+    },
+    {
+      "role": "user",
+      "content": "El identificador de esta tarjeta será MON-SRGB-31. Lo eligió el equipo de la sala; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de perfil de color, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada."
+    },
+    {
+      "role": "assistant",
+      "content": "Registro la tarjeta MON-SRGB-31 para perfil de color de monitor en el puesto 22. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación de la sala y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa."
+    },
+    {
+      "role": "user",
+      "content": "La administración quiere que el dinero del cargo duplicado vuelva al medio de pago original. Nada de cupones, crédito de tienda o usarlo como pago de una suscripción. Esto no cambia nuestra decisión de mantener activos los equipos y el plan."
+    },
+    {
+      "role": "assistant",
+      "content": "Condición del frente financiero: solicitar devolución de PAY-8864 al medio de pago original. No se aceptan cupón, crédito de tienda ni compensación con suscripciones. La cuenta y el plan deben permanecer activos. El pedido y la reposición también siguen vigentes; estas condiciones no confirman que la devolución ya se ejecutó."
+    },
+    {
+      "role": "user",
+      "content": "Consulta adicional para el puesto 23: quiero revisar ergonomía del puesto del monitor. En ese puesto trabajarán varias personas por turnos y necesitamos un procedimiento que pueda repetir el facilitador. Es planificación del laboratorio; no autoriza una compra ni cambia los acuerdos de la incidencia. ¿Qué debo verificar y qué no debería dar por hecho?"
+    },
+    {
+      "role": "assistant",
+      "content": "Para el puesto 23, la ficha ficticia de monitor indica lo siguiente: Se ajusta altura para que el borde superior quede cerca del nivel de los ojos. El soporte y la silla del puesto importan tanto como el monitor; no existe una altura universal para todo el grupo. La comprobación propuesta es: Revisar postura de tres personas de alturas distintas antes de fijar el montaje. Registra el equipo, las conexiones y el resultado para que otra persona pueda repetir la prueba. Si el resultado difiere, conserva el dato observado y revisa una variable por vez. Esta consulta no modifica el pedido, el reembolso ni las fechas acordadas del caso abierto."
+    },
+    {
+      "role": "user",
+      "content": "Voy a convertir esa explicación de ergonomía del puesto en una tarjeta de preparación del puesto 23. Quiero que el registro diga qué probamos, con qué condiciones y qué resultado se considera suficiente para la práctica. También necesitamos distinguir una especificación de catálogo de un resultado realmente observado. ¿Cómo lo dejarías escrito sin prometer que funcionará en cualquier equipo?"
+    },
+    {
+      "role": "assistant",
+      "content": "Tarjeta propuesta: puesto 23; equipo monitor; revisión de ergonomía del puesto. Preparación: anotar conexiones, aplicación y condiciones del ambiente. Prueba: Revisar postura de tres personas de alturas distintas antes de fijar el montaje. Evidencia: registrar el resultado y cualquier diferencia respecto a la ficha ficticia. Criterio de cierre: la prueba requerida para este puesto se reproduce con el equipo que se usará en la sesión. Si cambia equipo o conexión, se repite. No es una garantía universal ni una confirmación de que la incidencia logística o financiera ya esté resuelta."
+    },
+    {
+      "role": "user",
+      "content": "El identificador de esta tarjeta será MON-ERG-37. Lo eligió el equipo de la sala; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de ergonomía del puesto, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada."
+    },
+    {
+      "role": "assistant",
+      "content": "Registro la tarjeta MON-ERG-37 para ergonomía del puesto de monitor en el puesto 23. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación de la sala y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa."
+    },
+    {
+      "role": "user",
+      "content": "La recogida de los dañados será el 23 de octubre entre 11:00 y 14:00, después del taller, si ya llegaron los reemplazos. Se usaría RET-0747. No la programes antes ni nos dejes sin equipos por recoger todo el lote."
+    },
+    {
+      "role": "assistant",
+      "content": "Propuesta condicionada de recogida: 23 de octubre de 2026, de 11:00 a 14:00, con RET-0747 y costo cero por EXC-4423. Solo se recogen los dos dañados después de recibir la reposición. Los 34 equipos funcionales permanecen en Agencia Pixel. Falta confirmación de la recogida; no está ejecutada."
+    },
+    {
+      "role": "user",
+      "content": "Consulta adicional para el puesto 24: quiero revisar modo de presentación del monitor. En ese puesto trabajarán varias personas por turnos y necesitamos un procedimiento que pueda repetir el facilitador. Es planificación del laboratorio; no autoriza una compra ni cambia los acuerdos de la incidencia. ¿Qué debo verificar y qué no debería dar por hecho?"
+    },
+    {
+      "role": "assistant",
+      "content": "Para el puesto 24, la ficha ficticia de monitor indica lo siguiente: Duplicar y extender pantalla tienen usos distintos. El facilitador prepara la presentación en el monitor correcto y comprueba qué contenido ve el público antes de mostrar documentos del trabajo. La comprobación propuesta es: Mover una ventana de prueba entre pantallas y comprobar dónde aparece. Registra el equipo, las conexiones y el resultado para que otra persona pueda repetir la prueba. Si el resultado difiere, conserva el dato observado y revisa una variable por vez. Esta consulta no modifica el pedido, el reembolso ni las fechas acordadas del caso abierto."
+    },
+    {
+      "role": "user",
+      "content": "Voy a convertir esa explicación de modo de presentación en una tarjeta de preparación del puesto 24. Quiero que el registro diga qué probamos, con qué condiciones y qué resultado se considera suficiente para la práctica. También necesitamos distinguir una especificación de catálogo de un resultado realmente observado. ¿Cómo lo dejarías escrito sin prometer que funcionará en cualquier equipo?"
+    },
+    {
+      "role": "assistant",
+      "content": "Tarjeta propuesta: puesto 24; equipo monitor; revisión de modo de presentación. Preparación: anotar conexiones, aplicación y condiciones del ambiente. Prueba: Mover una ventana de prueba entre pantallas y comprobar dónde aparece. Evidencia: registrar el resultado y cualquier diferencia respecto a la ficha ficticia. Criterio de cierre: la prueba requerida para este puesto se reproduce con el equipo que se usará en la sesión. Si cambia equipo o conexión, se repite. No es una garantía universal ni una confirmación de que la incidencia logística o financiera ya esté resuelta."
+    },
+    {
+      "role": "user",
+      "content": "El identificador de esta tarjeta será MON-PRES-24. Lo eligió el equipo de la sala; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de modo de presentación, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada."
+    },
+    {
+      "role": "assistant",
+      "content": "Registro la tarjeta MON-PRES-24 para modo de presentación de monitor en el puesto 24. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación de la sala y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa."
+    },
+    {
+      "role": "user",
+      "content": "Te hago una comprobación: los 36 recibidos no eran 36 utilizables, eran 34 utilizables y dos dañados. ¿Seguimos necesitando seis para llegar a 40, o alguien volvió a contar los dañados como listos?"
+    },
+    {
+      "role": "assistant",
+      "content": "Seguimos necesitando seis: cuatro faltantes y dos reemplazos. Los 34 funcionales más seis nuevos dan 40 utilizables. No contaré los dos dañados como equipos listos. La reposición ORD-2074 no se reduce a cuatro ni a dos unidades."
+    },
+    {
+      "role": "user",
+      "content": "Consulta adicional para el puesto 25: quiero revisar ganancia de entrada del micrófono USB. En ese puesto trabajarán varias personas por turnos y necesitamos un procedimiento que pueda repetir el facilitador. Es planificación del laboratorio; no autoriza una compra ni cambia los acuerdos de la incidencia. ¿Qué debo verificar y qué no debería dar por hecho?"
+    },
+    {
+      "role": "assistant",
+      "content": "Para el puesto 25, la ficha ficticia de micrófono USB indica lo siguiente: El micrófono demo se ajusta para que la voz fuerte no recorte la señal. Subir la ganancia no elimina ruido; la distancia y el ambiente se revisan antes de añadir procesamiento. La comprobación propuesta es: Leer una frase en voz normal y fuerte, observando si la señal llega al límite. Registra el equipo, las conexiones y el resultado para que otra persona pueda repetir la prueba. Si el resultado difiere, conserva el dato observado y revisa una variable por vez. Esta consulta no modifica el pedido, el reembolso ni las fechas acordadas del caso abierto."
+    },
+    {
+      "role": "user",
+      "content": "Voy a convertir esa explicación de ganancia de entrada en una tarjeta de preparación del puesto 25. Quiero que el registro diga qué probamos, con qué condiciones y qué resultado se considera suficiente para la práctica. También necesitamos distinguir una especificación de catálogo de un resultado realmente observado. ¿Cómo lo dejarías escrito sin prometer que funcionará en cualquier equipo?"
+    },
+    {
+      "role": "assistant",
+      "content": "Tarjeta propuesta: puesto 25; equipo micrófono USB; revisión de ganancia de entrada. Preparación: anotar conexiones, aplicación y condiciones del ambiente. Prueba: Leer una frase en voz normal y fuerte, observando si la señal llega al límite. Evidencia: registrar el resultado y cualquier diferencia respecto a la ficha ficticia. Criterio de cierre: la prueba requerida para este puesto se reproduce con el equipo que se usará en la sesión. Si cambia equipo o conexión, se repite. No es una garantía universal ni una confirmación de que la incidencia logística o financiera ya esté resuelta."
+    },
+    {
+      "role": "user",
+      "content": "El identificador de esta tarjeta será MIC-GAIN-39. Lo eligió el equipo de la sala; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de ganancia de entrada, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada."
+    },
+    {
+      "role": "assistant",
+      "content": "Registro la tarjeta MIC-GAIN-39 para ganancia de entrada de micrófono USB en el puesto 25. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación de la sala y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa."
+    },
+    {
+      "role": "user",
+      "content": "Lo del micrófono y el router que hablamos son compras futuras. No generes un pedido nuevo ni modifiques ORD-2074 a partir de esas consultas. El número de reposición de audífonos sigue siendo seis."
+    },
+    {
+      "role": "assistant",
+      "content": "Las conversaciones sobre otros productos son planificación del laboratorio. No hay autorización de compra nueva. ORD-2074 sigue siendo una reposición de seis audífonos. No modificaré el pedido ni registraré compromisos adicionales por las consultas técnicas."
+    },
+    {
+      "role": "user",
+      "content": "Consulta adicional para el puesto 26: quiero revisar monitoreo con audífonos del micrófono USB. En ese puesto trabajarán varias personas por turnos y necesitamos un procedimiento que pueda repetir el facilitador. Es planificación del laboratorio; no autoriza una compra ni cambia los acuerdos de la incidencia. ¿Qué debo verificar y qué no debería dar por hecho?"
+    },
+    {
+      "role": "assistant",
+      "content": "Para el puesto 26, la ficha ficticia de micrófono USB indica lo siguiente: El monitoreo directo y el audio que vuelve de la aplicación pueden producir eco si se activan a la vez. El protocolo prueba una ruta cada vez y registra cuál usa el facilitador. La comprobación propuesta es: Desactivar retorno de la aplicación y comparar con monitoreo directo. Registra el equipo, las conexiones y el resultado para que otra persona pueda repetir la prueba. Si el resultado difiere, conserva el dato observado y revisa una variable por vez. Esta consulta no modifica el pedido, el reembolso ni las fechas acordadas del caso abierto."
+    },
+    {
+      "role": "user",
+      "content": "Voy a convertir esa explicación de monitoreo con audífonos en una tarjeta de preparación del puesto 26. Quiero que el registro diga qué probamos, con qué condiciones y qué resultado se considera suficiente para la práctica. También necesitamos distinguir una especificación de catálogo de un resultado realmente observado. ¿Cómo lo dejarías escrito sin prometer que funcionará en cualquier equipo?"
+    },
+    {
+      "role": "assistant",
+      "content": "Tarjeta propuesta: puesto 26; equipo micrófono USB; revisión de monitoreo con audífonos. Preparación: anotar conexiones, aplicación y condiciones del ambiente. Prueba: Desactivar retorno de la aplicación y comparar con monitoreo directo. Evidencia: registrar el resultado y cualquier diferencia respecto a la ficha ficticia. Criterio de cierre: la prueba requerida para este puesto se reproduce con el equipo que se usará en la sesión. Si cambia equipo o conexión, se repite. No es una garantía universal ni una confirmación de que la incidencia logística o financiera ya esté resuelta."
+    },
+    {
+      "role": "user",
+      "content": "El identificador de esta tarjeta será MIC-MON-42. Lo eligió el equipo de la sala; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de monitoreo con audífonos, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada."
+    },
+    {
+      "role": "assistant",
+      "content": "Registro la tarjeta MIC-MON-42 para monitoreo con audífonos de micrófono USB en el puesto 26. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación de la sala y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa."
+    },
+    {
+      "role": "user",
+      "content": "El responsable de finanzas es Clara Ibáñez. Su siguiente acción es adjuntar la evidencia del resultado a FIN-6652. Quiero dejar la diferencia entre solicitud registrada y reembolso recibido porque alguien puede leer solo el último mensaje."
+    },
+    {
+      "role": "assistant",
+      "content": "Responsable del frente financiero: Clara Ibáñez. Pendiente: aportar evidencia del resultado de FIN-6652. El estado actual es solicitud registrada, sin confirmación de reembolso recibido. PAY-8863 permanece válido. No cerraré ese frente por haber registrado el folio o por resolver la entrega."
+    },
+    {
+      "role": "user",
+      "content": "Consulta adicional para el puesto 27: quiero revisar formato de grabación del micrófono USB. En ese puesto trabajarán varias personas por turnos y necesitamos un procedimiento que pueda repetir el facilitador. Es planificación del laboratorio; no autoriza una compra ni cambia los acuerdos de la incidencia. ¿Qué debo verificar y qué no debería dar por hecho?"
+    },
+    {
+      "role": "assistant",
+      "content": "Para el puesto 27, la ficha ficticia de micrófono USB indica lo siguiente: La grabación ficticia del taller usa 48 kHz y 16 bits para voz. La elección es una convención de la práctica; no implica que cambiar el número por sí solo mejore una mala toma. La comprobación propuesta es: Grabar treinta segundos y verificar el archivo en el reproductor del equipo. Registra el equipo, las conexiones y el resultado para que otra persona pueda repetir la prueba. Si el resultado difiere, conserva el dato observado y revisa una variable por vez. Esta consulta no modifica el pedido, el reembolso ni las fechas acordadas del caso abierto."
+    },
+    {
+      "role": "user",
+      "content": "Voy a convertir esa explicación de formato de grabación en una tarjeta de preparación del puesto 27. Quiero que el registro diga qué probamos, con qué condiciones y qué resultado se considera suficiente para la práctica. También necesitamos distinguir una especificación de catálogo de un resultado realmente observado. ¿Cómo lo dejarías escrito sin prometer que funcionará en cualquier equipo?"
+    },
+    {
+      "role": "assistant",
+      "content": "Tarjeta propuesta: puesto 27; equipo micrófono USB; revisión de formato de grabación. Preparación: anotar conexiones, aplicación y condiciones del ambiente. Prueba: Grabar treinta segundos y verificar el archivo en el reproductor del equipo. Evidencia: registrar el resultado y cualquier diferencia respecto a la ficha ficticia. Criterio de cierre: la prueba requerida para este puesto se reproduce con el equipo que se usará en la sesión. Si cambia equipo o conexión, se repite. No es una garantía universal ni una confirmación de que la incidencia logística o financiera ya esté resuelta."
+    },
+    {
+      "role": "user",
+      "content": "El identificador de esta tarjeta será MIC-69K-37. Lo eligió el equipo de la sala; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de formato de grabación, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada."
+    },
+    {
+      "role": "assistant",
+      "content": "Registro la tarjeta MIC-69K-37 para formato de grabación de micrófono USB en el puesto 27. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación de la sala y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa."
+    },
+    {
+      "role": "user",
+      "content": "Valida que mi correo operativo vigente termina en agenciapixel.example y empieza por logistica. En la primera parte de la conversación quedó otro, pero lo cambié después. Esto es una corrección, no un segundo destinatario obligatorio."
+    },
+    {
+      "role": "assistant",
+      "content": "El correo operativo vigente es logistica@agenciapixel.example. coordinacion@agenciapixel.example se conserva solo como antecedente, no como destinatario adicional obligatorio. El canal permitido para redactar el seguimiento es correo; llamadas y WhatsApp siguen sin autorización."
+    },
+    {
+      "role": "user",
+      "content": "Consulta adicional para el puesto 28: quiero revisar prueba previa del micrófono USB. En ese puesto trabajarán varias personas por turnos y necesitamos un procedimiento que pueda repetir el facilitador. Es planificación del laboratorio; no autoriza una compra ni cambia los acuerdos de la incidencia. ¿Qué debo verificar y qué no debería dar por hecho?"
+    },
+    {
+      "role": "assistant",
+      "content": "Para el puesto 28, la ficha ficticia de micrófono USB indica lo siguiente: Se reserva una prueba antes de abrir puertas, con el mismo equipo que se usará en la sesión. Cambiar conexiones a último momento obliga a repetir la verificación de audio. La comprobación propuesta es: Hacer una llamada de prueba y escuchar desde un segundo dispositivo. Registra el equipo, las conexiones y el resultado para que otra persona pueda repetir la prueba. Si el resultado difiere, conserva el dato observado y revisa una variable por vez. Esta consulta no modifica el pedido, el reembolso ni las fechas acordadas del caso abierto."
+    },
+    {
+      "role": "user",
+      "content": "Voy a convertir esa explicación de prueba previa en una tarjeta de preparación del puesto 28. Quiero que el registro diga qué probamos, con qué condiciones y qué resultado se considera suficiente para la práctica. También necesitamos distinguir una especificación de catálogo de un resultado realmente observado. ¿Cómo lo dejarías escrito sin prometer que funcionará en cualquier equipo?"
+    },
+    {
+      "role": "assistant",
+      "content": "Tarjeta propuesta: puesto 28; equipo micrófono USB; revisión de prueba previa. Preparación: anotar conexiones, aplicación y condiciones del ambiente. Prueba: Hacer una llamada de prueba y escuchar desde un segundo dispositivo. Evidencia: registrar el resultado y cualquier diferencia respecto a la ficha ficticia. Criterio de cierre: la prueba requerida para este puesto se reproduce con el equipo que se usará en la sesión. Si cambia equipo o conexión, se repite. No es una garantía universal ni una confirmación de que la incidencia logística o financiera ya esté resuelta."
+    },
+    {
+      "role": "user",
+      "content": "El identificador de esta tarjeta será MIC-TEST-29. Lo eligió el equipo de la sala; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de prueba previa, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada."
+    },
+    {
+      "role": "assistant",
+      "content": "Registro la tarjeta MIC-TEST-29 para prueba previa de micrófono USB en el puesto 28. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación de la sala y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa."
+    },
+    {
+      "role": "user",
+      "content": "Se mantienen las fechas que ya corregimos. No te voy a repetir otra vez todos los folios; para eso debe servir el historial. Si un resumen pierde un detalle, quiero que sea explícito que hay que volver al original en lugar de adivinarlo."
+    },
+    {
+      "role": "assistant",
+      "content": "Usaré el último acuerdo explícito para cada dato que tuvo correcciones. Si falta un detalle en un resumen, lo marcaré como no conservado y consultaré el historial original cuando tenga una referencia accesible. No reconstruiré folios, seriales o frases de acceso a partir de datos parecidos."
+    },
+    {
+      "role": "user",
+      "content": "Consulta adicional para el puesto 29: quiero revisar espacio para materiales del almacenamiento USB. En ese puesto trabajarán varias personas por turnos y necesitamos un procedimiento que pueda repetir el facilitador. Es planificación del laboratorio; no autoriza una compra ni cambia los acuerdos de la incidencia. ¿Qué debo verificar y qué no debería dar por hecho?"
+    },
+    {
+      "role": "assistant",
+      "content": "Para el puesto 29, la ficha ficticia de almacenamiento USB indica lo siguiente: El dispositivo demo tiene 512 GB nominales. Se revisa espacio libre y tamaño de los materiales antes de copiar; una cifra de caja no prueba cuánto espacio queda disponible. La comprobación propuesta es: Copiar una carpeta de prueba y verificar algunos archivos después de expulsar y reconectar. Registra el equipo, las conexiones y el resultado para que otra persona pueda repetir la prueba. Si el resultado difiere, conserva el dato observado y revisa una variable por vez. Esta consulta no modifica el pedido, el reembolso ni las fechas acordadas del caso abierto."
+    },
+    {
+      "role": "user",
+      "content": "Voy a convertir esa explicación de espacio para materiales en una tarjeta de preparación del puesto 29. Quiero que el registro diga qué probamos, con qué condiciones y qué resultado se considera suficiente para la práctica. También necesitamos distinguir una especificación de catálogo de un resultado realmente observado. ¿Cómo lo dejarías escrito sin prometer que funcionará en cualquier equipo?"
+    },
+    {
+      "role": "assistant",
+      "content": "Tarjeta propuesta: puesto 29; equipo almacenamiento USB; revisión de espacio para materiales. Preparación: anotar conexiones, aplicación y condiciones del ambiente. Prueba: Copiar una carpeta de prueba y verificar algunos archivos después de expulsar y reconectar. Evidencia: registrar el resultado y cualquier diferencia respecto a la ficha ficticia. Criterio de cierre: la prueba requerida para este puesto se reproduce con el equipo que se usará en la sesión. Si cambia equipo o conexión, se repite. No es una garantía universal ni una confirmación de que la incidencia logística o financiera ya esté resuelta."
+    },
+    {
+      "role": "user",
+      "content": "El identificador de esta tarjeta será USB-CAP-533. Lo eligió el equipo de la sala; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de espacio para materiales, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada."
+    },
+    {
+      "role": "assistant",
+      "content": "Registro la tarjeta USB-CAP-533 para espacio para materiales de almacenamiento USB en el puesto 29. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación de la sala y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa."
+    },
+    {
+      "role": "user",
+      "content": "Todavía no hay correo de confirmación de entrega ni comprobante de abono. Aunque la guía exista, no significa que el paquete llegó. No marques SUP-3211 como resuelto por terminar esta conversación."
+    },
+    {
+      "role": "assistant",
+      "content": "Estado de cierre: todavía faltan confirmación de entrega y evidencia del resultado financiero. Una guía creada no prueba recepción y un folio no prueba un abono. SUP-3211 permanece abierto. El fin de esta conversación no equivale a completar el caso."
+    },
+    {
+      "role": "user",
+      "content": "Consulta adicional para el puesto 30: quiero revisar compatibilidad de archivos del almacenamiento USB. En ese puesto trabajarán varias personas por turnos y necesitamos un procedimiento que pueda repetir el facilitador. Es planificación del laboratorio; no autoriza una compra ni cambia los acuerdos de la incidencia. ¿Qué debo verificar y qué no debería dar por hecho?"
+    },
+    {
+      "role": "assistant",
+      "content": "Para el puesto 30, la ficha ficticia de almacenamiento USB indica lo siguiente: El formato de la unidad debe probarse en los sistemas de los participantes. El procedimiento no formatea una unidad con datos para resolver una duda; primero usa una unidad de práctica vacía. La comprobación propuesta es: Comprobar lectura y escritura con un archivo temporal en dos equipos. Registra el equipo, las conexiones y el resultado para que otra persona pueda repetir la prueba. Si el resultado difiere, conserva el dato observado y revisa una variable por vez. Esta consulta no modifica el pedido, el reembolso ni las fechas acordadas del caso abierto."
+    },
+    {
+      "role": "user",
+      "content": "Voy a convertir esa explicación de compatibilidad de archivos en una tarjeta de preparación del puesto 30. Quiero que el registro diga qué probamos, con qué condiciones y qué resultado se considera suficiente para la práctica. También necesitamos distinguir una especificación de catálogo de un resultado realmente observado. ¿Cómo lo dejarías escrito sin prometer que funcionará en cualquier equipo?"
+    },
+    {
+      "role": "assistant",
+      "content": "Tarjeta propuesta: puesto 30; equipo almacenamiento USB; revisión de compatibilidad de archivos. Preparación: anotar conexiones, aplicación y condiciones del ambiente. Prueba: Comprobar lectura y escritura con un archivo temporal en dos equipos. Evidencia: registrar el resultado y cualquier diferencia respecto a la ficha ficticia. Criterio de cierre: la prueba requerida para este puesto se reproduce con el equipo que se usará en la sesión. Si cambia equipo o conexión, se repite. No es una garantía universal ni una confirmación de que la incidencia logística o financiera ya esté resuelta."
+    },
+    {
+      "role": "user",
+      "content": "El identificador de esta tarjeta será USB-FMT-38. Lo eligió el equipo de la sala; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de compatibilidad de archivos, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada."
+    },
+    {
+      "role": "assistant",
+      "content": "Registro la tarjeta USB-FMT-38 para compatibilidad de archivos de almacenamiento USB en el puesto 30. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación de la sala y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa."
+    },
+    {
+      "role": "user",
+      "content": "Si mañana retoma esto otra persona, debe empezar por el pendiente de logística y luego por el financiero. Las preguntas del catálogo nos ayudaron a planear el laboratorio, pero no deben ocupar todo el resumen operativo."
+    },
+    {
+      "role": "assistant",
+      "content": "El siguiente agente debe priorizar la confirmación de logística y después la evidencia financiera. Las consultas del catálogo quedan como contexto secundario recuperable. El resumen operativo debe conservar objetivo, acuerdos vigentes, restricciones y pendientes, con las referencias necesarias para continuar el caso."
+    },
+    {
+      "role": "user",
+      "content": "Consulta adicional para el puesto 31: quiero revisar respaldo de la presentación del almacenamiento USB. En ese puesto trabajarán varias personas por turnos y necesitamos un procedimiento que pueda repetir el facilitador. Es planificación del laboratorio; no autoriza una compra ni cambia los acuerdos de la incidencia. ¿Qué debo verificar y qué no debería dar por hecho?"
+    },
+    {
+      "role": "assistant",
+      "content": "Para el puesto 31, la ficha ficticia de almacenamiento USB indica lo siguiente: La copia de respaldo se abre en otro equipo para comprobar fuentes, imágenes y enlaces. Copiar la carpeta y asumir que funciona deja fallos sin detectar antes del evento. La comprobación propuesta es: Abrir la presentación y un documento de ejemplo desde la copia de reserva. Registra el equipo, las conexiones y el resultado para que otra persona pueda repetir la prueba. Si el resultado difiere, conserva el dato observado y revisa una variable por vez. Esta consulta no modifica el pedido, el reembolso ni las fechas acordadas del caso abierto."
+    },
+    {
+      "role": "user",
+      "content": "Voy a convertir esa explicación de respaldo de la presentación en una tarjeta de preparación del puesto 31. Quiero que el registro diga qué probamos, con qué condiciones y qué resultado se considera suficiente para la práctica. También necesitamos distinguir una especificación de catálogo de un resultado realmente observado. ¿Cómo lo dejarías escrito sin prometer que funcionará en cualquier equipo?"
+    },
+    {
+      "role": "assistant",
+      "content": "Tarjeta propuesta: puesto 31; equipo almacenamiento USB; revisión de respaldo de la presentación. Preparación: anotar conexiones, aplicación y condiciones del ambiente. Prueba: Abrir la presentación y un documento de ejemplo desde la copia de reserva. Evidencia: registrar el resultado y cualquier diferencia respecto a la ficha ficticia. Criterio de cierre: la prueba requerida para este puesto se reproduce con el equipo que se usará en la sesión. Si cambia equipo o conexión, se repite. No es una garantía universal ni una confirmación de que la incidencia logística o financiera ya esté resuelta."
+    },
+    {
+      "role": "user",
+      "content": "El identificador de esta tarjeta será USB-RESP-44. Lo eligió el equipo de la sala; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de respaldo de la presentación, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada."
+    },
+    {
+      "role": "assistant",
+      "content": "Registro la tarjeta USB-RESP-44 para respaldo de la presentación de almacenamiento USB en el puesto 31. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación de la sala y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa."
+    },
+    {
+      "role": "user",
+      "content": "Dejo el caso abierto. Mañana preguntaré por los acuerdos vigentes y algunos detalles que aparecieron mucho antes. No necesito que repitas toda esta conversación ahora; solo confirma que podremos retomarla."
+    },
+    {
+      "role": "assistant",
+      "content": "Podremos retomarla desde el historial que conserve la aplicación. Si se compacta, el resumen ayudará con el estado operativo y una referencia al original permitirá recuperar detalles que hayan quedado fuera. El caso permanece abierto y no se han ejecutado operaciones comerciales ni comunicaciones externas en esta simulación."
+    },
+    {
+      "role": "user",
+      "content": "Consulta adicional para el puesto 32: quiero revisar retiro y etiquetado del almacenamiento USB. En ese puesto trabajarán varias personas por turnos y necesitamos un procedimiento que pueda repetir el facilitador. Es planificación del laboratorio; no autoriza una compra ni cambia los acuerdos de la incidencia. ¿Qué debo verificar y qué no debería dar por hecho?"
+    },
+    {
+      "role": "assistant",
+      "content": "Para el puesto 32, la ficha ficticia de almacenamiento USB indica lo siguiente: El préstamo de unidades se registra por puesto y se verifica el contenido al devolverlas. Los archivos de la práctica son ficticios y se separan del material de cada participante. La comprobación propuesta es: Expulsar la unidad, revisar la etiqueta y registrar quién la devuelve. Registra el equipo, las conexiones y el resultado para que otra persona pueda repetir la prueba. Si el resultado difiere, conserva el dato observado y revisa una variable por vez. Esta consulta no modifica el pedido, el reembolso ni las fechas acordadas del caso abierto."
+    },
+    {
+      "role": "user",
+      "content": "Voy a convertir esa explicación de retiro y etiquetado en una tarjeta de preparación del puesto 32. Quiero que el registro diga qué probamos, con qué condiciones y qué resultado se considera suficiente para la práctica. También necesitamos distinguir una especificación de catálogo de un resultado realmente observado. ¿Cómo lo dejarías escrito sin prometer que funcionará en cualquier equipo?"
+    },
+    {
+      "role": "assistant",
+      "content": "Tarjeta propuesta: puesto 32; equipo almacenamiento USB; revisión de retiro y etiquetado. Preparación: anotar conexiones, aplicación y condiciones del ambiente. Prueba: Expulsar la unidad, revisar la etiqueta y registrar quién la devuelve. Evidencia: registrar el resultado y cualquier diferencia respecto a la ficha ficticia. Criterio de cierre: la prueba requerida para este puesto se reproduce con el equipo que se usará en la sesión. Si cambia equipo o conexión, se repite. No es una garantía universal ni una confirmación de que la incidencia logística o financiera ya esté resuelta."
+    },
+    {
+      "role": "user",
+      "content": "El identificador de esta tarjeta será USB-DEV-52. Lo eligió el equipo de la sala; no lo confundas con un folio de soporte. Por ahora solo hemos definido el procedimiento, todavía no lo ejecutamos. Si alguien pregunta después por la tarjeta de retiro y etiquetado, necesita recuperar ese identificador y su estado, no inventar un registro de prueba aprobada."
+    },
+    {
+      "role": "assistant",
+      "content": "Registro la tarjeta USB-DEV-52 para retiro y etiquetado de almacenamiento USB en el puesto 32. Estado: procedimiento definido, prueba pendiente. Es una referencia de preparación de la sala y no sustituye un ticket, una guía o una autorización financiera. Mantendré esta información como contexto secundario de la conversación. Los acuerdos explícitos del caso principal siguen vigentes salvo que los corrijas de manera expresa."
+    }
+  ]
+}

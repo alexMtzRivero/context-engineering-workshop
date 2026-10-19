@@ -1,13 +1,12 @@
 """Extra: un agente por cliente. Cada uno tiene solo la conversación de su caso; el principal le hace preguntas.
 
-Las conversaciones de los clientes viven en disco (clientes/<cliente>.json) y en el contexto de cada sub-agente;
-al principal solo llegan las respuestas.
+Cada cliente tiene su conversación en su propio archivo (datasets/conversacion-muy-larga/0X-<cliente>.json);
+su agente la lee como historial y al principal solo llegan las respuestas.
 """
 
 from pydantic_ai import Agent, ModelRetry, RunContext
-from pydantic_ai.messages import ModelMessagesTypeAdapter
 
-from base import MODEL, Chat, file_path
+from base import MODEL, Chat, read_conversation
 
 # Un solo agente, que se corre con el historial de un cliente distinto en cada pregunta. No tiene tools,
 # así que no razona (como el principal sin tools).
@@ -40,10 +39,10 @@ def find_client(chat: Chat, client: str) -> str:
 async def ask_client(ctx: RunContext[Chat], client: str, question: str) -> str:
     """Pregunta al agente de un cliente por su caso. Ese agente tiene la conversación completa del cliente;
     tú solo recibes su respuesta. Si la pregunta es sobre varios clientes, pregúntale a cada uno."""
-    # 1. Cargar la conversación de ese cliente desde disco.
+    # 1. Leer la conversación de ese cliente: su propio archivo del dataset.
     name = find_client(ctx.deps, client)
-    conversation_path = ctx.deps.clients[name]
-    conversation = ModelMessagesTypeAdapter.validate_json(file_path(ctx.deps, conversation_path).read_bytes())
+    conversation_file = ctx.deps.clients[name]
+    conversation = read_conversation(conversation_file)
 
     # 2. Preguntarle a su agente, con esa conversación como historial.
     #    Cada pregunta arranca de la conversación original: el agente no acumula preguntas anteriores.
@@ -55,7 +54,7 @@ async def ask_client(ctx: RunContext[Chat], client: str, question: str) -> str:
         "client": name,
         "question": question,
         "answer": answer,
-        "transcript": conversation_path,
+        "transcript": f"datasets/{conversation_file.parent.name}/{conversation_file.name}",
         "messages": len(conversation),
         "input_tokens": result.usage.input_tokens,
     })

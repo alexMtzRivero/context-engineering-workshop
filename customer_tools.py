@@ -160,7 +160,7 @@ CUSTOMER_CATALOG = {
 }
 
 
-# Los cinco clientes de datasets/conversacion-muy-larga.json. k desplaza los identificadores, las
+# Los cinco clientes de datasets/conversacion-muy-larga/. k desplaza los identificadores, las
 # fechas y las horas igual que en la conversación: ORD-2048 de Nébula es ORD-2055 en Despacho Ruiz.
 CLIENTES = [
     (0, "Nébula Software", "nebula.example",

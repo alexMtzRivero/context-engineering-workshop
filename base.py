@@ -1,18 +1,21 @@
 """Piezas que comparten todos los pasos: el estado del chat, el catálogo de tools y las rutas seguras."""
 
+import json
 import os
 from dataclasses import dataclass, field
 from pathlib import Path
 
 from dotenv import load_dotenv
 from pydantic_ai import ModelRetry
-from pydantic_ai.messages import ModelMessage, ModelMessagesTypeAdapter
+from pydantic_ai.messages import ModelMessage, ModelMessagesTypeAdapter, ModelRequest, ModelResponse, TextPart, UserPromptPart
 
 from customer_tools import CUSTOMER_CATALOG
 
 ROOT = Path(__file__).parent
 load_dotenv(ROOT / ".env")
 MODEL = os.getenv("MODEL", "anthropic:claude-haiku-5-5")
+# La conversación muy larga, en archivos: 00-introduccion.json y uno por cliente (01 a 05), en ese orden.
+CONVERSATION = "datasets/conversacion-muy-larga"
 
 
 @dataclass
@@ -34,7 +37,7 @@ class Chat:
     last_input_tokens: int | None = None
     service_requests: list[dict] = field(default_factory=list)  # solicitudes simuladas de las tools de escritura
     subagent_runs: list[dict] = field(default_factory=list)  # sub-agentes que corrieron en este turno
-    clients: dict[str, str] = field(default_factory=dict)  # extra: cliente -> su conversación en disco
+    clients: dict[str, Path] = field(default_factory=dict)  # extra: cliente -> el archivo de su conversación
 
 
 # Nombre y descripción de cada tool que se puede descubrir con Tools bajo demanda.
@@ -66,3 +69,24 @@ def file_path(chat: Chat, name: str) -> Path:
 def history_json(chat: Chat) -> str:
     """El historial serializado tal como lo guarda Pydantic AI."""
     return ModelMessagesTypeAdapter.dump_json(chat.history, indent=2).decode()
+
+
+def read_messages(path: Path) -> list[dict]:
+    """Los mensajes de un archivo del dataset, como {"role", "content"}."""
+    return json.loads(path.read_text())["messages"]
+
+
+def to_model_messages(messages: list[dict]) -> list[ModelMessage]:
+    """Convierte mensajes {"role", "content"} en el historial que entiende Pydantic AI, sin llamar al modelo."""
+    history = []
+    for message in messages:
+        if message["role"] == "user":
+            history.append(ModelRequest(parts=[UserPromptPart(content=message["content"])]))
+        else:
+            history.append(ModelResponse(parts=[TextPart(content=message["content"])]))
+    return history
+
+
+def read_conversation(path: Path) -> list[ModelMessage]:
+    """Lee un archivo del dataset como historial de Pydantic AI."""
+    return to_model_messages(read_messages(path))

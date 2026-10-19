@@ -13,6 +13,7 @@ SNIPPET = 160  # caracteres a cada lado de una coincidencia
 
 def list_files(ctx: RunContext[Chat], keyword: str = "") -> list[str]:
     """Lista rutas de archivos que contienen keyword; no carga sus contenidos."""
+    # Equivale a: find . -type f -iname "*keyword*"
     folder = ctx.deps.folder
     found = []
     for path in folder.rglob("*"):
@@ -42,6 +43,7 @@ def read_file(ctx: RunContext[Chat], name: str, start_line: int = 1, line_count:
 
     En un archivo grande, primero busca con search_file y lee solo alrededor de las líneas que encontró.
     """
+    # Equivale a: cat -n archivo | sed -n '14044,14067p', con un tope de líneas y de caracteres.
     lines = read_lines(ctx, name)
     total_lines = len(lines)
 
@@ -76,6 +78,7 @@ def search_file(ctx: RunContext[Chat], name: str, text: str, max_results: int = 
 
     Cada resultado trae su número de línea para leer alrededor con read_file.
     """
+    # Equivale a: grep -n -i -F "texto" archivo | head -30, con cada línea recortada alrededor del texto.
     lines = read_lines(ctx, name)
     wanted = text.lower()
 
@@ -117,6 +120,7 @@ def fragment_around(line: str, wanted: str) -> str:
 
 def write_file(ctx: RunContext[Chat], name: str, content: str) -> str:
     """Guarda texto en una ruta relativa; reemplaza el contenido si el archivo existe."""
+    # Equivale a: echo "contenido" > archivo
     try:
         path = file_path(ctx.deps, name)
         path.parent.mkdir(parents=True, exist_ok=True)

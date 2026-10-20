@@ -13,6 +13,8 @@ El resto ya funciona: `chat_agent.py` arma el agente y decide qué tools ve seg�
 
 El frontend usa CSS propio inspirado en shadcn: tonos neutros, tarjetas, bordes suaves y botones simples. En pantallas amplias muestra conversación y contexto lado a lado; en pantallas pequeñas se apilan. No requiere React, Tailwind, fuentes externas ni instalación de componentes.
 
+**Presentación del taller:** [`presentacion.html`](presentacion.html). Descárgala y ábrela en el navegador: flechas, espacio o clic para avanzar y `F` para pantalla completa. Imprimirla da una página por slide.
+
 ## Conversación muy larga: context rot en vivo
 
 La conversación muy larga simula un análisis de procesos: una persona del equipo le pide al agente revisar cinco casos de soporte casi iguales para encontrar la falla que los produce, y le pasa las cinco conversaciones completas, una tras otra. Nébula Software queda a la mitad. Son 1,282 mensajes y unos 205 mil tokens según el proveedor. Vive en `datasets/conversacion-muy-larga/`, partida en archivos: `00-introduccion.json` y uno por cliente, de `01-despacho-ruiz-contadores.json` a `05-hotel-mirador.json`. Al cargarla, el servidor los junta en orden.
